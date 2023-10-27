@@ -7,6 +7,7 @@ public class Client : MonoBehaviour
     private float chanceToDrinkMore = 0.5f; //0<= X <= 1
     public int beerCount = 0;
     public TableClients table = null;
+    public int sit = -1;
     public void setType(ClientType t) { _type = t; }
     public ClientType getType() { return _type;}
     public void setChanceToDrinkMore(float p) { chanceToDrinkMore = p;}
