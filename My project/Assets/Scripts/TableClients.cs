@@ -13,6 +13,7 @@ public class TableClients : MonoBehaviour
     private Vector3 pos;
 
     private void Start(){
+        pos = transform.position;
         for (int i = 0; i < 4; i++) {
             sits.Add(i);
         }
@@ -20,7 +21,6 @@ public class TableClients : MonoBehaviour
         positionSits.Add(pos + new Vector3(1, -1, 0));
         positionSits.Add(pos + new Vector3(-1, -1, 0));
         positionSits.Add(pos + new Vector3(-1, 1, 0));
-        pos = transform.position;
     }
 
     public void AddClient(Client new_c) {
