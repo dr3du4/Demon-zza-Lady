@@ -21,7 +21,7 @@ public class Walker : MonoBehaviour
     void Start()
     {
         startPostion = this.transform.position;
-        waitTime = Random.Range(0, 60);
+        waitTime = Random.Range(10, 35);
         Debug.Log(waitTime);
         
     }
