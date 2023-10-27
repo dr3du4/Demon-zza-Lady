@@ -16,10 +16,10 @@ public class TableClients : MonoBehaviour
         for (int i = 0; i < 4; i++) {
             sits.Add(i);
         }
-        positionSits.Add(new Vector3(1, 1, 0));
-        positionSits.Add(new Vector3(1, -1, 0));
-        positionSits.Add(new Vector3(-1, -1, 0));
-        positionSits.Add(new Vector3(-1, 1, 0));
+        positionSits.Add(pos + new Vector3(1, 1, 0));
+        positionSits.Add(pos + new Vector3(1, -1, 0));
+        positionSits.Add(pos + new Vector3(-1, -1, 0));
+        positionSits.Add(pos + new Vector3(-1, 1, 0));
         pos = transform.position;
     }
 
