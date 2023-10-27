@@ -1,13 +1,15 @@
 using UnityEngine;
+using System.Collections;
 
 public class Client : MonoBehaviour
 {
     private ClientType _type;
+    private float chanceToDrinkMore = 0.5f; //0<= X <= 1
+    public int beerCount = 0;
+    public TableClients table = null;
     public void setType(ClientType t) { _type = t; }
     public ClientType getType() { return _type;}
-    private float chanceToDrinkMore = 0.5f; //0<= X <= 1
-    private void setChanceToDrinkMore(float p) { chanceToDrinkMore = p;}
-    public int beerCount = 0;
+    public void setChanceToDrinkMore(float p) { chanceToDrinkMore = p;}
     public void ReviewNewClient(ClientType new_client) {
         if (Mathf.Abs(_type - new_client) < 2) {
             chanceToDrinkMore += 0.2f / (beerCount + 1);
@@ -20,8 +22,20 @@ public class Client : MonoBehaviour
         if (chanceToDrinkMore > 1f) chanceToDrinkMore = 1f;
     }
 
-    public bool wantMore()
-    {
+    public bool wantMore() {
         return (Random.Range(0f,1f) < chanceToDrinkMore);
+    }
+
+    public IEnumerator Drink() {
+        float time = Random.Range(20f, 40f);
+        while (time > 0f){
+			time -= Time.deltaTime;
+			yield return new WaitForSeconds(Time.deltaTime);
+			//Dodać animacje pasek
+		}
+        table.TakeClient(this);
+		beerCount++;
+        table = null;
+		//Iść i zdecydować co dalej
     }
 }
