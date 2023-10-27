@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class Walker : MonoBehaviour
@@ -13,12 +14,15 @@ public class Walker : MonoBehaviour
     private bool enter = true;
     public int waitTime = 10;
     private Vector3 objectPosition;
+    private float currentTime = 0.0f;
+    private bool isCountingDown = true;
     
     // Start is called before the first frame update
     void Start()
     {
         startPostion = this.transform.position;
-         
+        waitTime = Random.Range(0, 60);
+        Debug.Log(waitTime);
         
     }
 
@@ -34,8 +38,18 @@ public class Walker : MonoBehaviour
         if (objectPosition.y >= 5)
         {
             
-            enter = changeToFalse(enter);
-            
+            if (isCountingDown)
+            {
+                currentTime += Time.deltaTime;
+
+                if (currentTime >= waitTime)
+                {
+                    
+                    enter = changeToFalse(enter);
+
+                }
+            }
+
         }
         if (this &!enter)
         {
@@ -47,7 +61,7 @@ public class Walker : MonoBehaviour
         if (this & objectPosition.y < startPostion.y)
         {
             Destroy(This);
-            Debug.Log("fswjsdjhkfjkhsddjkhfhjk");
+            
         }
 
         
@@ -73,6 +87,10 @@ public class Walker : MonoBehaviour
         return boolian;
     }
     
-    
-    
+    public void StartCountdown()
+    {
+        
+        currentTime = 0.0f;
+    }
+   
 }

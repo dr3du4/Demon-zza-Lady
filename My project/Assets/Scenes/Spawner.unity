@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 9687284}
   - component: {fileID: 9687285}
   m_Layer: 0
-  m_Name: Square
+  m_Name: walker1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.3637557, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.93706894, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -220,10 +220,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e121b90fa5eba9c408cb81a00ea11f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 7167452067003144719, guid: b112982105b2854428cfd8f2d24319aa, type: 3}
-  spawnPoint: {fileID: 519420032}
+  objectToSpawn:
+  - {fileID: 2616297241087842409, guid: 765d931fcd9a1e84eb2012eedf7fd2ee, type: 3}
+  - {fileID: 7461987201310164559, guid: 2a5776d895ea8a44ca73faf25db1a51b, type: 3}
+  - {fileID: 8838541897085171360, guid: 04b79f72fdd91354e8fad7b63788a029, type: 3}
+  - {fileID: 8762800873327540041, guid: d1f482a33d2247d488b6978e8bf59aed, type: 3}
+  - {fileID: 5628623942642808354, guid: 22236df4b1887d0449f1601c9ab0fd9f, type: 3}
+  spawnPoint: {fileID: 9687283}
   spawnInterval: 1
   value: 0
+  direction: 0
+  spawnedNPC: []
+  npcAmount: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +268,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.4745098, g: 0.4001596, b: 0.19215688, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -320,5 +328,5 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 9687283}
   - {fileID: 519420032}
+  - {fileID: 9687283}

@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     public int direction;
     private bool spawning = true;
     public List<GameObject> spawnedNPC;
-    public int npcAmount = 1;
+    public int npcAmount = 10;
 
     void Start()
     {
@@ -23,8 +23,11 @@ public class Spawner : MonoBehaviour
     IEnumerator SpawnNPC()
     {
         yield return new WaitForSeconds(spawnInterval);
-
-        if(spawnedNPC.Count < npcAmount)
+        Debug.Log(spawnedNPC.Count+" "+npcAmount);
+        //while(true)
+        
+        
+        while(spawnedNPC.Count < npcAmount)
         {
             
             value = Random.Range(0, 5);
@@ -59,6 +62,11 @@ public class Spawner : MonoBehaviour
             
             
         }
+        
+        
+        
+        
+        
     }
 
     public void StopSpawning()
