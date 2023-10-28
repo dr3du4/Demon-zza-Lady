@@ -31,7 +31,6 @@ public class MoveToClick : MonoBehaviour
 
         if (client.waiting && Input.GetMouseButtonDown(1))
         {
-            client.waiting = false;
 
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
@@ -65,7 +64,9 @@ public class MoveToClick : MonoBehaviour
         }
         
         if (distanceToStol <= proximityDistance & !reach)
-        {   Debug.Log("mozesz podejsc");
+        {   
+            client.waiting = false;
+            Debug.Log("mozesz podejsc");
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             dynamicDistance = Vector3.Distance(transform.position, stol.transform.position);
             
