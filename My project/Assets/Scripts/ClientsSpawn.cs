@@ -10,7 +10,8 @@ public class ClientsSpawn : MonoBehaviour
         if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientPrefabs.Count));
     }
     private void SpawnClient(int i){
-        Client c = Instantiate(clientPrefabs[i],transform.position, transform.rotation).GetComponent<Client>();
+        GameObject cObj = Instantiate(clientPrefabs[i],transform.position, transform.rotation);
+        Client c = cObj.GetComponent<Client>();
         bar.AddClient(c);
     }
 }

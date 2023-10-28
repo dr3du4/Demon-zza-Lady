@@ -67,6 +67,7 @@ public class MoveToClick : MonoBehaviour
             }
             client.waiting = false;
             sitPos = stol.GetComponent<TableClients>().AddClient(client);
+            client.goingUp = false;
         }
 
         if (distanceToStol <= proximityDistance & !reach)
@@ -78,6 +79,8 @@ public class MoveToClick : MonoBehaviour
             
             if (dynamicDistance < 0.3f){
                 reach = true;
+                if(client.sit > 0 && client.sit < 3) client.goingUp = true;
+                else client.goingUp = false;
             }
             
                        
