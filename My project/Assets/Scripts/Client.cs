@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Client : MonoBehaviour
 {
+    public clientTypeSO clientPreference; // Probably merge with ClientType? Store that information in one place
     public ClientType _type;
     private float chanceToDrinkMore = 0.5f; //0<= X <= 1
     public int beerCount = 0;
@@ -16,8 +17,12 @@ public class Client : MonoBehaviour
 
     public bool waiting = false;
 
+    bool readyToDrink = true;
+
     private void Start(){
         RandTimeToWait();
+        // Debug
+        StartCoroutine(MoveTo(new Vector3(transform.position.x, transform.position.y + 2)));
     }
 
     public void RandTimeToWait(){
@@ -49,7 +54,7 @@ public class Client : MonoBehaviour
 		}
         table.TakeClient(this);
         sit = -1;
-		beerCount++;
+		// beerCount++; zakomentowane bo juz dodaje przy wydawaniu piwa
         table = null;
 		//Iść i zdecydować co dalej
     }
@@ -108,5 +113,15 @@ public class Client : MonoBehaviour
     public void ShowIndicatorSquare(bool show){
         GameObject p = transform.Find("Preferences").gameObject;
         p.SetActive(show);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Entered a trigger");
+        if(collision.gameObject.GetComponent<beerPromptSystem>() && readyToDrink)
+        {
+            readyToDrink = false;
+            collision.gameObject.GetComponent<beerPromptSystem>().InitPrompt(this);
+        }
     }
 }
