@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class MoveToClick : MonoBehaviour
 {
-    
+    private Client client; 
     public float speed = 5f;
     private Vector3 target;
     public GameObject stol;
@@ -20,7 +20,7 @@ public class MoveToClick : MonoBehaviour
     public float dynamicDistance = 20f;
     void Start()
     {
-      
+        client = GetComponent<Client>();
         target = transform.position;
         freePlace=GameObject.FindGameObjectsWithTag("chair");
         stol = freePlace[0];
@@ -29,10 +29,9 @@ public class MoveToClick : MonoBehaviour
     void Update()
     {
 
-
-
-        if (Input.GetMouseButtonDown(1))
+        if (client.waiting && Input.GetMouseButtonDown(1))
         {
+            client.waiting = false;
 
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;

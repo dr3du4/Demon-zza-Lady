@@ -97,15 +97,15 @@ public class Client : MonoBehaviour
     }
 
     private IEnumerator WaitInQueue(BarQueue bar){
-        while(timeToWait > 0f){
+        while(timeToWait > 0f && waiting){
             timeToWait -= Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
         ShowIndicatorSquare(false);
         // Jeśli wybierzesz stół daj waiting FALSE
+        bar.RemoveFirstClient();
         if (waiting) {
             StartCoroutine(Die());
-            bar.RemoveFirstClient();
             waiting = false;
         }
     }
