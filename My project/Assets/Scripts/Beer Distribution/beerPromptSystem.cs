@@ -131,7 +131,7 @@ public class beerPromptSystem : MonoBehaviour
         currentClient = client;
         if (currentClient)
         {
-            Debug.Log("Obs³ugujemy: " + currentClient._type.clientTypeName);
+            Debug.Log("Obsï¿½ugujemy: " + currentClient._type.clientTypeName);
             preferencePrompt.ShowPreference(timeWindow, currentClient._type.beerPreference);
         }
 
@@ -151,6 +151,8 @@ public class beerPromptSystem : MonoBehaviour
         manager.AddMoney(toServe.beerPrice, tip);
         // Increase client's beer count (with limit of 4)
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
+        Transform cObj = currentClient.transform.Find("Beer");
+        cObj.gameObject.SetActive(true);
         currentClient = null;
         nextServe = null;
         bar.SetClientServed(true);
