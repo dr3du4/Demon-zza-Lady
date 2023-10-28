@@ -18,11 +18,13 @@ public class beerPromptSystem : MonoBehaviour
     // Keys that can appear as a QTE prompt for the minigame
     public List<KeyCode> qteKeys;
 
+    public List<string> qteText;
+
     // Duration of the QTE prompt
     public float timeWindow = 5.0f;
 
     // Dictionary of inputs and sprites
-    [System.Serializable]
+    /*[System.Serializable]
     public struct SpritePair
     {
         public KeyCode key;
@@ -32,7 +34,9 @@ public class beerPromptSystem : MonoBehaviour
     public SpritePair[] sprites;
 
 
-    Dictionary<KeyCode, Sprite> keySprites = new Dictionary<KeyCode, Sprite>();
+    Dictionary<KeyCode, Sprite> keySprites = new Dictionary<KeyCode, Sprite>();*/
+
+   
     Dictionary<beerDispenser, KeyCode> randomKeys = new Dictionary<beerDispenser, KeyCode>();
     bool minigameActive = false;
     float minigameTimer = 0.0f;
@@ -45,12 +49,32 @@ public class beerPromptSystem : MonoBehaviour
     {
         manager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
 
-        foreach (beerDispenser dispenser in beerSelection)
-            randomKeys.Add(dispenser, KeyCode.None);
+        /*foreach (beerDispenser dispenser in beerSelection)
+            randomKeys.Add(dispenser, KeyCode.None);*/
 
-        foreach (SpritePair pair in sprites)
+        /*foreach (SpritePair pair in sprites)
         {
             keySprites.Add(pair.key, pair.image);
+        }*/
+
+        
+        UpdateBinds();
+    }
+
+    void UpdateBinds()
+    {
+        int i = 0;
+        foreach (beerDispenser disp in beerSelection)
+        {
+            if(!randomKeys.ContainsKey(disp))
+                randomKeys.Add(disp, qteKeys[i]);
+            i++;
+        }
+        i = 0;
+        foreach (KeyValuePair<beerDispenser, KeyCode> dispenser in randomKeys)
+        {
+            dispenser.Key.UpdateBind(qteText[i]);
+            i++;
         }
     }
 
@@ -113,7 +137,7 @@ public class beerPromptSystem : MonoBehaviour
 
 
         // RandomButtonSelect(); // First approach, randomly selected buttons for jug
-        StaticButtonSelect(); // Second approach, static buttons for jugs
+        //StaticButtonSelect(); // Second approach, static buttons for jugs
 
         // Start the time limit
         minigameTimer = Time.time + timeWindow;
@@ -155,11 +179,11 @@ public class beerPromptSystem : MonoBehaviour
         foreach (KeyValuePair<beerDispenser, KeyCode> pair in randomKeys)
         {
             // Show up the button prompt
-            pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value]);
+            pair.Key.ShowPrompt(timeWindow, pair.Value.ToString());
         }
     }
 
-
+    /*
     void RandomButtonSelect()
     {
         // Create helper objects for randomly selecting the qte buttons
@@ -180,9 +204,9 @@ public class beerPromptSystem : MonoBehaviour
         {
             randomKeys[pair.Key] = pair.Value;
             // Show up the button prompt
-            pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value]);
+            pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value].ToString());
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

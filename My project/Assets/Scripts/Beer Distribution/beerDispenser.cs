@@ -7,7 +7,7 @@ public class beerDispenser : MonoBehaviour
 {
     public beerSO beer;
     
-    public GameObject prompt;
+    [SerializeField]public TextMeshProUGUI prompt;
     public SpriteRenderer promptSprite;
     public SpriteRenderer beerIcon;
     [SerializeField] public TextMeshProUGUI priceText;
@@ -28,19 +28,20 @@ public class beerDispenser : MonoBehaviour
             HaltPrompt();        
     }
 
-    public void ShowPrompt(float promptTime, Sprite qteInput)
+    public void ShowPrompt(float promptTime, string qteInput)
     {
         promptTimer = Time.time + promptTime;
-        prompt.GetComponent<SpriteRenderer>().enabled = true;
-        promptSprite.sprite = qteInput;
+        prompt.SetText(qteInput);
     }
 
     public void HaltPrompt()
     {
-        prompt.GetComponent<SpriteRenderer>().enabled = false;
-        promptSprite.sprite = null;
     }
 
+    public void UpdateBind(string code)
+    {
+        prompt.SetText(code);
+    }
 
     void UpdatePrice()
     {
