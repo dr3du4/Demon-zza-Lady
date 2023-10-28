@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8587177800421870449}
   - component: {fileID: 8887291996772967133}
   - component: {fileID: 6562917050180353497}
+  - component: {fileID: 5094719284121009521}
   - component: {fileID: 1292658826660298602}
   m_Layer: 0
-  m_Name: TestClient
+  m_Name: sittingClient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +106,19 @@ MonoBehaviour:
   moveSpeed: 2
   timeToWait: 15
   waiting: 0
+--- !u!114 &5094719284121009521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681301764678306157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89240eb9e0f66c1439a7da0f87313dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1292658826660298602}
 --- !u!50 &1292658826660298602
 Rigidbody2D:
   serializedVersion: 4
