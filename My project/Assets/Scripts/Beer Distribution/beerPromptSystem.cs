@@ -12,6 +12,9 @@ public class beerPromptSystem : MonoBehaviour
     // The prompt that appears above a customer's head (their preference)
     public beerPreference preferencePrompt;
 
+    // Bar object
+    public BarQueue bar;
+
     // Keys that can appear as a QTE prompt for the minigame
     public List<KeyCode> qteKeys;
 
@@ -58,7 +61,7 @@ public class beerPromptSystem : MonoBehaviour
         // Change to be called by Client at bar
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            InitPrompt(tempClient);
+            // InitPrompt(tempClient);
             // AddDispenser(tescik);
         }
 
@@ -136,6 +139,7 @@ public class beerPromptSystem : MonoBehaviour
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
         currentClient = null;
         nextServe = null;
+        bar.SetClientServed(true);
     }
 
     public void AddDispenser(beerDispenser dispenser)
@@ -187,6 +191,19 @@ public class beerPromptSystem : MonoBehaviour
             randomKeys[pair.Key] = pair.Value;
             // Show up the button prompt
             pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value]);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Entered a trigger");
+        if (collision.gameObject.GetComponent<Client>())
+        {
+            if (collision.gameObject.GetComponent<Client>().readyToDrink)
+            {
+                collision.gameObject.GetComponent<Client>().readyToDrink = false;
+                InitPrompt(collision.gameObject.GetComponent<Client>());
+            }
         }
     }
 }

@@ -17,7 +17,8 @@ public class Client : MonoBehaviour
 
     public bool waiting = false;
 
-    public bool readyToDrink = true;
+    [HideInInspector]public bool readyToDrink = true;
+
 
     private void Start(){
         RandTimeToWait();
@@ -139,12 +140,14 @@ public class Client : MonoBehaviour
         }
     }
 
+
+
     public void ShowIndicatorSquare(bool show){
         GameObject p = transform.Find("Preferences").gameObject;
         p.SetActive(show);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Entered a trigger");
         if(collision.gameObject.GetComponent<beerPromptSystem>() && readyToDrink)
@@ -152,5 +155,5 @@ public class Client : MonoBehaviour
             readyToDrink = false;
             collision.gameObject.GetComponent<beerPromptSystem>().InitPrompt(this);
         }
-    }
+    }*/
 }
