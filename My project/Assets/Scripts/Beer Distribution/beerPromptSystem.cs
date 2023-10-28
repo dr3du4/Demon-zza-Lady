@@ -18,11 +18,13 @@ public class beerPromptSystem : MonoBehaviour
     // Keys that can appear as a QTE prompt for the minigame
     public List<KeyCode> qteKeys;
 
+    public List<string> qteText;
+
     // Duration of the QTE prompt
     public float timeWindow = 5.0f;
 
     // Dictionary of inputs and sprites
-    [System.Serializable]
+    /*[System.Serializable]
     public struct SpritePair
     {
         public KeyCode key;
@@ -32,7 +34,9 @@ public class beerPromptSystem : MonoBehaviour
     public SpritePair[] sprites;
 
 
-    Dictionary<KeyCode, Sprite> keySprites = new Dictionary<KeyCode, Sprite>();
+    Dictionary<KeyCode, Sprite> keySprites = new Dictionary<KeyCode, Sprite>();*/
+
+   
     Dictionary<beerDispenser, KeyCode> randomKeys = new Dictionary<beerDispenser, KeyCode>();
     bool minigameActive = false;
     float minigameTimer = 0.0f;
@@ -40,33 +44,42 @@ public class beerPromptSystem : MonoBehaviour
     Client currentClient;
     GameManager manager;
 
-    // For testing the tip system
-    public Client tempClient;
 
     private void Start()
     {
         manager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
 
-        foreach (beerDispenser dispenser in beerSelection)
-            randomKeys.Add(dispenser, KeyCode.None);
+        /*foreach (beerDispenser dispenser in beerSelection)
+            randomKeys.Add(dispenser, KeyCode.None);*/
 
-        foreach (SpritePair pair in sprites)
+        /*foreach (SpritePair pair in sprites)
         {
             keySprites.Add(pair.key, pair.image);
+        }*/
+
+        
+        UpdateBinds();
+    }
+
+    void UpdateBinds()
+    {
+        int i = 0;
+        foreach (beerDispenser disp in beerSelection)
+        {
+            if(!randomKeys.ContainsKey(disp))
+                randomKeys.Add(disp, qteKeys[i]);
+            i++;
+        }
+        i = 0;
+        foreach (KeyValuePair<beerDispenser, KeyCode> dispenser in randomKeys)
+        {
+            dispenser.Key.UpdateBind(qteText[i]);
+            i++;
         }
     }
 
     private void Update()
     {
-        // Change to be called by Client at bar
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // InitPrompt(tempClient);
-            // AddDispenser(tescik);
-        }
-
-
-
 
         // Minigame logic
         if (minigameActive)
@@ -75,7 +88,8 @@ public class beerPromptSystem : MonoBehaviour
             if (Time.time > minigameTimer)
             {
                 minigameActive = false; // Some fail condition
-                // Debug.Log("TIME\'S UP");
+                StartCoroutine(currentClient.Die());
+                bar.RemoveFirstClient();
             }
 
             // Check if you pressed any of the keys assigned to any of the beer selections 
@@ -94,7 +108,7 @@ public class beerPromptSystem : MonoBehaviour
                     preferencePrompt.HidePreference();
 
                     // Check if the client wasn't assigned
-                    if (currentClient && currentClient.clientPreference.beerPreference == nextServe)
+                    if (currentClient && currentClient._type.beerPreference == nextServe)
                     {
                         float reactionBonus = (minigameTimer - Time.time) * 2;
                         // Calculating the tip amount
@@ -117,13 +131,13 @@ public class beerPromptSystem : MonoBehaviour
         currentClient = client;
         if (currentClient)
         {
-            Debug.Log("Obs³ugujemy: " + currentClient.clientPreference.clientTypeName);
-            preferencePrompt.ShowPreference(timeWindow, currentClient.clientPreference.beerPreference);
+            Debug.Log("Obsï¿½ugujemy: " + currentClient._type.clientTypeName);
+            preferencePrompt.ShowPreference(timeWindow, currentClient._type.beerPreference);
         }
 
 
         // RandomButtonSelect(); // First approach, randomly selected buttons for jug
-        StaticButtonSelect(); // Second approach, static buttons for jugs
+        //StaticButtonSelect(); // Second approach, static buttons for jugs
 
         // Start the time limit
         minigameTimer = Time.time + timeWindow;
@@ -137,6 +151,8 @@ public class beerPromptSystem : MonoBehaviour
         manager.AddMoney(toServe.beerPrice, tip);
         // Increase client's beer count (with limit of 4)
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
+        Transform cObj = currentClient.transform.Find("Beer");
+        cObj.gameObject.SetActive(true);
         currentClient = null;
         nextServe = null;
         bar.SetClientServed(true);
@@ -165,11 +181,11 @@ public class beerPromptSystem : MonoBehaviour
         foreach (KeyValuePair<beerDispenser, KeyCode> pair in randomKeys)
         {
             // Show up the button prompt
-            pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value]);
+            pair.Key.ShowPrompt(timeWindow, pair.Value.ToString());
         }
     }
 
-
+    /*
     void RandomButtonSelect()
     {
         // Create helper objects for randomly selecting the qte buttons
@@ -190,9 +206,9 @@ public class beerPromptSystem : MonoBehaviour
         {
             randomKeys[pair.Key] = pair.Value;
             // Show up the button prompt
-            pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value]);
+            pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value].ToString());
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

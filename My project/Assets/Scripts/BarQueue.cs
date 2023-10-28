@@ -6,6 +6,8 @@ public class BarQueue : MonoBehaviour
 {
     // private List<GameObject> objectToSpawn ;
     [SerializeField]private List<Client> queue = new List<Client>();
+	[SerializeField]private Vector3 offSetFirst = new Vector3(0f,-0.25f,0f);
+	[SerializeField]private Vector3 offSet = new Vector3(0f,-0.75f,0f);
     public int maxInLine = 5;
     private int InLine = 0;
 	private Client firstClient = null;
@@ -18,7 +20,7 @@ public class BarQueue : MonoBehaviour
 	public bool GetClientServed() { return clientServed; }
 
 	private void Start(){
-		first = transform.position - new Vector3(0f,1.5f,0f);
+		first = transform.position += offSetFirst;
 		if(InLine > 0) {
 			firstClient = queue[0];
 			
@@ -41,7 +43,7 @@ public class BarQueue : MonoBehaviour
     private void SetClientsOnPos(){
 		if (InLine == 0) return;
 		for (int i=0; i<InLine; i++) {
-			StartCoroutine(queue[i].MoveTo(first - (i * new Vector3(0,1.5f,0))));
+			StartCoroutine(queue[i].MoveTo(first + (i * offSet)));
 		}
 	}
 
@@ -61,7 +63,7 @@ public class BarQueue : MonoBehaviour
 			StartCoroutine(c.Die());
 		}
 		else{
-			StartCoroutine(c.MoveTo(first - (InLine * new Vector3(0,1.5f,0))));
+			StartCoroutine(c.MoveTo(first + (InLine * offSet)));
 			queue.Add(c);
 			InLine++;
 		}
@@ -76,6 +78,7 @@ public class BarQueue : MonoBehaviour
 			queue.Insert(i,c);
 			StartCoroutine(outC.Die());
 			SetClientsOnPos();
+
 		}
 		else {
 			AddClient(c);
