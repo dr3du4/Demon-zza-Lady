@@ -6,9 +6,9 @@ public class BarQueue : MonoBehaviour
 {
     // private List<GameObject> objectToSpawn ;
     [SerializeField]private List<Client> queue = new List<Client>();
-    public int maxInLine = 10;
-    public int InLine = 0;
-	public Client firstClient = null;
+    public int maxInLine = 5;
+    private int InLine = 0;
+	private Client firstClient = null;
 	private float timerClient;
 	private Vector3 first;
 
@@ -42,8 +42,6 @@ public class BarQueue : MonoBehaviour
 
     public void RemoveFirstClient() {
 		if (InLine == 0) return;
-		//added
-	//	firstClient.ShowIndicatorSquare(false); // Hide indicator square for the departing first client
 		queue.RemoveAt(0);
 		InLine--;
 		firstClient = null;
@@ -53,16 +51,28 @@ public class BarQueue : MonoBehaviour
 	}
 
 	public void AddClient(Client c) {
-		StartCoroutine(c.MoveTo(first - (InLine * new Vector3(0,1.5f,0))));
-		queue.Add(c);
-		InLine++;
-		firstClient = queue[0];
-		//added
-		/*
-		if (InLine > 1) // If the queue already has clients, hide the previous indicator square
-		{
-			queue[0].ShowIndicatorSquare(false);
+		if (InLine >= maxInLine) {
+			StartCoroutine(c.Die());
 		}
-		c.ShowIndicatorSquare(true); // Show indicator square for the new first client
-	*/}
+		else{
+			StartCoroutine(c.MoveTo(first - (InLine * new Vector3(0,1.5f,0))));
+			queue.Add(c);
+			InLine++;
+		}
+		if (InLine == 1) firstClient = queue[0];
+	}
+
+	public void ForceClient(Client c) {
+		if (InLine >= maxInLine) {
+			int i = Random.Range(3,InLine);
+			Client outC = queue[i];
+			queue.RemoveAt(i);
+			queue.Insert(i,c);
+			StartCoroutine(outC.Die());
+			SetClientsOnPos();
+		}
+		else {
+			AddClient(c);
+		}
+	}
 }

@@ -16,15 +16,19 @@ public class Charge : RandomEvent
     public List<ChargeDifficultySO> difficulties;
 
     public Slider holdProgressBar;
+    public Slider charge;
     public SafeSpotUI safeSpot;
-    public RandomEventManager manager;
+    RandomEventManager manager;
 
 
     float value = 0;
     bool eventOver = false;
     float chargingTime = 0f;
 
-    
+    private void Start()
+    {
+        manager = GetComponentInParent<RandomEventManager>();
+    }
 
     private void Update()
     {
@@ -33,19 +37,15 @@ public class Charge : RandomEvent
             if (Input.GetKey(KeyCode.Space))
             {
                 value = Mathf.Clamp(value + (holdIncrement * Time.deltaTime), 0, 100);
-                Debug.Log(value);
-                if (value >= minValue && value <= maxValue)
+                // Debug.Log(value);
+            }
+            if (value >= minValue && value <= maxValue)
+            {
+                chargingTime += 2 * Time.deltaTime;
+                if (chargingTime >= passTime)
                 {
-                    chargingTime += Time.deltaTime;
-                    if(chargingTime >= passTime)
-                    {
-                        eventOver = true;
-                        Debug.Log("SUCCESS!");
-                        CancelEvent();
-                    }
-                }else
-                {
-                    chargingTime = 0f;
+                    eventOver = true;
+                    CancelEvent();
                 }
             }
             if (value > 0)
@@ -56,8 +56,14 @@ public class Charge : RandomEvent
                     CancelEvent();
                 }
             }
+            if (chargingTime > 0)
+            {
+                chargingTime = Mathf.Clamp(chargingTime - Time.deltaTime, 0, 100);
+            }
 
             holdProgressBar.value = value;
+            // Debug.Log(chargingTime / passTime);
+            charge.value = (chargingTime / passTime) * 100;
         }
     }
 

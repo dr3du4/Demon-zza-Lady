@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8587177800421870449}
   - component: {fileID: 8887291996772967133}
   - component: {fileID: 6562917050180353497}
+  - component: {fileID: 1015920554517606561}
   m_Layer: 0
   m_Name: TestClient 1
   m_TagString: Untagged
@@ -182,10 +183,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38a328d8028ab25fbbe85b475073786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clientPreference: {fileID: 11400000, guid: ba860ca2db06107448c0027e604337c1, type: 2}
   _type: 0
   beerCount: 0
   table: {fileID: 0}
   sit: -1
-  moveSpeed: 2
+  moveSpeed: 5
   timeToWait: 15
   waiting: 0
+  readyToDrink: 1
+--- !u!114 &1015920554517606561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681301764678306157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89240eb9e0f66c1439a7da0f87313dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  stol: {fileID: 0}
+  proximityDistance: 0.9
+  freePlace: []
+  distanceToStol: 20
+  helper: 20
+  isDeamon: 0
+  reach: 0
+  dynamicDistance: 20

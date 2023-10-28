@@ -14,13 +14,16 @@ public class ButtonMash : RandomEvent
     public List<MasherDifficultySO> difficulties;
 
     public Slider mashProgressBar;
-    public RandomEventManager manager;
+    RandomEventManager manager;
 
 
     float value = 0;
     bool eventOver = false;
 
-    
+    private void Start()
+    {
+        manager = GetComponentInParent<RandomEventManager>();
+    }
 
     private void Update()
     {

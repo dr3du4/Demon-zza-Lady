@@ -8,4 +8,5 @@ public class beerSO : ScriptableObject
     public string beerName;
     public Sprite beerIcon;
     public Sprite beerMugIcon;
+    public int beerPrice = 10;
 }

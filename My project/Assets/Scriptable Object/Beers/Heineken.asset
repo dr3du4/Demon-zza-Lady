@@ -15,3 +15,4 @@ MonoBehaviour:
   beerName: Heineken
   beerIcon: {fileID: 21300000, guid: aa272a827252ce64f8ec2da3f3e59c16, type: 3}
   beerMugIcon: {fileID: 0}
+  beerPrice: 10

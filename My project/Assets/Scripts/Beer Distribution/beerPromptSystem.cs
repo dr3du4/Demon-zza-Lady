@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class beerPromptSystem : MonoBehaviour
 {
+    public beerDispenser tescik; // Test
+
     // Beers that you can select during the minigame
     public List<beerDispenser> beerSelection;
 
+    // The prompt that appears above a customer's head (their preference)
     public beerPreference preferencePrompt;
 
     // Keys that can appear as a QTE prompt for the minigame
@@ -32,17 +35,19 @@ public class beerPromptSystem : MonoBehaviour
     float minigameTimer = 0.0f;
     beerSO nextServe;
     Client currentClient;
-    int tips = 0;
+    GameManager manager;
 
     // For testing the tip system
-    public Client tempClient; 
+    public Client tempClient;
 
     private void Start()
     {
+        manager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+
         foreach (beerDispenser dispenser in beerSelection)
             randomKeys.Add(dispenser, KeyCode.None);
 
-        foreach(SpritePair pair in sprites)
+        foreach (SpritePair pair in sprites)
         {
             keySprites.Add(pair.key, pair.image);
         }
@@ -51,16 +56,17 @@ public class beerPromptSystem : MonoBehaviour
     private void Update()
     {
         // Change to be called by Client at bar
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             InitPrompt(tempClient);
+            // AddDispenser(tescik);
         }
 
 
 
-        
+
         // Minigame logic
-        if(minigameActive)
+        if (minigameActive)
         {
             // Check if the time is up for the prompt
             if (Time.time > minigameTimer)
@@ -78,22 +84,22 @@ public class beerPromptSystem : MonoBehaviour
                     nextServe = pair.Key.beer;
                     minigameActive = false;
                     // Disable the prompt
-                    foreach(beerDispenser dispenser in beerSelection)
+                    foreach (beerDispenser dispenser in beerSelection)
                         dispenser.HaltPrompt();
 
                     // Disable the preference prompt
                     preferencePrompt.HidePreference();
 
                     // Check if the client wasn't assigned
-                    if(currentClient && currentClient.clientPreference.beerPreference == nextServe)
+                    if (currentClient && currentClient.clientPreference.beerPreference == nextServe)
                     {
                         float reactionBonus = (minigameTimer - Time.time) * 2;
                         // Calculating the tip amount
                         Debug.Log("Initial tip: " + (currentClient.beerCount * 10));
-                        Debug.Log("Reaction bonus: " + (int) reactionBonus);
-                        int t = Mathf.Clamp((currentClient.beerCount * 10) + (int) reactionBonus, 0, (currentClient.beerCount+1) * 10);
+                        Debug.Log("Reaction bonus: " + (int)reactionBonus);
+                        int t = Mathf.Clamp((currentClient.beerCount * 3) + (int)reactionBonus, 0, (currentClient.beerCount + 1) * 3);
                         Serve(nextServe, t);
-                    }else
+                    } else
                         Serve(nextServe, 0);
                 }
             }
@@ -112,7 +118,56 @@ public class beerPromptSystem : MonoBehaviour
             preferencePrompt.ShowPreference(timeWindow, currentClient.clientPreference.beerPreference);
         }
 
-        
+
+        // RandomButtonSelect(); // First approach, randomly selected buttons for jug
+        StaticButtonSelect(); // Second approach, static buttons for jugs
+
+        // Start the time limit
+        minigameTimer = Time.time + timeWindow;
+
+        minigameActive = true;
+    }
+
+    void Serve(beerSO toServe, int tip)
+    {
+        Debug.Log("Now serving: " + toServe.beerName + " Got tip: " + tip);
+        manager.AddMoney(toServe.beerPrice, tip);
+        // Increase client's beer count (with limit of 4)
+        currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
+        currentClient = null;
+        nextServe = null;
+    }
+
+    public void AddDispenser(beerDispenser dispenser)
+    {
+        beerSelection.Add(dispenser);
+        randomKeys.Add(dispenser, KeyCode.None);
+    }
+
+    void StaticButtonSelect()
+    {
+        // Assign the buttons
+        int i = 0;
+        foreach(beerDispenser beer in beerSelection)
+        {
+            if (qteKeys.Count > i)
+            {
+                randomKeys[beer] = qteKeys[i];
+                i++;
+            }
+        }
+
+        //  Show the prompt
+        foreach (KeyValuePair<beerDispenser, KeyCode> pair in randomKeys)
+        {
+            // Show up the button prompt
+            pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value]);
+        }
+    }
+
+
+    void RandomButtonSelect()
+    {
         // Create helper objects for randomly selecting the qte buttons
         List<KeyCode> temp = new List<KeyCode>(qteKeys);
         Dictionary<beerDispenser, KeyCode> nextKeys = new Dictionary<beerDispenser, KeyCode>();
@@ -133,20 +188,5 @@ public class beerPromptSystem : MonoBehaviour
             // Show up the button prompt
             pair.Key.ShowPrompt(timeWindow, keySprites[pair.Value]);
         }
-
-        // Start the time limit
-        minigameTimer = Time.time + timeWindow;
-
-        minigameActive = true;
-    }
-
-    void Serve(beerSO toServe, int tip)
-    {
-        Debug.Log("Now serving: " + toServe.beerName + " Got tip: " + tip);
-        tips += tip;
-        // Increase client's beer count (with limit of 4)
-        currentClient.beerCount = Mathf.Clamp(currentClient.beerCount+1, 0, 4);
-        currentClient = null;
-        nextServe = null;
     }
 }
