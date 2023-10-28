@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class Charge : RandomEvent
 {
+    // Default values for the event
     public float minValue = 60f;
     public float maxValue = 80f;
     public float startValue = 50f;
-    public float holdIncrement = 5f;
-    public float decreaseRate = 5f;
+    public float holdIncrement = 60f;
+    public float decreaseRate = 30f;
+    public float passTime = 0.75f;
+
+    public List<ChargeDifficultySO> difficulties;
+
     public Slider holdProgressBar;
+    public SafeSpotUI safeSpot;
     public RandomEventManager manager;
-    public float passTime = 3f;
 
 
     float value = 0;
@@ -28,6 +33,7 @@ public class Charge : RandomEvent
             if (Input.GetKey(KeyCode.Space))
             {
                 value = Mathf.Clamp(value + (holdIncrement * Time.deltaTime), 0, 100);
+                Debug.Log(value);
                 if (value >= minValue && value <= maxValue)
                 {
                     chargingTime += Time.deltaTime;
@@ -47,8 +53,6 @@ public class Charge : RandomEvent
                 value = Mathf.Clamp(value - (Time.deltaTime * decreaseRate), 0, 100);
                 if (value == 0)
                 {
-                    eventOver = true;
-                    Debug.Log("FAILURE");
                     CancelEvent();
                 }
             }
@@ -59,22 +63,39 @@ public class Charge : RandomEvent
 
     public override bool CancelEvent()
     {
-        eventOver = true;
+        if (!eventOver)
+        {
+            eventOver = true;
+            manager.EventOver(false);
+        }
+        else
+            manager.EventOver(true);
         gameObject.SetActive(false);
-        manager.EventOver();
         return true;
     }
 
-    public override bool LaunchEvent() // Could add variables to launch event to modify difficulty of the charge
+    public override RandomEvent LaunchEvent(Difficulty_Level difficulty) // Could add variables to launch event to modify difficulty of the charge
     {
 
         gameObject.SetActive(true);
-        holdProgressBar.maxValue = 100;
-        value = startValue;
+        AssignDifficulty(difficulty);
+
         holdProgressBar.value = value;
+        safeSpot.ConfigureSafeSpot(minValue, maxValue);
 
         eventOver = false;
-        return true;
+        return gameObject.GetComponent<RandomEvent>();
     }
 
+
+    void AssignDifficulty(Difficulty_Level difficulty)
+    {
+        // Assign values for the minigame from the difficulty SO
+        maxValue = difficulties[(int) difficulty].maxValue;
+        minValue = difficulties[(int)difficulty].minValue;
+        value = difficulties[(int)difficulty].startValue;
+        holdIncrement = difficulties[(int)difficulty].holdIncrement;
+        decreaseRate = difficulties[(int)difficulty].decreaseRate;
+        passTime = difficulties[(int)difficulty].passTime;
+    }
 }
