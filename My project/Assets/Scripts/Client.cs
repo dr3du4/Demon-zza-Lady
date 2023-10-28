@@ -18,11 +18,18 @@ public class Client : MonoBehaviour
     public bool waiting = false;
 
     public bool readyToDrink = true;
-
+    private SpriteRenderer _render;
+    public bool goingUp = false;
+    [SerializeField]private Sprite upSprite;
+    [SerializeField]private Sprite downSprite;
     private void Start(){
+        _render = GetComponent<SpriteRenderer>();
         RandTimeToWait();
-        // Debug
-        StartCoroutine(MoveTo(new Vector3(transform.position.x, transform.position.y + 2)));
+    }
+
+    private void Update(){
+        if (goingUp) _render.sprite = upSprite;
+        else _render.sprite = downSprite;
     }
 
     public void RandTimeToWait(){
@@ -46,7 +53,7 @@ public class Client : MonoBehaviour
     }
 
     public IEnumerator Drink() {
-        float time = Random.Range(20f, 30f);
+        float time = Random.Range(20f, 40f);
         while (time > 0f){
 			time -= Time.deltaTime;
 			yield return new WaitForSeconds(Time.deltaTime);
@@ -71,7 +78,9 @@ public class Client : MonoBehaviour
 	public IEnumerator MoveTo(Vector3 target){
 		float progress = 0f;
 		Vector3 start = transform.position;
-		float dis = Vector3.Distance(start,target);		
+		float dis = Vector3.Distance(start,target);	
+        if (target.y > start.y) goingUp = true;
+        else goingUp = false;	
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += moveSpeed * Time.deltaTime / dis;
@@ -83,6 +92,7 @@ public class Client : MonoBehaviour
         float progress = 0f;
 		Vector3 start = transform.position;
         Vector3 target = transform.position + new Vector3(1,0,0);
+        goingUp = false;
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += (float)(moveSpeed * Time.deltaTime / 0.5);
@@ -104,6 +114,7 @@ public class Client : MonoBehaviour
 		Vector3 start = transform.position;
         Vector3 target = transform.position;
         target.x = -1;
+        goingUp = false;
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += (float)(moveSpeed * Time.deltaTime / 1.5);
