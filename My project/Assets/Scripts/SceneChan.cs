@@ -2,24 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//using System.Threading.Thread;
 
-/*
 public class SceneChan : MonoBehaviour
 {
-    public async void StartGame() {
-        await Task.Delay(2000);
-        SceneManager.LoadScene("Scenes/TheGame");
+    public bool firstTime = true;
+
+    private void Awake() {
+        firstTime = intToBool(PlayerPrefs.GetInt("First"));
     }
 
-    public async void CloseGame() {
-        await Task.Delay(2000);
-        Application.Quit();
-    }
-}
-*/
-public class SceneChan : MonoBehaviour
-{
     public void StartGame()
     {
         Invoke("LoadGameScene", 0.3f); // Calls LoadGameScene after 2 seconds
@@ -32,11 +23,20 @@ public class SceneChan : MonoBehaviour
 
     private void LoadGameScene()
     {
-        SceneManager.LoadScene("Scenes/TheGame");
+        if (firstTime){
+            PlayerPrefs.SetInt("First", 0); 
+            SceneManager.LoadScene("Scenes/poczatek");
+        }
+        else SceneManager.LoadScene("Scenes/TheGame");
     }
 
     private void QuitApplication()
     {
         Application.Quit();
+    }
+
+    private bool intToBool(int i) {
+        if (i == 0) return false;
+        else return true;
     }
 }

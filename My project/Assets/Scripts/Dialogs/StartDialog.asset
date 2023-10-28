@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cf5f3046515e043aa8d289ed7a92a4, type: 3}
+  m_Name: StartDialog
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Witaj w krainie zagubionej w chaosie i strachu. Odleg\u0142e krzyki demon\xF3w
+    rozbrzmiewaj\u0105 w oddali, a spustoszenie, jakie nios\u0105 za sob\u0105, wstrz\u0105sa
+    \u015Bwiatem. "
+  - "Te mroczne istoty - zrodzone z czelu\u015Bci piek\u0142a - nieustannie siej\u0105
+    zniszczenie i rozpacz, wrzucaj\u0105c \u015Bwiat w ponure otch\u0142anie. Ludzko\u015B\u0107
+    znalaz\u0142a si\u0119 w obliczu niebezpiecze\u0144stwa, jakiego dot\u0105d nie
+    zna\u0142a."
+  - ...
+  - " \"Patrzcie tylko, jak rozpada si\u0119 to, co dla was najwa\u017Cniejsze,\"
+    wykrzykuje. \"To ja niszcz\u0119 najwi\u0119cej \u017Cy\u0107! Zdrowie, maj\u0105tek,
+    i wi\u0119zy rodzinne - wszystko to ginie pod moim wp\u0142ywem. Czy to nie wspania\u0142e?\" "
+  - "Zaprasza ci\u0119 do swojej karczmy, jakby to by\u0142a najzwyklejsza rzecz
+    na \u015Bwiecie. \"Si\u0105d\u017A, cz\u0142owieku,\" m\xF3wi, \"co by\u015B
+    sobie wla\u0142? Mam doskona\u0142\u0105 butelk\u0119 czystej zguby i k\u0142amstw
+    albo mo\u017Ce lepiej wyborny nap\xF3j z ruiny nadziei?\" "
+  - "Jego s\u0142owa brzmi\u0105 przera\u017Caj\u0105co, a jednak kusz\u0105co. Co
+    wybierzesz?"
