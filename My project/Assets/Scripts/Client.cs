@@ -9,7 +9,7 @@ public class Client : MonoBehaviour
     public int beerCount = 0;
     public TableClients table = null;
     public int sit = -1;
-    public float moveSpeed = 2f;
+    public float moveSpeed = 3f;
     public float timeToWait = 15f;
     public void setType(ClientType t) { _type = t; }
     public ClientType getType() { return _type;}
@@ -18,6 +18,7 @@ public class Client : MonoBehaviour
     public bool waiting = false;
 
     [HideInInspector]public bool readyToDrink = true;
+
 
     private void Start(){
         RandTimeToWait();
@@ -46,18 +47,26 @@ public class Client : MonoBehaviour
     }
 
     public IEnumerator Drink() {
-        float time = Random.Range(20f, 40f);
+        float time = Random.Range(20f, 30f);
         while (time > 0f){
 			time -= Time.deltaTime;
 			yield return new WaitForSeconds(Time.deltaTime);
 			//Dodać animacje pasek
 		}
 
-        table.TakeClient(this);
+        table.TakeClient(this.gameObject.GetComponent<Client>());
         sit = -1;
         table = null;
         readyToDrink = wantMore();
-		//Iść i zdecydować co dalej
+        //Iść i zdecydować co dalej
+        if (readyToDrink) {
+            GameObject barGameObject = GameObject.FindWithTag("Bar");
+            BarQueue bar = barGameObject.GetComponent<BarQueue>();
+            bar.ForceClient(this);
+        } else {
+            StartCoroutine(GoOut());
+        }
+
     }
 
 	public IEnumerator MoveTo(Vector3 target){
@@ -91,8 +100,28 @@ public class Client : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public IEnumerator GoOut() {
+        float progress = 0f;
+		Vector3 start = transform.position;
+        Vector3 target = transform.position;
+        target.x = -1;
+		while (progress < 1f) {
+			transform.position = Vector3.Lerp(start,target,progress);
+			progress += (float)(moveSpeed * Time.deltaTime / 1.5);
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+        progress = 0f;
+		start = target;
+        target += transform.position - new Vector3(0.5f,15,0);	
+		while (progress < 1f) {
+			transform.position = Vector3.Lerp(start,target,progress);
+			progress += (float)(moveSpeed * Time.deltaTime / 5.5);
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+        Destroy(this.gameObject);
+    }
+
     public void StartTimer(BarQueue bar) {
-        Debug.Log("Waiting...");
         waiting = true;
         StartCoroutine(WaitInQueue(bar));
     }
