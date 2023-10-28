@@ -55,18 +55,10 @@ MonoBehaviour:
   - {fileID: 2623261118602737550}
   - {fileID: 1525035866054652631}
   preferencePrompt: {fileID: 4798555309851727477}
+  bar: {fileID: 0}
   qteKeys: 31000000320000003300000030000000
+  qteText: []
   timeWindow: 3
-  sprites:
-  - key: 48
-    image: {fileID: 21300000, guid: e307003f6e34f134bb5e6bbdd51e1922, type: 3}
-  - key: 49
-    image: {fileID: 21300000, guid: b7e3b48f2894fc74cb2c45b33065dff3, type: 3}
-  - key: 50
-    image: {fileID: 21300000, guid: 593e53baa5df6d24f8f2226b63e9d7c5, type: 3}
-  - key: 51
-    image: {fileID: 21300000, guid: 2b8f99d690b909e44927c3811aeec33b, type: 3}
-  tempClient: {fileID: 0}
 --- !u!61 &930521955975255744
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +131,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5552, y: 0.58331996, z: 0.35037}
+  m_LocalScale: {x: 1, y: 1, z: 0.35037}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6290814780647868361}
@@ -185,7 +177,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aa272a827252ce64f8ec2da3f3e59c16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c4bfc48f6579d946b1ce31eb7ff203a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -271,7 +263,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f1a4e41fdbb4134db4f8f2425f63595, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
