@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class beerPromptSystem : MonoBehaviour
 {
+    public beerDispenser tescik; // Test
+
     // Beers that you can select during the minigame
     public List<beerDispenser> beerSelection;
 
+    // The prompt that appears above a customer's head (their preference)
     public beerPreference preferencePrompt;
 
     // Keys that can appear as a QTE prompt for the minigame
@@ -54,7 +57,8 @@ public class beerPromptSystem : MonoBehaviour
         // Change to be called by Client at bar
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            InitPrompt(tempClient);
+            // InitPrompt(tempClient);
+            AddDispenser(tescik);
         }
 
 
@@ -150,5 +154,11 @@ public class beerPromptSystem : MonoBehaviour
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount+1, 0, 4);
         currentClient = null;
         nextServe = null;
+    }
+
+    public void AddDispenser(beerDispenser dispenser)
+    {
+        beerSelection.Add(dispenser);
+        randomKeys.Add(dispenser, KeyCode.None);
     }
 }
