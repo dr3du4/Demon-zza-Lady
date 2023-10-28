@@ -40,8 +40,6 @@ public class beerPromptSystem : MonoBehaviour
     Client currentClient;
     GameManager manager;
 
-    // For testing the tip system
-    public Client tempClient;
 
     private void Start()
     {
@@ -58,15 +56,6 @@ public class beerPromptSystem : MonoBehaviour
 
     private void Update()
     {
-        // Change to be called by Client at bar
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // InitPrompt(tempClient);
-            // AddDispenser(tescik);
-        }
-
-
-
 
         // Minigame logic
         if (minigameActive)
