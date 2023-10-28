@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -12,6 +13,7 @@ public class gnieciuch : MonoBehaviour
     public int souls;
     private int helper;
     public List<GameObject> listOfGnieciuch;
+    public GameObject finishScreen;
     void Start()
     {
         Stats = new stats(debug,10); //linijka tylko do debugu
@@ -63,6 +65,7 @@ public class gnieciuch : MonoBehaviour
             case 5:
                 Debug.Log("Jest AŻ pięć gnieciuchów");
                 RandomPlaces(5);
+                WinGame();
                 break;
             default:
                 Debug.Log("XDDDDD");
@@ -88,6 +91,12 @@ public class gnieciuch : MonoBehaviour
             }
             listOfGnieciuch[help].SetActive(true);    
         }
+    }
+
+    void WinGame()
+    {
+        finishScreen.SetActive(true);
+        Time.timeScale = 0;
     }
     
     
