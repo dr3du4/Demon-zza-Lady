@@ -2750,6 +2750,46 @@ PrefabInstance:
       propertyPath: bar
       value: 
       objectReference: {fileID: 664811806}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: binds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteKeys.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteText.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteKeys.Array.data[3]
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteKeys.Array.data[4]
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteText.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteText.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteText.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteText.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: qteText.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3308439824589904973, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
