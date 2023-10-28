@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -9,6 +10,15 @@ public class gnieciuch : MonoBehaviour
 
     GameManager gameManager;
     public List<GameObject> listOfGnieciuch;
+<<<<<<< HEAD:My project/Assets/gnieciuch.cs
+=======
+    public GameObject finishScreen;
+    void Start()
+    {
+        Stats = new stats(debug,10); //linijka tylko do debugu
+        souls = Stats.soul;
+        souls = souls / 10;
+>>>>>>> 72e8fc63d279709b95c80e4d054f06b1bfa0024e:My project/Assets/Scripts/gnieciuch.cs
 
     int currentGnieciuchy = 0;
 
@@ -59,11 +69,17 @@ public class gnieciuch : MonoBehaviour
                 }
                 break;
             case 5:
+<<<<<<< HEAD:My project/Assets/gnieciuch.cs
                 if (currentGnieciuchy != gameManager.GetGnieciuchy())
                 {
                     Debug.Log("Jest AŻ pięć gnieciuchów");
                     RandomPlaces(5);
                 }
+=======
+                Debug.Log("Jest AŻ pięć gnieciuchów");
+                RandomPlaces(5);
+                WinGame();
+>>>>>>> 72e8fc63d279709b95c80e4d054f06b1bfa0024e:My project/Assets/Scripts/gnieciuch.cs
                 break;
             default:
                 Debug.Log("XDDDDD");
@@ -89,6 +105,12 @@ public class gnieciuch : MonoBehaviour
             }
             listOfGnieciuch[help].SetActive(true);    
         }
+    }
+
+    void WinGame()
+    {
+        finishScreen.SetActive(true);
+        Time.timeScale = 0;
     }
     
     

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cf5f3046515e043aa8d289ed7a92a4, type: 3}
+  m_Name: dymki_sadzania
+  m_EditorClassIdentifier: 
+  dialogue:
+  - " O, widzisz, czytaj\u0105c w ludzkich my\u015Blach, wiem, z kim chc\u0105 siedzie\u0107. "
+  - "Wybierz stolik z pasuj\u0105cymi lud\u017Ami - to zawsze gwarantuje wi\u0119cej
+    wypitych trunk\xF3w albo hojniejszy napiwek."
+  - "Bo wiesz, kiedy pij\u0105, ja zarabiam. Kto wie, mo\u017Ce kiedy\u015B te pieni\u0105dze
+    si\u0119 przydadz\u0105? "
