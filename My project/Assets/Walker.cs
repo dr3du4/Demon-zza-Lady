@@ -9,13 +9,14 @@ using Random = UnityEngine.Random;
 public class Walker : MonoBehaviour
 {
     public GameObject This;
-    public float speed = 0.7f;
+    public float speed = 5f;
     private Vector3 startPostion;
     private bool enter = true;
     public int waitTime = 10;
     private Vector3 objectPosition;
     private float currentTime = 0.0f;
     private bool isCountingDown = true;
+    private Rigidbody2D rb;
     
     // Start is called before the first frame update
     void Start()
@@ -23,19 +24,20 @@ public class Walker : MonoBehaviour
         startPostion = this.transform.position;
         waitTime = Random.Range(10, 35);
         Debug.Log(waitTime);
-        
+        rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         objectPosition=transform.position;
-        if (objectPosition.y < 5 & enter)
+        if (objectPosition.y < 4 & enter)
         {
             moveUP();
             
         }
-        if (objectPosition.y >= 5)
+        if (objectPosition.y >= 4)
         {
             
             if (isCountingDown)
@@ -71,13 +73,20 @@ public class Walker : MonoBehaviour
 
     void moveUP()
     {
-        this.transform.Translate(Vector3.up * speed * Time.deltaTime);
-
+        Vector3 moveDirection = new Vector3(0, 2);
+        moveDirection.Normalize();
+        
+        Vector2 newPosition =transform.position + moveDirection * speed * Time.deltaTime;
+        rb.MovePosition(newPosition);
     }
 
     void moveDown()
     {
-        this.transform.Translate(Vector3.down * speed * Time.deltaTime);
+        Vector3 moveDirection = new Vector3(0, -2);
+        moveDirection.Normalize();
+        
+        Vector2 newPosition =transform.position + moveDirection * speed * Time.deltaTime;
+        rb.MovePosition(newPosition);
     }
 
     public bool changeToFalse(bool boolian)
