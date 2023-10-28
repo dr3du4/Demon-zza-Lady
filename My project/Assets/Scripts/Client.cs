@@ -52,6 +52,7 @@ public class Client : MonoBehaviour
 			yield return new WaitForSeconds(Time.deltaTime);
 			//Dodać animacje pasek
 		}
+
         table.TakeClient(this);
         sit = -1;
         table = null;

@@ -18,7 +18,9 @@ public class MoveToClick : MonoBehaviour
     public bool isDeamon = false;
     public bool reach = false;
     public float dynamicDistance = 20f;
-    void Start()
+    private Vector3 sitPos;
+
+    private void Start()
     {
         client = GetComponent<Client>();
         target = transform.position;
@@ -26,7 +28,7 @@ public class MoveToClick : MonoBehaviour
         stol = freePlace[0];
     }
 
-    void Update()
+    private void Update()
     {
 
         if (client.waiting && Input.GetMouseButtonDown(1))
@@ -39,11 +41,11 @@ public class MoveToClick : MonoBehaviour
             {
                 for (int i = 0; i < freePlace.Length; i++)
                 {
-
                     Debug.Log(freePlace.Length);
                     distanceToStol = Vector3.Distance(target, freePlace[i].transform.position);
+                    
                     if (distanceToStol < helper)
-                    {
+                    {   
                         helper = distanceToStol;
                         stol = freePlace[i];
 
@@ -58,32 +60,28 @@ public class MoveToClick : MonoBehaviour
             }
             distanceToStol = helper;
             Debug.Log(distanceToStol);
-
-
-
+            if (!stol.GetComponent<TableClients>().active) {
+                distanceToStol = 20f;
+                return;
+            }
+            sitPos = stol.GetComponent<TableClients>().AddClient(client);
         }
-        
+
         if (distanceToStol <= proximityDistance & !reach)
         {   
             client.waiting = false;
             Debug.Log("mozesz podejsc");
-            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            dynamicDistance = Vector3.Distance(transform.position, stol.transform.position);
+            transform.position = Vector3.MoveTowards(transform.position, sitPos, speed * Time.deltaTime);
+            dynamicDistance = Vector3.Distance(transform.position, sitPos);
             
-            if (dynamicDistance < 0.3f)
-                    {
-                        reach = true;
-                    }
+            if (dynamicDistance < 0.3f){
+                reach = true;
+            }
             
                        
         }
         
         
-        
-    }
-
-    private void Awake()
-    {
         
     }
 }
