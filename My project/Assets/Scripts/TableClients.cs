@@ -6,7 +6,7 @@ public class TableClients : MonoBehaviour
 {
     private int clientsCount = 0;
     public bool active = true;
-    private List<Client> clients = new List<Client>();
+    public List<Client> clients = new List<Client>();
     private List<int> sits = new List<int>();
     private List<Vector3> positionSits = new List<Vector3>();
     // (1,1) (1,-1) (-1,-1) (-1,1)
@@ -43,6 +43,7 @@ public class TableClients : MonoBehaviour
     }
 
     public void TakeClient(Client c) {
+        Debug.Log("PUT OUT");
         clients.Remove(c);
         sits.Add(c.sit);
         if (clientsCount < 3) {
