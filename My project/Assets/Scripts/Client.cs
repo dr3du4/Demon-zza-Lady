@@ -35,6 +35,7 @@ public class Client : MonoBehaviour
 			//Dodać animacje pasek
 		}
         table.TakeClient(this);
+        sit = -1;
 		beerCount++;
         table = null;
 		//Iść i zdecydować co dalej
