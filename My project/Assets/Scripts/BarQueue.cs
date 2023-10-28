@@ -14,6 +14,11 @@ public class BarQueue : MonoBehaviour
 	private float timerClient;
 	private Vector3 first;
 
+	bool clientServed = false;
+
+	public void SetClientServed(bool b) { clientServed = b; }
+	public bool GetClientServed() { return clientServed; }
+
 	private void Start(){
 		first = transform.position += offSetFirst;
 		if(InLine > 0) {
@@ -24,12 +29,13 @@ public class BarQueue : MonoBehaviour
 	}
 
 	private void Update() {
-		if(firstClient != null) {
+		if(firstClient != null && clientServed) {
 			if (Vector3.Distance(firstClient.transform.position,first) < 0.1f) {
 				firstClient.StartTimer(this);
 				//added
 				firstClient.ShowIndicatorSquare(true); // Show indicator square for the first client
 				firstClient = null;
+				SetClientServed(false);
 			}
 		}
 	}
