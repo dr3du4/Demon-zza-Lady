@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 60 };
+
+    [SerializeField] public TextMeshProUGUI moneyText;
+    [SerializeField] public TextMeshProUGUI soulsText;
 
     int money;
     int souls;
@@ -32,8 +37,10 @@ public class GameManager : MonoBehaviour
             g.gnieciuchy();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            souls += 5;
+        //if (Input.GetKeyDown(KeyCode.Space))
+            //souls += 5;
+
+        UpdateUI();
     }
 
     public bool Pay(int price)
@@ -63,4 +70,10 @@ public class GameManager : MonoBehaviour
     public int GetMoney() { return money; }
     public int GetSouls() { return souls; }
 
+
+    void UpdateUI()
+    {
+        moneyText.SetText(money.ToString());
+        soulsText.SetText(souls.ToString());
+    }
 }
