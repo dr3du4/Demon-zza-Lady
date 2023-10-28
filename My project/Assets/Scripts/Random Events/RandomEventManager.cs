@@ -14,6 +14,12 @@ public class RandomEventManager : MonoBehaviour
     float eventTimer = 0.0f;
     bool eventActive = false;
     float nextEvent = 10f;
+
+    private void Start()
+    {
+        foreach(RandomEvent ev in randomEvents)
+            ev.gameObject.SetActive(false);
+    }
     private void Update()
     {
         if(Time.time > nextEvent && !eventActive)
