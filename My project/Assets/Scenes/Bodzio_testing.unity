@@ -283,6 +283,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7593723529064372976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 574925387172186364, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_Name
+      value: Random Event Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 502.3383
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 225.66548
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2618768
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703605177235460412, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ea2539b093bd2540a888c06c6c063ee, type: 3}
 --- !u!1001 &7904339811097997908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -335,6 +392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beer Minigame
       objectReference: {fileID: 0}
+    - target: {fileID: 2589112156695927201, guid: 2ee730f74921c684890505b762a9c759, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -347,3 +408,4 @@ SceneRoots:
   - {fileID: 15071729}
   - {fileID: 7904339811097997908}
   - {fileID: 1186885210}
+  - {fileID: 7593723529064372976}
