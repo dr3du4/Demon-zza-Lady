@@ -15,3 +15,4 @@ MonoBehaviour:
   beerName: Tyskie
   beerIcon: {fileID: 21300000, guid: 4dd7ec1120ca9824a9896c4d1cb1a180, type: 3}
   beerMugIcon: {fileID: 0}
+  beerPrice: 10

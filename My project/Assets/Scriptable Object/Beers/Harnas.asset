@@ -15,3 +15,4 @@ MonoBehaviour:
   beerName: "Harna\u015B"
   beerIcon: {fileID: 21300000, guid: f4d3b0036ebf67c48bea64f07de20e5f, type: 3}
   beerMugIcon: {fileID: 0}
+  beerPrice: 10
