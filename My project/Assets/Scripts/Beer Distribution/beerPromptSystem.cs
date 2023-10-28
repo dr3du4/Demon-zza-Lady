@@ -43,6 +43,10 @@ public class beerPromptSystem : MonoBehaviour
     // For testing the tip system
     public Client tempClient;
 
+    //Beer prefab
+    [SerializeField]private GameObject beer;
+    [SerializeField]private Vector3 beerOffSet = new Vector3(0,0,0);
+
     private void Start()
     {
         manager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
@@ -117,7 +121,7 @@ public class beerPromptSystem : MonoBehaviour
         currentClient = client;
         if (currentClient)
         {
-            Debug.Log("Obs³ugujemy: " + currentClient.clientPreference.clientTypeName);
+            Debug.Log("Obsï¿½ugujemy: " + currentClient.clientPreference.clientTypeName);
             preferencePrompt.ShowPreference(timeWindow, currentClient.clientPreference.beerPreference);
         }
 
@@ -137,9 +141,14 @@ public class beerPromptSystem : MonoBehaviour
         manager.AddMoney(toServe.beerPrice, tip);
         // Increase client's beer count (with limit of 4)
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
+        //create beer next to currentClient
+        //Instantiate(beer, currentClient.transform.position + beerOffSet, Quaternion.Euler(0, 0, 0), currentClient.transform);
+        Transform cObj = currentClient.transform.Find("Beer");
+        cObj.gameObject.SetActive(true);
         currentClient = null;
         nextServe = null;
         bar.SetClientServed(true);
+        
     }
 
     public void AddDispenser(beerDispenser dispenser)

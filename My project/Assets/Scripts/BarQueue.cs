@@ -12,13 +12,15 @@ public class BarQueue : MonoBehaviour
 	private float timerClient;
 	private Vector3 first;
 
+	[SerializeField] private Vector3 firstOffSet = new Vector3(0,-0.25f,0);
+	[SerializeField] private Vector3 offSet = new Vector3(0,-1.25f,0);
 	bool clientServed = false;
 
 	public void SetClientServed(bool b) { clientServed = b; }
 	public bool GetClientServed() { return clientServed; }
 
 	private void Start(){
-		first = transform.position - new Vector3(0f,1.5f,0f);
+		first = transform.position + firstOffSet;
 		if(InLine > 0) {
 			firstClient = queue[0];
 			
@@ -41,7 +43,7 @@ public class BarQueue : MonoBehaviour
     private void SetClientsOnPos(){
 		if (InLine == 0) return;
 		for (int i=0; i<InLine; i++) {
-			StartCoroutine(queue[i].MoveTo(first - (i * new Vector3(0,1.5f,0))));
+			StartCoroutine(queue[i].MoveTo(first + (i * offSet)));
 		}
 	}
 
@@ -61,7 +63,7 @@ public class BarQueue : MonoBehaviour
 			StartCoroutine(c.Die());
 		}
 		else{
-			StartCoroutine(c.MoveTo(first - (InLine * new Vector3(0,1.5f,0))));
+			StartCoroutine(c.MoveTo(first + (InLine * offSet)));
 			queue.Add(c);
 			InLine++;
 		}

@@ -1232,6 +1232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   queue: []
   maxInLine: 5
+  firstOffSet: {x: 0, y: -0.25, z: 0}
+  offSet: {x: 0, y: -1.25, z: 0}
 --- !u!212 &664811807
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2599,6 +2601,18 @@ PrefabInstance:
       propertyPath: bar
       value: 
       objectReference: {fileID: 664811806}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: beer
+      value: 
+      objectReference: {fileID: 4534640565294223758, guid: cc68c3a922dcec2478e66b2ef687d0b7, type: 3}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: beerOffSet.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592590465566584409, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: beerOffSet.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4636029198755879349, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_Name
       value: Bodzio_GameAssembly
