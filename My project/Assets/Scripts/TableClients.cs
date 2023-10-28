@@ -23,7 +23,7 @@ public class TableClients : MonoBehaviour
         positionSits.Add(pos + new Vector3(-1, 1, 0));
     }
 
-    public void AddClient(Client new_c) {
+    public Vector3 AddClient(Client new_c) {
         foreach (Client c in clients){
             new_c.ReviewNewClient(c.getType());
             c.ReviewNewClient(new_c.getType());
@@ -35,15 +35,17 @@ public class TableClients : MonoBehaviour
         //Daj pozycje dla klienta  positionSits[sits[0]]
         sits.RemoveAt(0);
         StartCoroutine(new_c.Drink());
-        if (clientsCount > 4) {
+        if (clientsCount > 3) {
             active = false;
         }
+        //Daj pozycje dla klienta  positionSits[sits[0]]
+        return positionSits[new_c.sit];
     }
 
     public void TakeClient(Client c) {
         clients.Remove(c);
         sits.Add(c.sit);
-        if (clientsCount < 4) {
+        if (clientsCount < 3) {
             active = true;
         }
     }
