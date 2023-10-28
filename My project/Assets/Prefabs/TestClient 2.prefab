@@ -190,7 +190,7 @@ MonoBehaviour:
   beerCount: 0
   table: {fileID: 0}
   sit: -1
-  moveSpeed: 2
+  moveSpeed: 5
   timeToWait: 15
   waiting: 0
   readyToDrink: 1
