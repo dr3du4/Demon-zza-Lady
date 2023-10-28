@@ -10,6 +10,9 @@ public class ButtonMash : RandomEvent
     public float goalValue = 100f;
     public float mashIncrement = 5f;
     public float decreaseRate = 5f;
+
+    public List<MasherDifficultySO> difficulties;
+
     public Slider mashProgressBar;
     public RandomEventManager manager;
 
@@ -29,7 +32,6 @@ public class ButtonMash : RandomEvent
                 if (value == goalValue)
                 {
                     eventOver = true;
-                    Debug.Log("SUCCESS!");
                     CancelEvent();
                 }
                 // Debug.Log(value);
@@ -39,8 +41,6 @@ public class ButtonMash : RandomEvent
                 value = Mathf.Clamp(value - (Time.deltaTime * decreaseRate), 0, goalValue);
                 if (value == 0)
                 {
-                    eventOver = true;
-                    Debug.Log("FAILURE");
                     CancelEvent();
                 }
             }
@@ -51,23 +51,38 @@ public class ButtonMash : RandomEvent
 
     public override bool CancelEvent()
     {
-        eventOver = true;
+        if (!eventOver)
+        {
+            eventOver = true;
+            manager.EventOver(false);
+        }
+        else
+        {
+            manager.EventOver(true);
+        }
         gameObject.SetActive(false);
-        manager.EventOver();
         return true;
     }
 
-    public override bool LaunchEvent() // Could add variables to launch event to modify difficulty of the button mash
+    public override RandomEvent LaunchEvent(Difficulty_Level difficulty) // Could add variables to launch event to modify difficulty of the button mash
     {
-
+        AssignDifficulty(difficulty);
+            
         gameObject.SetActive(true);
         mashProgressBar.maxValue = goalValue;
         value = startValue;
         mashProgressBar.value = value;
 
         eventOver = false;
-        return true;
+        return gameObject.GetComponent<RandomEvent>();
     }
 
-    
+    void AssignDifficulty(Difficulty_Level difficulty)
+    {
+        startValue = difficulties[(int) difficulty].startValue;
+        goalValue = difficulties[(int) difficulty].goalValue;
+        mashIncrement = difficulties[(int) difficulty].mashIncrement;
+        decreaseRate = difficulties[(int)difficulty].decreaseRate;
+    }
+
 }

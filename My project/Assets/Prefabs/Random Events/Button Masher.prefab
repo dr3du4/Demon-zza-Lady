@@ -303,6 +303,12 @@ MonoBehaviour:
   goalValue: 100
   mashIncrement: 5
   decreaseRate: 25
+  difficulties:
+  - {fileID: 11400000, guid: 93f9fc41a0ceb824f91acd43b3f1c393, type: 2}
+  - {fileID: 11400000, guid: 93f9fc41a0ceb824f91acd43b3f1c393, type: 2}
+  - {fileID: 11400000, guid: 93f9fc41a0ceb824f91acd43b3f1c393, type: 2}
+  - {fileID: 11400000, guid: 93f9fc41a0ceb824f91acd43b3f1c393, type: 2}
+  - {fileID: 11400000, guid: 93f9fc41a0ceb824f91acd43b3f1c393, type: 2}
   mashProgressBar: {fileID: 8634301191458745176}
   manager: {fileID: 0}
 --- !u!1 &5226715764401200180

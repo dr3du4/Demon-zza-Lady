@@ -4,6 +4,14 @@ using UnityEngine;
 
 public abstract class RandomEvent : MonoBehaviour
 {
-    public abstract bool LaunchEvent();
+    public enum Difficulty_Level : int
+    {
+        VERY_EASY = 0,
+        EASY = 1,
+        MEDIUM = 2,
+        HARD = 3,
+        VERY_HARD = 4
+    }
+    public abstract RandomEvent LaunchEvent(Difficulty_Level difficulty);
     public abstract bool CancelEvent();
 }
