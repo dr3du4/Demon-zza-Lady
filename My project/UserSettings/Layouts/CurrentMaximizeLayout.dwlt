@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 82359
+  controlID: 99626
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 82938
+  controlID: 99578
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 82301
+  controlID: 99554
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -238,10 +238,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 169.20001}
+      scrollPos: {x: 0, y: 125.20001}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 288cfbff5e0afcff740afcff9e0afcff800bfcfff816fcffdc24fcffb658fdff1c66fdffbe6dfdffd86dfdff5400ffff083affff223affff243affff44e6ffff5ee6ffff78e6ffffa8e6ffffc2e6ffffc8e6fffffce6ffff0ae7ffff4ef4ffff76f8ffff14fbffff54470100
+      m_ExpandedIDs: 2034fbff4a34fbff5234fbff288cfbff5e0afcff740afcff800bfcfff816fcffdc24fcffb658fdff1c66fdffbe6dfdffd86dfdff5400ffff083affff223affff243affff44e6ffff5ee6ffff78e6ffffa8e6ffffc2e6ffffc8e6fffffce6ffff0ae7ffff4ef4ffff76f8ffff14fbffff54470100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -305,7 +305,7 @@ MonoBehaviour:
     m_CachedPref: 1
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: -314336
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -708,9 +708,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.165246, y: -0.7824022, z: 0.30152816}
+    m_Target: {x: 3.644206, y: 4.1202664, z: 0.35605484}
     speed: 2
-    m_Value: {x: 2.165246, y: -0.7824022, z: 0.30152816}
+    m_Value: {x: 3.644206, y: 4.1202664, z: 0.35605484}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -760,9 +760,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 6.2375207
+    m_Target: 1.5671589
     speed: 2
-    m_Value: 6.2375207
+    m_Value: 1.5671589
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -859,7 +859,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Beer System
+    - Assets/Scriptable Object/Beers
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -867,16 +867,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Beer System
+  - Assets/Scriptable Object/Beers
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\dunge\\Desktop\\Game Projects\\Gejm D\u017Cem\\SteelWorks\\My
     project"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 36.600006}
-    m_SelectedIDs: f8620000
-    m_LastClickedID: 25336
+    scrollPos: {x: 0, y: 51}
+    m_SelectedIDs: fe620000
+    m_LastClickedID: 25342
     m_ExpandedIDs: 00000000d2620000d4620000d6620000d8620000da620000dc620000de620000e062000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -930,9 +930,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 2034fbff
+    m_LastClickedInstanceID: -314336
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000a8620000ca6000006c660000246100007066000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1061,7 +1061,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: -314336
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
