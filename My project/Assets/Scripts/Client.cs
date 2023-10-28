@@ -54,8 +54,8 @@ public class Client : MonoBehaviour
 		}
         table.TakeClient(this);
         sit = -1;
-		// beerCount++; zakomentowane bo juz dodaje przy wydawaniu piwa
         table = null;
+        readyToDrink = wantMore();
 		//Iść i zdecydować co dalej
     }
 

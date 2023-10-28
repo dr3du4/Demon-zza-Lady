@@ -21,7 +21,7 @@ public class SafeSpotUI : MonoBehaviour
         from /= 100f;
         to /= 100f;
         float x = ((maxPos - minPos) * from);
-        rect.localScale = new Vector3(to - from, 1f, 1f);
+        rect.localScale = new Vector3(to - from, rect.localScale.y, rect.localScale.z);
         rect.anchoredPosition = new Vector3(x, 0, 0);
     }
 }
