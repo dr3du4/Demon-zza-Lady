@@ -6,21 +6,21 @@ public class BarQueue : MonoBehaviour
 {
     // private List<GameObject> objectToSpawn ;
     [SerializeField]private List<Client> queue = new List<Client>();
+	[SerializeField]private Vector3 offSetFirst = new Vector3(0f,-0.25f,0f);
+	[SerializeField]private Vector3 offSet = new Vector3(0f,-0.75f,0f);
     public int maxInLine = 5;
     private int InLine = 0;
 	private Client firstClient = null;
 	private float timerClient;
 	private Vector3 first;
 
-	[SerializeField] private Vector3 firstOffSet = new Vector3(0,-0.25f,0);
-	[SerializeField] private Vector3 offSet = new Vector3(0,-1.25f,0);
 	bool clientServed = false;
 
 	public void SetClientServed(bool b) { clientServed = b; }
 	public bool GetClientServed() { return clientServed; }
 
 	private void Start(){
-		first = transform.position + firstOffSet;
+		first = transform.position += offSetFirst;
 		if(InLine > 0) {
 			firstClient = queue[0];
 			
@@ -78,6 +78,7 @@ public class BarQueue : MonoBehaviour
 			queue.Insert(i,c);
 			StartCoroutine(outC.Die());
 			SetClientsOnPos();
+
 		}
 		else {
 			AddClient(c);

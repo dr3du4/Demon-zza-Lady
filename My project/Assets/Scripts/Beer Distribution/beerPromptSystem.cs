@@ -40,12 +40,6 @@ public class beerPromptSystem : MonoBehaviour
     Client currentClient;
     GameManager manager;
 
-    // For testing the tip system
-    public Client tempClient;
-
-    //Beer prefab
-    [SerializeField]private GameObject beer;
-    [SerializeField]private Vector3 beerOffSet = new Vector3(0,0,0);
 
     private void Start()
     {
@@ -62,15 +56,6 @@ public class beerPromptSystem : MonoBehaviour
 
     private void Update()
     {
-        // Change to be called by Client at bar
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // InitPrompt(tempClient);
-            // AddDispenser(tescik);
-        }
-
-
-
 
         // Minigame logic
         if (minigameActive)
@@ -79,7 +64,8 @@ public class beerPromptSystem : MonoBehaviour
             if (Time.time > minigameTimer)
             {
                 minigameActive = false; // Some fail condition
-                // Debug.Log("TIME\'S UP");
+                StartCoroutine(currentClient.Die());
+                bar.RemoveFirstClient();
             }
 
             // Check if you pressed any of the keys assigned to any of the beer selections 
@@ -98,7 +84,7 @@ public class beerPromptSystem : MonoBehaviour
                     preferencePrompt.HidePreference();
 
                     // Check if the client wasn't assigned
-                    if (currentClient && currentClient.clientPreference.beerPreference == nextServe)
+                    if (currentClient && currentClient._type.beerPreference == nextServe)
                     {
                         float reactionBonus = (minigameTimer - Time.time) * 2;
                         // Calculating the tip amount
@@ -121,8 +107,8 @@ public class beerPromptSystem : MonoBehaviour
         currentClient = client;
         if (currentClient)
         {
-            Debug.Log("Obsï¿½ugujemy: " + currentClient.clientPreference.clientTypeName);
-            preferencePrompt.ShowPreference(timeWindow, currentClient.clientPreference.beerPreference);
+            Debug.Log("Obs³ugujemy: " + currentClient._type.clientTypeName);
+            preferencePrompt.ShowPreference(timeWindow, currentClient._type.beerPreference);
         }
 
 
@@ -141,14 +127,9 @@ public class beerPromptSystem : MonoBehaviour
         manager.AddMoney(toServe.beerPrice, tip);
         // Increase client's beer count (with limit of 4)
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
-        //create beer next to currentClient
-        //Instantiate(beer, currentClient.transform.position + beerOffSet, Quaternion.Euler(0, 0, 0), currentClient.transform);
-        Transform cObj = currentClient.transform.Find("Beer");
-        cObj.gameObject.SetActive(true);
         currentClient = null;
         nextServe = null;
         bar.SetClientServed(true);
-        
     }
 
     public void AddDispenser(beerDispenser dispenser)
