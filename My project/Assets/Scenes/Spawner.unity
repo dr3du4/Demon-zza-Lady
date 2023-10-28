@@ -155,6 +155,9 @@ MonoBehaviour:
   bar: {fileID: 664811806}
   clientPrefabs:
   - {fileID: 2681301764678306157, guid: a3e9f86242c11f743b778303dfc129cc, type: 3}
+  - {fileID: 2681301764678306157, guid: 5941f5c6c04b9d946a4336217e5271a8, type: 3}
+  - {fileID: 2681301764678306157, guid: 064e4fefb09a99440961e68cce23b5ac, type: 3}
+  - {fileID: 2681301764678306157, guid: 153427f465731064a8b0b7f544371695, type: 3}
 --- !u!4 &275824542
 Transform:
   m_ObjectHideFlags: 0

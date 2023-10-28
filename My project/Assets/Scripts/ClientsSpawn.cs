@@ -7,7 +7,7 @@ public class ClientsSpawn : MonoBehaviour
     [SerializeField] BarQueue bar;
     [SerializeField] List<GameObject> clientPrefabs = new List<GameObject>();
     private void Update() {
-        if (Input.GetKeyDown("space")) SpawnClient(0);
+        if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,3));
     }
     private void SpawnClient(int i){
         Client c = Instantiate(clientPrefabs[i],transform.position, transform.rotation).GetComponent<Client>();
