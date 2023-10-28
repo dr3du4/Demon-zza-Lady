@@ -16,6 +16,7 @@ public class BarQueue : MonoBehaviour
 		first = transform.position - new Vector3(0f,1.5f,0f);
 		if(InLine > 0) {
 			firstClient = queue[0];
+			
 			SetClientsOnPos();
 		}
 	}
@@ -24,6 +25,8 @@ public class BarQueue : MonoBehaviour
 		if(firstClient != null) {
 			if (Vector3.Distance(firstClient.transform.position,first) < 0.1f) {
 				firstClient.StartTimer(this);
+				//added
+				firstClient.ShowIndicatorSquare(true); // Show indicator square for the first client
 				firstClient = null;
 			}
 		}
@@ -39,6 +42,8 @@ public class BarQueue : MonoBehaviour
 
     public void RemoveFirstClient() {
 		if (InLine == 0) return;
+		//added
+	//	firstClient.ShowIndicatorSquare(false); // Hide indicator square for the departing first client
 		queue.RemoveAt(0);
 		InLine--;
 		firstClient = null;
@@ -52,5 +57,12 @@ public class BarQueue : MonoBehaviour
 		queue.Add(c);
 		InLine++;
 		firstClient = queue[0];
-	}
+		//added
+		/*
+		if (InLine > 1) // If the queue already has clients, hide the previous indicator square
+		{
+			queue[0].ShowIndicatorSquare(false);
+		}
+		c.ShowIndicatorSquare(true); // Show indicator square for the new first client
+	*/}
 }

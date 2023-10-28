@@ -96,11 +96,17 @@ public class Client : MonoBehaviour
             timeToWait -= Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+        ShowIndicatorSquare(false);
         // Jeśli wybierzesz stół daj waiting FALSE
         if (waiting) {
             StartCoroutine(Die());
             bar.RemoveFirstClient();
             waiting = false;
         }
+    }
+
+    public void ShowIndicatorSquare(bool show){
+        GameObject p = transform.Find("Preferences").gameObject;
+        p.SetActive(show);
     }
 }
