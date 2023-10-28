@@ -2854,6 +2854,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 2.311
       objectReference: {fileID: 0}
+    - target: {fileID: 6419951002712465287, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6568639022686138011, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
