@@ -6,7 +6,7 @@ public class ClientsSpawn : MonoBehaviour
 {
     [SerializeField] BarQueue bar;
     [SerializeField] List<clientTypeSO> clientTypes = new List<clientTypeSO>();
-    [SerializeField] Client clientPrefab;
+    [SerializeField] GameObject clientPrefab;
     private void Update() {
         if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientTypes.Count));
     }
