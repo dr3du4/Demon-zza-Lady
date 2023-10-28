@@ -10,7 +10,7 @@ public class MoveToClick : MonoBehaviour
     public float speed = 5f;
     private Vector3 target;
     public GameObject stol;
-    public float proximityDistance = 0.9f; // Minimalna odległość, by uznać, że target jest blisko stolu
+    public float proximityDistance = 1.25f; // Minimalna odległość, by uznać, że target jest blisko stolu
     public GameObject[] freePlace;
     private bool move=false;
     public float distanceToStol = 20f;
@@ -19,6 +19,8 @@ public class MoveToClick : MonoBehaviour
     public bool reach = false;
     public float dynamicDistance = 20f;
     private Vector3 sitPos;
+    bool movingToClick = false;
+
 
     private void Start()
     {
@@ -66,14 +68,16 @@ public class MoveToClick : MonoBehaviour
                 return;
             }
             client.waiting = false;
-            sitPos = stol.GetComponent<TableClients>().AddClient(client);
             client.goingUp = false;
+            movingToClick = true;
         }
 
         if (distanceToStol <= proximityDistance & !reach)
-        {   
+        {
+            sitPos = stol.GetComponent<TableClients>().AddClient(client);
             client.waiting = false;
             //Debug.Log("mozesz podejsc");
+            Debug.Log(sitPos);
             transform.position = Vector3.MoveTowards(transform.position, sitPos, speed * Time.deltaTime);
             dynamicDistance = Vector3.Distance(transform.position, sitPos);
             
@@ -82,11 +86,10 @@ public class MoveToClick : MonoBehaviour
                 if(client.sit > 0 && client.sit < 3) client.goingUp = true;
                 else client.goingUp = false;
             }
-            
-                       
-        }
-        
-        
-        
+
+
+        }else if(!client.waiting && movingToClick)
+            StartCoroutine(client.Die());
+        // Po Die schodzi w prawo?? XDDD
     }
 }

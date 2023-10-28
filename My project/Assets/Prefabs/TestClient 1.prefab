@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   stol: {fileID: 0}
-  proximityDistance: 0.9
+  proximityDistance: 1.25
   freePlace: []
   distanceToStol: 20
   helper: 20
