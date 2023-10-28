@@ -33,6 +33,7 @@ public class beerPromptSystem : MonoBehaviour
     beerSO nextServe;
     Client currentClient;
     int tips = 0;
+    int money = 0;
 
     // For testing the tip system
     public Client tempClient; 
@@ -144,6 +145,7 @@ public class beerPromptSystem : MonoBehaviour
     {
         Debug.Log("Now serving: " + toServe.beerName + " Got tip: " + tip);
         tips += tip;
+        money += toServe.beerPrice;
         // Increase client's beer count (with limit of 4)
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount+1, 0, 4);
         currentClient = null;
