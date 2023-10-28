@@ -61,11 +61,13 @@ public class Client : MonoBehaviour
 			yield return new WaitForSeconds(Time.deltaTime);
 			//Dodać animacje pasek
 		}
-
+        Transform cObj = transform.Find("Beer");
+        cObj.gameObject.SetActive(false);
         table.TakeClient(this.gameObject.GetComponent<Client>());
         sit = -1;
         table = null;
         readyToDrink = wantMore();
+        
         //Iść i zdecydować co dalej
         if (readyToDrink) {
             GameObject barGameObject = GameObject.FindWithTag("Bar");
