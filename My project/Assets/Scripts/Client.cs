@@ -3,13 +3,27 @@ using System.Collections;
 
 public class Client : MonoBehaviour
 {
-    private ClientType _type;
+    public ClientType _type;
     private float chanceToDrinkMore = 0.5f; //0<= X <= 1
     public int beerCount = 0;
     public TableClients table = null;
+    public int sit = -1;
+    public float moveSpeed = 2f;
+    public float timeToWait = 15f;
     public void setType(ClientType t) { _type = t; }
     public ClientType getType() { return _type;}
     public void setChanceToDrinkMore(float p) { chanceToDrinkMore = p;}
+
+    public bool waiting = false;
+
+    private void Start(){
+        RandTimeToWait();
+    }
+
+    public void RandTimeToWait(){
+        timeToWait = Random.Range(2f, 5f);
+    }
+
     public void ReviewNewClient(ClientType new_client) {
         if (Mathf.Abs(_type - new_client) < 2) {
             chanceToDrinkMore += 0.2f / (beerCount + 1);
@@ -34,8 +48,59 @@ public class Client : MonoBehaviour
 			//Dodać animacje pasek
 		}
         table.TakeClient(this);
+        sit = -1;
 		beerCount++;
         table = null;
 		//Iść i zdecydować co dalej
+    }
+
+	public IEnumerator MoveTo(Vector3 target){
+		float progress = 0f;
+		Vector3 start = transform.position;
+		float dis = Vector3.Distance(start,target);		
+		while (progress < 1f) {
+			transform.position = Vector3.Lerp(start,target,progress);
+			progress += moveSpeed * Time.deltaTime / dis;
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+	}
+
+    public IEnumerator Die() {
+        float progress = 0f;
+		Vector3 start = transform.position;
+        Vector3 target = transform.position + new Vector3(1,0,0);
+		while (progress < 1f) {
+			transform.position = Vector3.Lerp(start,target,progress);
+			progress += (float)(moveSpeed * Time.deltaTime / 0.5);
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+        progress = 0f;
+		start = target;
+        target += transform.position - new Vector3(0.5f,15,0);	
+		while (progress < 1f) {
+			transform.position = Vector3.Lerp(start,target,progress);
+			progress += (float)(moveSpeed * Time.deltaTime / 5.5);
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
+        Destroy(this.gameObject);
+    }
+
+    public void StartTimer(BarQueue bar) {
+        Debug.Log("Waiting...");
+        waiting = true;
+        StartCoroutine(WaitInQueue(bar));
+    }
+
+    private IEnumerator WaitInQueue(BarQueue bar){
+        while(timeToWait > 0f){
+            timeToWait -= Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        // Jeśli wybierzesz stół daj waiting FALSE
+        if (waiting) {
+            StartCoroutine(Die());
+            bar.RemoveFirstClient();
+            waiting = false;
+        }
     }
 }
