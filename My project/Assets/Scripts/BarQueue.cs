@@ -58,24 +58,21 @@ public class BarQueue : MonoBehaviour
 			StartCoroutine(c.MoveTo(first - (InLine * new Vector3(0,1.5f,0))));
 			queue.Add(c);
 			InLine++;
-			firstClient = queue[0];
 		}
+		if (InLine == 1) firstClient = queue[0];
 	}
 
 	public void ForceClient(Client c) {
 		if (InLine >= maxInLine) {
-			int i = Random.Range(1,InLine);
+			int i = Random.Range(3,InLine);
 			Client outC = queue[i];
 			queue.RemoveAt(i);
+			queue.Insert(i,c);
 			StartCoroutine(outC.Die());
-			InLine--;
 			SetClientsOnPos();
 		}
 		else {
-			StartCoroutine(c.MoveTo(first - (InLine * new Vector3(0,1.5f,0))));
-			queue.Add(c);
-			InLine++;
-			firstClient = queue[0];
+			AddClient(c);
 		}
 	}
 }

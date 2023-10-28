@@ -57,20 +57,22 @@ public class MoveToClick : MonoBehaviour
             {
                 int indeks = Random.Range(0, freePlace.Length);
                 helper=Vector3.Distance(target, freePlace[indeks].transform.position);
+                stol = freePlace[indeks];
             }
             distanceToStol = helper;
             Debug.Log(distanceToStol);
             if (!stol.GetComponent<TableClients>().active) {
-                distanceToStol = 20f;
+                distanceToStol = 100f;
                 return;
             }
+            client.waiting = false;
             sitPos = stol.GetComponent<TableClients>().AddClient(client);
         }
 
         if (distanceToStol <= proximityDistance & !reach)
         {   
             client.waiting = false;
-            Debug.Log("mozesz podejsc");
+            //Debug.Log("mozesz podejsc");
             transform.position = Vector3.MoveTowards(transform.position, sitPos, speed * Time.deltaTime);
             dynamicDistance = Vector3.Distance(transform.position, sitPos);
             

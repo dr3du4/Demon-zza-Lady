@@ -188,9 +188,10 @@ MonoBehaviour:
   beerCount: 0
   table: {fileID: 0}
   sit: -1
-  moveSpeed: 2
+  moveSpeed: 5
   timeToWait: 15
   waiting: 0
+  readyToDrink: 1
 --- !u!114 &6419075855942619974
 MonoBehaviour:
   m_ObjectHideFlags: 0

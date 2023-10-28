@@ -24,6 +24,7 @@ public class TableClients : MonoBehaviour
     }
 
     public Vector3 AddClient(Client new_c) {
+        Debug.Log("PUT IN");
         foreach (Client c in clients){
             new_c.ReviewNewClient(c.getType());
             c.ReviewNewClient(new_c.getType());
@@ -45,6 +46,7 @@ public class TableClients : MonoBehaviour
     public void TakeClient(Client c) {
         Debug.Log("PUT OUT");
         clients.Remove(c);
+        clientsCount--;
         sits.Add(c.sit);
         if (clientsCount < 3) {
             active = true;

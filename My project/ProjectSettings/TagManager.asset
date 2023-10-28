@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - chair
+  - Bar
   layers:
   - Default
   - TransparentFX

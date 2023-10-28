@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 664811806}
   m_Layer: 0
   m_Name: bar
-  m_TagString: Untagged
+  m_TagString: Bar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1232,8 +1232,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   queue: []
   maxInLine: 5
-  InLine: 0
-  firstClient: {fileID: 0}
 --- !u!212 &664811807
 SpriteRenderer:
   m_ObjectHideFlags: 0
