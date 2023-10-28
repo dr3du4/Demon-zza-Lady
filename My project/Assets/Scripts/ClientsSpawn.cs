@@ -5,13 +5,14 @@ using UnityEngine;
 public class ClientsSpawn : MonoBehaviour
 {
     [SerializeField] BarQueue bar;
-    [SerializeField] List<GameObject> clientPrefabs = new List<GameObject>();
+    [SerializeField] List<clientTypeSO> clientTypes = new List<clientTypeSO>();
+    [SerializeField] GameObject clientPrefab;
     private void Update() {
-        if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientPrefabs.Count));
+        if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientTypes.Count));
     }
     private void SpawnClient(int i){
-        GameObject cObj = Instantiate(clientPrefabs[i],transform.position, transform.rotation);
-        Client c = cObj.GetComponent<Client>();
+        Client c = Instantiate(clientPrefab,transform.position, transform.rotation).GetComponent<Client>();
+        c.setType(clientTypes[i]);
         bar.AddClient(c);
     }
 }
