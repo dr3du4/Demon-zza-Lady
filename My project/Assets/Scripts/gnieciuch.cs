@@ -8,64 +8,78 @@ using UnityEngine.SocialPlatforms;
 public class gnieciuch : MonoBehaviour
 {
 
-    public int debug;
-    public stats Stats;
-    public int souls;
-    private int helper;
+    GameManager gameManager;
     public List<GameObject> listOfGnieciuch;
+<<<<<<< HEAD:My project/Assets/gnieciuch.cs
+=======
     public GameObject finishScreen;
     void Start()
     {
         Stats = new stats(debug,10); //linijka tylko do debugu
         souls = Stats.soul;
         souls = souls / 10;
+>>>>>>> 72e8fc63d279709b95c80e4d054f06b1bfa0024e:My project/Assets/Scripts/gnieciuch.cs
 
-        helper = souls;
-    }
-    
-    
+    int currentGnieciuchy = 0;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        souls = Stats.soul;
-        souls = souls / 10;
-        if (souls != helper)
-        {
-            helper = souls;
-            gnieciuchy();
-        }
-       
+        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
     }
 
-    void gnieciuchy()
+
+    public void gnieciuchy()
     {
-        switch (souls)
+        Debug.Log(gameManager.GetGnieciuchy());
+        switch (gameManager.GetGnieciuchy())
         {
             case 0:
-                Debug.Log("Brak gnieciuchow");
-                RandomPlaces(0);
+                if (currentGnieciuchy != gameManager.GetGnieciuchy())
+                {
+                    Debug.Log("Brak gnieciuchow");
+                    RandomPlaces(0);
+                }
                 break;
             case 1:
-                Debug.Log("Jest jeden gnieciuch");
-                RandomPlaces(1);
+                if (currentGnieciuchy != gameManager.GetGnieciuchy())
+                {
+                    Debug.Log("Jest jeden gnieciuch");
+                    RandomPlaces(1);
+                }
                 break;
             case 2 :
-                Debug.Log("Populacja gnieciuchów się zdublowała");
-                RandomPlaces(2);
+                if (currentGnieciuchy != gameManager.GetGnieciuchy())
+                {
+                    Debug.Log("Populacja gnieciuchów się zdublowała");
+                    RandomPlaces(2);
+                }
                 break;
             case 3:
-                Debug.Log("już mamy 3 gnieciuchy");
-                RandomPlaces(3);
+                if (currentGnieciuchy != gameManager.GetGnieciuchy())
+                {
+                    Debug.Log("już mamy 3 gnieciuchy");
+                    RandomPlaces(3);
+                }
                 break;
             case 4:
-                Debug.Log("cztery gnieciuchy join to the chat");
-                RandomPlaces(4);
+                if (currentGnieciuchy != gameManager.GetGnieciuchy())
+                {
+                    Debug.Log("cztery gnieciuchy join to the chat");
+                    RandomPlaces(4);
+                }
                 break;
             case 5:
+<<<<<<< HEAD:My project/Assets/gnieciuch.cs
+                if (currentGnieciuchy != gameManager.GetGnieciuchy())
+                {
+                    Debug.Log("Jest AŻ pięć gnieciuchów");
+                    RandomPlaces(5);
+                }
+=======
                 Debug.Log("Jest AŻ pięć gnieciuchów");
                 RandomPlaces(5);
                 WinGame();
+>>>>>>> 72e8fc63d279709b95c80e4d054f06b1bfa0024e:My project/Assets/Scripts/gnieciuch.cs
                 break;
             default:
                 Debug.Log("XDDDDD");
@@ -85,7 +99,7 @@ public class gnieciuch : MonoBehaviour
         for (int i = 0; i < number; i++)
         {
             int help = Random.Range(0, listOfGnieciuch.Count);
-            while (listOfGnieciuch[help].active == true)
+            while (listOfGnieciuch[help].activeSelf == true)
             {
                 help=Random.Range(0, listOfGnieciuch.Count);
             }
