@@ -22,12 +22,14 @@ public class FlipCoin : MonoBehaviour
         while(progress < 1f){
             progress += Time.deltaTime / 0.2f;
             _coin.position = Vector3.Lerp(start, target, progress);
+            _coin.Rotate(90f,0f,0f);
             yield return new WaitForSeconds(Time.deltaTime);
         }
         progress = 0f;
         while(progress < 1f){
             progress += Time.deltaTime / 0.2f;
             _coin.position = Vector3.Lerp(target, start, progress);
+            _coin.Rotate(90f,0f,0f);
             yield return new WaitForSeconds(Time.deltaTime);
         }
         _coin.position = start;
