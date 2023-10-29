@@ -22,30 +22,37 @@ public class buttonManager : MonoBehaviour
 
     public GameObject beer2;
 
+    public AudioSource buttonClickSound; // Add an AudioSource component to your GameObject and assign it here in the Inspector.
+
     public void Table1()
     {
         table1.SetActive(true);
         button1.gameObject.SetActive(false);
+        PlayButtonClickSound();
     }
     public void Table2()
     {
         table2.SetActive(true);
         button2.gameObject.SetActive(false);
+        PlayButtonClickSound();
     }
     public void Beer1()
     {
         beer1.SetActive(true);
         button3.gameObject.SetActive(false);
+        PlayButtonClickSound();
     }
     public void Beer2()
     {
         beer2.SetActive(true);
         button4.gameObject.SetActive(false);
+        PlayButtonClickSound();
     }
     public void Cock()
     {
         
         button5.gameObject.SetActive(false);
+        PlayButtonClickSound();
     }
     
 
@@ -55,5 +62,16 @@ public class buttonManager : MonoBehaviour
             shop.SetActive(false);
         else
             shop.SetActive(true);
+        PlayButtonClickSound();
     }
+
+        void PlayButtonClickSound()
+    {
+        if (buttonClickSound != null)
+        {
+            buttonClickSound.Play(); // Play the assigned click sound.
+        }
+    }
+
+
 }
