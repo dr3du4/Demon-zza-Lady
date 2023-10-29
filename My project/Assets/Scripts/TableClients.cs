@@ -48,7 +48,7 @@ public class TableClients : MonoBehaviour
         clients.Remove(c);
         clientsCount--;
         sits.Add(c.sit);
-        if (clientsCount < 3) {
+        if (clientsCount < 4) {
             active = true;
         }
     }
