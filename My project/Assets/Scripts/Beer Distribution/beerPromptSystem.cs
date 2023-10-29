@@ -23,6 +23,8 @@ public class beerPromptSystem : MonoBehaviour
     // Duration of the QTE prompt
     public float timeWindow = 5.0f;
 
+    public soulTake sTake;
+
     [SerializeField] private FlipCoin EmptyBeer;
     // Dictionary of inputs and sprites
     /*[System.Serializable]
@@ -85,6 +87,11 @@ public class beerPromptSystem : MonoBehaviour
         // Minigame logic
         if (minigameActive)
         {
+            if (sTake.active && Input.GetKeyDown(KeyCode.Q))
+            {
+                SuckSoul();
+                return;
+            }
             // Check if the time is up for the prompt
             if (Time.time > minigameTimer)
             {
@@ -132,10 +139,14 @@ public class beerPromptSystem : MonoBehaviour
     {
         // Assign the client currently being served
         currentClient = client;
-        if (currentClient)
+        if (currentClient && currentClient.beerCount < 4)
         {
             Debug.Log("Obs�ugujemy: " + currentClient._type.clientTypeName);
             preferencePrompt.ShowPreference(timeWindow, currentClient._type.beerPreference);
+        }
+        else if (currentClient)
+        {
+            sTake.EnableButton();
         }
 
 
@@ -161,6 +172,21 @@ public class beerPromptSystem : MonoBehaviour
         currentClient = null;
         nextServe = null;
         bar.SetClientServed(true);
+    }
+
+    void SuckSoul()
+    {
+        sTake.PlaySoulTakingAnim();
+        manager.AddSoul(1);
+        currentClient.Soulless();
+        StartCoroutine(currentClient.Die()); // That can be replaced if we get a cool anim
+        currentClient = null;
+        nextServe = null;
+        bar.SetClientServed(true);
+        bar.RemoveFirstClient();
+        sTake.DisableButton();
+        minigameActive = false;
+        Debug.Log("SUUUUUUUCCCCC");
     }
 
     public void AddDispenser(beerDispenser dispenser)
