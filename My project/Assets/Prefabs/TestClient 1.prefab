@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: {fileID: 0}
-  beerCount: 0
+  beerCount: 4
   table: {fileID: 0}
   sit: -1
   moveSpeed: 5
