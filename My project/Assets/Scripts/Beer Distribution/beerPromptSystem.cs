@@ -146,7 +146,7 @@ public class beerPromptSystem : MonoBehaviour
     {
         // Assign the client currently being served
         currentClient = client;
-        if (currentClient && currentClient.beerCount < 4)
+        if (currentClient && currentClient.beerCount < 2)
         {
             Debug.Log("Obs�ugujemy: " + currentClient._type.clientTypeName);
 
