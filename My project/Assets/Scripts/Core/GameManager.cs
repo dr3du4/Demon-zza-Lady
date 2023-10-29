@@ -7,7 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 60 };
-
+    [SerializeField] private Tutorial tutorial;
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
         {
             gnieciuchy++;
             g.gnieciuchy();
+            if (gnieciuchy == 1){    
+                tutorial.ActivateTutorial(2);
+            }
         }
 
         //if (Input.GetKeyDown(KeyCode.Space))
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
+        if (souls == 0) tutorial.ActivateTutorial(3);
         souls+=amount;
 
         // Again as above...
@@ -76,6 +80,9 @@ public class GameManager : MonoBehaviour
 
     public void AddSoldBeer()
     {
+        if (sprzedanepiwa == 0){    
+            tutorial.ActivateTutorial(0);
+        }
         sprzedanepiwa++;
     }
     void UpdateUI()
