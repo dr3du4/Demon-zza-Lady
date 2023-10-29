@@ -68,18 +68,19 @@ public class MoveToClick : MonoBehaviour
                 distanceToStol = 100f;
                 return;
             }
-            else if (!t.IsClient(client))sitPos = t.AddClient(client);
+            else if (!t.IsClient(client) || client.sit == -1)sitPos = t.AddClient(client);
+            client.waiting = false;
             client.goingUp = false;
             // Bodzio fix
             movingToClick = true;
+            reach = false;
         }
 
         // Bodzio fix 
         if (distanceToStol <= proximityDistance & !reach)
         {
-        if (sitPos != Vector3.zero)
-        {   
             client.waiting = false;
+            movingToClick = false;
             //Debug.Log("mozesz podejsc");
             Debug.Log(sitPos);
             transform.position = Vector3.MoveTowards(transform.position, sitPos, speed * Time.deltaTime);
@@ -93,17 +94,19 @@ public class MoveToClick : MonoBehaviour
                 else client.goingUp = false;
             }
 
-
         }
         else if (!client.waiting && movingToClick && !reach)
         {
+            if(client.table != null) {
+                client.table.TakeClient(client);
+                client.sit = -1;
+                client.table = null;
+            }
             //StartCoroutine(client.Die());
             client.waiting = true;
             movingToClick = false;
-                sitPos = new Vector3(0,0,0);
-                if(client.sit > 0 && client.sit < 3) client.goingUp = true;
-                else client.goingUp = false;
-            }           
+            if(client.sit > 0 && client.sit < 3) client.goingUp = true;
+            else client.goingUp = false;          
         }
     }
 }

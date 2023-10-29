@@ -81,7 +81,7 @@ public class BarQueue : MonoBehaviour
         if (InLine > 0)
         {
             timer += Time.deltaTime;
-            if (timer >= 20f) // 180 seconds = 3 minutes
+            if (timer >= 180f) // 180 seconds = 3 minutes
             {
 				//soundPlayed = true;
 				// Play the assigned sound clip
@@ -146,7 +146,7 @@ public class BarQueue : MonoBehaviour
 					StartCoroutine(client.Die());
 				}
 				// Reset the timer after the event
-        		timer = timer - 20f;
+        		timer = timer - 180f;
 			}
 		
         }
