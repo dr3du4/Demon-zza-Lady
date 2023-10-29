@@ -1188,7 +1188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3803681143072647173, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: m_fontSize
-      value: 32
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3803681143072647173, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: m_fontAsset
@@ -1196,7 +1196,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: cfaa2d96f1369b144b699a3d46b08f34, type: 2}
     - target: {fileID: 3803681143072647173, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: m_fontSizeBase
-      value: 32
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3803681143072647173, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: m_sharedMaterial
@@ -1272,11 +1272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[0]
@@ -1285,14 +1285,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[1]
-      value: "Wybierz myszk\u0105 stolik z pasuj\u0105cymi lud\u017Ami - to zawsze
-        gwarantuje wi\u0119cej wypitych trunk\xF3w albo hojniejszy napiwek."
+      value: "Wybierz prawym przyciskiem myszy stolik z pasuj\u0105cymi lud\u017Ami
+        - to zawsze gwarantuje wi\u0119cej wypitych trunk\xF3w albo hojniejszy napiwek."
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[2]
       value: "Och to on! Gnieciuch w ko\u0144cu si\u0119 pojawi\u0142. Pojawiaj\u0105
         si\u0119 tylko je\u015Bli poziom pija\u0144stwa w okolicy jest wystarczaj\u0105co
-        wysoki! Odblokowuj\u0105 ulepszenia karczmy"
+        wysoki! My\u015Bl\u0119, \u017Ce kiedy b\u0119dzie ich tu 5, to ta wioska
+        b\u0119dzie sko\u0144czona i b\u0119d\u0119 m\xF3g\u0142 przenie\u015B\u0107
+        si\u0119 gdzie\u015B indziej"
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[3]
@@ -1308,10 +1310,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[5]
-      value: "Je\u015Bli nie obs\u0142u\u017C\u0119 klient\xF3w wystarczaj\u0105co
-        szybko, to wyjd\u0105 z karczmy, je\u015Bli wyjdzie ich wi\u0119cej ni\u017C
-        50 w ci\u0105gu jednej nocy pracy, to znak, \u017Ce nie ma tu nic po mnie
-        i trzeba b\u0119dzie zamkn\u0105\u0107 karczm\u0119. To by\u0142by koniec."
+      value: "Je\u015Bli nie zd\u0105\u017Cymy obs\u0142u\u017Cy\u0107 klient\xF3w
+        wystarczaj\u0105co szybko, to wyjd\u0105 i prawdopodobnie nie wr\xF3c\u0105
+        wi\u0119cej. Wi\u0119cej ni\u017C 50 takich niezadowolonych klient\xF3w dziennie
+        b\u0119dzie zawiastowa\u0107 koniec interes\xF3w w tym mie\u015Bcie...."
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[6]
@@ -1325,14 +1327,24 @@ PrefabInstance:
       value: "Be\u0142t pojawia si\u0119 kiedy du\u017Co ludzi na raz w karczmie
         pije piwo i sprawia, \u017Ce nie trafiaj\u0105 do stolik\xF3w kt\xF3re im
         przypisujemy, lubi si\u0119 chowa\u0107 mi\u0119dzy sto\u0142ami, wi\u0119c
-        system ochrony karczmy powiadamia nas, \u017Ce wykry\u0142 gdzie\u015B be\u0142ta,
-        \u017Ceby\u015B m\xF3g\u0142 jak najszbciej go przegoni\u0107"
+        system ochrony karczmy powiadamia nas o jego pojawieniu"
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[8]
       value: "BE\u0141T! Przesta\u0144 psu\u0107 mi interes, nie widzisz, \u017Ce
         przez ciebie tylko gorzej mi idzie? Id\u017A sobie znale\u017A\u0107 swoje
         ofiary! Klikaj\u0105c 5 razy myszk\u0105 przegnoisz go"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialTexts.Array.data[9]
+      value: "Klienci m\xF3wi\u0105 jakie piwo preferuj\u0105, musisz wybra\u0107
+        odpowiedni\u0105 cyfr\u0119 na klawiaturz\u0119 1/2/3. Je\u015Bli zrobisz
+        to szybko, dadz\u0105 napiwek, a pieni\u0105dze zawsze si\u0119 do czego\u015B
+        przydadz\u0105"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialTexts.Array.data[10]
+      value: "\u0105"
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.data[0]
@@ -1370,6 +1382,14 @@ PrefabInstance:
       propertyPath: tutorialSprites.Array.data[8]
       value: 
       objectReference: {fileID: 21300000, guid: 7c3210c8aeb3a9540a7f7579b07fb836, type: 3}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialSprites.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 05a4f5f0cf0b44e48ae53da33c285712, type: 3}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialSprites.Array.data[10]
+      value: 
+      objectReference: {fileID: 21300000, guid: 05a4f5f0cf0b44e48ae53da33c285712, type: 3}
     - target: {fileID: 8406647241426170692, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.8

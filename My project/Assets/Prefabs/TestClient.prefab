@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1142291274746818259}
   m_Layer: 0
   m_Name: TestClient
-  m_TagString: Untagged
+  m_TagString: klient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

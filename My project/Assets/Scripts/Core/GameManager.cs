@@ -7,7 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 60 };
-    [SerializeField] private Tutorial tutorial;
+    public Tutorial tutorial;
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     int gnieciuchy = 0;
 
     public int sprzedanepiwa;
+    public int klienciCoS;
 
     Gnieciuch g;
     
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         souls = _souls;
         gnieciuchy = _gnieciuchy;
         sprzedanepiwa = _sprzedanepiwa;
+        klienciCoS = 0;
     }
 
     void MoneyCheat()
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
     public int GetGnieciuchy() { return gnieciuchy; }
     public int GetMoney() { return money; }
     public int GetSouls() { return souls; }
+    public int GetBeers() { return sprzedanepiwa; }
 
     public void AddSoldBeer()
     {
