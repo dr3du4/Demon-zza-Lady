@@ -5565,6 +5565,10 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 75754488115818808, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -610556347
+      objectReference: {fileID: 0}
     - target: {fileID: 918654467768902692, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_SizeDelta.x
       value: 127
@@ -5785,6 +5789,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 4.031
       objectReference: {fileID: 0}
+    - target: {fileID: 5797962605855290078, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: tutorialTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797962605855290078, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: tutorialSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797962605855290078, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: tutorialTexts.Array.data[0]
+      value: Uciekaj...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797962605855290078, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: tutorialTexts.Array.data[1]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797962605855290078, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: tutorialSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: fe96c0a649db0d548ad7c58d9b011f68, type: 3}
+    - target: {fileID: 5797962605855290078, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: tutorialSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: cc9e607779356dd4a9acca6d9de6be09, type: 3}
     - target: {fileID: 5812917304346894679, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.311
@@ -6576,7 +6604,7 @@ SceneRoots:
   - {fileID: 2101128678}
   - {fileID: 2025959897}
   - {fileID: 158277854}
-  - {fileID: 1927828870}
   - {fileID: 1426763137}
   - {fileID: 62570183}
   - {fileID: 947508304}
+  - {fileID: 1927828870}

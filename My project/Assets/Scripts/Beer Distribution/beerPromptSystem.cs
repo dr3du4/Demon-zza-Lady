@@ -23,6 +23,7 @@ public class beerPromptSystem : MonoBehaviour
     // Duration of the QTE prompt
     public float timeWindow = 5.0f;
 
+    [SerializeField] private Tutorial tutorial;
     [SerializeField] private FlipCoin EmptyBeer;
     // Dictionary of inputs and sprites
     /*[System.Serializable]
