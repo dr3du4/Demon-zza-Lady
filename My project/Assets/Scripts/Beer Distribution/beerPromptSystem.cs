@@ -25,6 +25,8 @@ public class beerPromptSystem : MonoBehaviour
 
     public soulTake sTake;
 
+    public List<beerDispenser> purchasable;
+
     [SerializeField] private FlipCoin EmptyBeer;
 
     [SerializeField] private Tutorial tutorial;
@@ -197,7 +199,7 @@ public class beerPromptSystem : MonoBehaviour
     public void AddDispenser(beerDispenser dispenser)
     {
         beerSelection.Add(dispenser);
-        randomKeys.Add(dispenser, KeyCode.None);
+        UpdateBinds();
     }
 
     void StaticButtonSelect()

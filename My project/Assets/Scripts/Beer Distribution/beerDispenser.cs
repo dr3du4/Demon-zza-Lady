@@ -47,4 +47,10 @@ public class beerDispenser : MonoBehaviour
     {
         priceText.SetText(beer.beerPrice.ToString());
     }
+
+    public void AddToDispensers(beerPromptSystem system)
+    {
+        system.AddDispenser(this);
+        gameObject.SetActive(true);
+    }
 }
