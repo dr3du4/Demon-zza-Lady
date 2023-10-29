@@ -68,28 +68,33 @@ public class MoveToClick : MonoBehaviour
                 return;
             }
             client.waiting = false;
+            sitPos = stol.GetComponent<TableClients>().AddClient(client);
             client.goingUp = false;
             movingToClick = true;
         }
 
         if (distanceToStol <= proximityDistance & !reach)
         {
-            sitPos = stol.GetComponent<TableClients>().AddClient(client);
             client.waiting = false;
             //Debug.Log("mozesz podejsc");
             Debug.Log(sitPos);
             transform.position = Vector3.MoveTowards(transform.position, sitPos, speed * Time.deltaTime);
             dynamicDistance = Vector3.Distance(transform.position, sitPos);
-            
-            if (dynamicDistance < 0.3f){
+
+            if (dynamicDistance < 0.3f)
+            {
                 reach = true;
-                if(client.sit > 0 && client.sit < 3) client.goingUp = true;
+                if (client.sit > 0 && client.sit < 3) client.goingUp = true;
                 else client.goingUp = false;
             }
 
 
-        }else if(!client.waiting && movingToClick)
-            StartCoroutine(client.Die());
-        // Po Die schodzi w prawo?? XDDD
+        }
+        else if (!client.waiting && movingToClick && !reach)
+        {
+            //StartCoroutine(client.Die());
+            client.waiting = true;
+            movingToClick = false;
+        }
     }
 }
