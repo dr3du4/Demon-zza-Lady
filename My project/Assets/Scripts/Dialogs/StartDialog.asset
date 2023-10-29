@@ -20,7 +20,7 @@ MonoBehaviour:
     zniszczenie i rozpacz, wrzucaj\u0105c \u015Bwiat w ponure otch\u0142anie. Ludzko\u015B\u0107
     znalaz\u0142a si\u0119 w obliczu niebezpiecze\u0144stwa, jakiego dot\u0105d nie
     zna\u0142a."
-  - ...
+  - "       \t\t\t"
   - " \"Patrzcie tylko, jak rozpada si\u0119 to, co dla was najwa\u017Cniejsze,\"
     wykrzykuje. \"To ja niszcz\u0119 najwi\u0119cej \u017Cy\u0107! Zdrowie, maj\u0105tek,
     i wi\u0119zy rodzinne - wszystko to ginie pod moim wp\u0142ywem. Czy to nie wspania\u0142e?\" "
@@ -30,3 +30,4 @@ MonoBehaviour:
     albo mo\u017Ce lepiej wyborny nap\xF3j z ruiny nadziei?\" "
   - "Jego s\u0142owa brzmi\u0105 przera\u017Caj\u0105co, a jednak kusz\u0105co. Co
     wybierzesz?"
+  - "\t\t"
