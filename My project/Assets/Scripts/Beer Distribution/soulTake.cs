@@ -12,6 +12,9 @@ public class soulTake : MonoBehaviour
     public int speed = 1;
     Animation anim;
     public bool active = false;
+    public Animation soulAnim;
+
+    public List<string> soulAnimNames = new List<string>() { "soul1", "soul2" };
 
     private void Start()
     {
@@ -42,5 +45,11 @@ public class soulTake : MonoBehaviour
     {
         active = false;
         anim.Play("slideUp", PlayMode.StopAll);
+    }
+
+    public void PlaySoulTakingAnim()
+    {
+        int r = Random.Range(0, 1);
+        soulAnim.Play(soulAnimNames[r]);
     }
 }
