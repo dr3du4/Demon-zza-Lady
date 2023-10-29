@@ -80,6 +80,9 @@ public class GameManager : MonoBehaviour
     public void AddSoldBeer()
     {
         sprzedanepiwa++;
+        if (sprzedanepiwa == 1){    
+            tutorial.ActivateTutorial(1);
+        }
     }
     void UpdateUI()
     {
