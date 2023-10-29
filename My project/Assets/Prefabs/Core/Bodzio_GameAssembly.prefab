@@ -1272,11 +1272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[0]
@@ -1344,7 +1344,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[10]
-      value: "\u0105"
+      value: "Te b\u0142yskotki na stole to przyda\u0142oby si\u0119 zaraz zebrac,
+        przydadz\u0105 si\u0119 na potem. Kliknij na nie myszk\u0105. Potem mo\u017Cesz
+        za nie w sklepie na g\xF3rze ekranu kupi\u0107 ulepszenia"
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.data[0]
@@ -1389,7 +1391,7 @@ PrefabInstance:
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.data[10]
       value: 
-      objectReference: {fileID: 21300000, guid: 05a4f5f0cf0b44e48ae53da33c285712, type: 3}
+      objectReference: {fileID: 21300000, guid: 427f2169ab03866489c846f37ae18422, type: 3}
     - target: {fileID: 8406647241426170692, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.8
