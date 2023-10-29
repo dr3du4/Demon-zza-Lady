@@ -174,7 +174,9 @@ public class beerPromptSystem : MonoBehaviour
 
     void SuckSoul()
     {
+        sTake.PlaySoulTakingAnim();
         manager.AddSoul(1);
+        currentClient.Soulless();
         StartCoroutine(currentClient.Die()); // That can be replaced if we get a cool anim
         currentClient = null;
         nextServe = null;

@@ -159,4 +159,9 @@ public class Client : MonoBehaviour
         p.SetActive(show);
     }
 
+    public void Soulless()
+    {
+        _render.color = new Color(0.2f, 0.2f, 0.2f);
+    }
+
 }
