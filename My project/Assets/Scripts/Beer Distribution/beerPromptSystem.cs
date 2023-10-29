@@ -23,7 +23,13 @@ public class beerPromptSystem : MonoBehaviour
     // Duration of the QTE prompt
     public float timeWindow = 5.0f;
 
+    public soulTake sTake;
+
+    public List<beerSO> beers;
+
     [SerializeField] private FlipCoin EmptyBeer;
+
+    [SerializeField] private Tutorial tutorial;
     // Dictionary of inputs and sprites
     /*[System.Serializable]
     public struct SpritePair
@@ -85,9 +91,21 @@ public class beerPromptSystem : MonoBehaviour
         // Minigame logic
         if (minigameActive)
         {
+            if (sTake.active) {
+                if (manager.GetSouls() == 0)tutorial.ActivateTutorial(3);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    SuckSoul();
+                    return;
+                }
+            }
             // Check if the time is up for the prompt
             if (Time.time > minigameTimer)
             {
+                GameObject mg = GameObject.FindWithTag("GameController");
+                GameManager managerG  = mg.GetComponent<GameManager>();
+                if (managerG.klienciCoS == 0) managerG.tutorial.ActivateTutorial(5);
+                managerG.klienciCoS++;
                 minigameActive = false; // Some fail condition
                 StartCoroutine(currentClient.Die());
                 bar.RemoveFirstClient();
@@ -98,7 +116,7 @@ public class beerPromptSystem : MonoBehaviour
             // Check if you pressed any of the keys assigned to any of the beer selections 
             foreach (KeyValuePair<beerDispenser, KeyCode> pair in randomKeys)
             {
-                if (Input.GetKey(pair.Value) && currentClient.beerCount < 4)
+                if (Input.GetKey(pair.Value) && currentClient.beerCount < 2)
                 {
                     // Assign the next beer to serve
                     nextServe = pair.Key.beer;
@@ -132,10 +150,19 @@ public class beerPromptSystem : MonoBehaviour
     {
         // Assign the client currently being served
         currentClient = client;
-        if (currentClient)
+        if (currentClient && currentClient.beerCount < 2)
         {
             Debug.Log("Obs�ugujemy: " + currentClient._type.clientTypeName);
-            preferencePrompt.ShowPreference(timeWindow, currentClient._type.beerPreference);
+
+            // Random preference
+            int i = Random.Range(0, beers.Count - 1);
+            beerSO preference = beers[i];
+
+            preferencePrompt.ShowPreference(timeWindow, preference);
+        }
+        else if (currentClient)
+        {
+            sTake.EnableButton();
         }
 
 
@@ -163,10 +190,25 @@ public class beerPromptSystem : MonoBehaviour
         bar.SetClientServed(true);
     }
 
+    void SuckSoul()
+    {
+        sTake.PlaySoulTakingAnim();
+        manager.AddSoul(1);
+        currentClient.Soulless();
+        StartCoroutine(currentClient.Die()); // That can be replaced if we get a cool anim
+        currentClient = null;
+        nextServe = null;
+        bar.SetClientServed(true);
+        bar.RemoveFirstClient();
+        sTake.DisableButton();
+        minigameActive = false;
+        Debug.Log("SUUUUUUUCCCCC");
+    }
+
     public void AddDispenser(beerDispenser dispenser)
     {
         beerSelection.Add(dispenser);
-        randomKeys.Add(dispenser, KeyCode.None);
+        UpdateBinds();
     }
 
     void StaticButtonSelect()
@@ -220,6 +262,7 @@ public class beerPromptSystem : MonoBehaviour
         Debug.Log("Entered a trigger");
         if (collision.gameObject.GetComponent<Client>())
         {
+            if (manager.GetBeers() == 0) tutorial.ActivateTutorial(9);
             if (collision.gameObject.GetComponent<Client>().readyToDrink)
             {
                 collision.gameObject.GetComponent<Client>().readyToDrink = false;

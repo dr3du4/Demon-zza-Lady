@@ -98,12 +98,9 @@ GameObject:
   - component: {fileID: 8511637431668522313}
   - component: {fileID: 3396795703750989705}
   - component: {fileID: 1142291274746818259}
-  - component: {fileID: 8072368193842349624}
-  - component: {fileID: 4367519543035569831}
-  - component: {fileID: 444477024909790346}
   m_Layer: 0
   m_Name: TestClient
-  m_TagString: Untagged
+  m_TagString: klient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,8 +195,6 @@ MonoBehaviour:
   waiting: 0
   readyToDrink: 1
   goingUp: 0
-  mtc: {fileID: 1142291274746818259}
-  staryWstal: 0
   preferenceHelper: {fileID: 0}
 --- !u!61 &8511637431668522313
 BoxCollider2D:
@@ -294,63 +289,6 @@ MonoBehaviour:
   isDeamon: 0
   reach: 0
   dynamicDistance: 20
---- !u!95 &8072368193842349624
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681301764678306157}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5c15e74025b578458e5b601db60ccf0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!111 &4367519543035569831
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681301764678306157}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 4709644380bed74438cb4f2ac5434af4, type: 2}
-  - {fileID: 7400000, guid: 0055d56308f6fad4bad5727a569aa229, type: 2}
-  - {fileID: 7400000, guid: 815caea10634584489f5956994403551, type: 2}
-  - {fileID: 7400000, guid: c42c379bfa548b54e8af3ee0e1579531, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!114 &444477024909790346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681301764678306157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db179e35c8401449845199ff6bfb8b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mtc: {fileID: 1142291274746818259}
-  klient: {fileID: 6562917050180353497}
-  upDown: 0
-  siad: 0
-  wstan: 0
 --- !u!1001 &6807311528374577655
 PrefabInstance:
   m_ObjectHideFlags: 0

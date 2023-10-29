@@ -7,7 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 60 };
-    [SerializeField] private Tutorial tutorial;
+    public Tutorial tutorial;
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     int gnieciuchy = 0;
 
     public int sprzedanepiwa;
+    public int klienciCoS;
 
     Gnieciuch g;
     
@@ -31,10 +32,27 @@ public class GameManager : MonoBehaviour
         souls = _souls;
         gnieciuchy = _gnieciuchy;
         sprzedanepiwa = _sprzedanepiwa;
+        klienciCoS = 0;
+    }
+
+    void MoneyCheat()
+    {
+        AddMoney(100);
+    }
+
+    void SoulCheat()
+    {
+        AddSoul(5);
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+            MoneyCheat();
+
+        if (Input.GetKeyDown(KeyCode.K))
+            SoulCheat();
+
         if (souls >= gnieciuchTresholds[Mathf.Clamp(gnieciuchy, 0, gnieciuchTresholds.Count - 1)] && souls <= gnieciuchTresholds[gnieciuchTresholds.Count-1])
         {
             gnieciuchy++;
@@ -59,7 +77,7 @@ public class GameManager : MonoBehaviour
         return true;
         // Some form of visual/sound effect there?
     }
-    public void AddMoney(int amount, int tip)
+    public void AddMoney(int amount, int tip = 0)
     {
         money += amount + tip;
 
@@ -68,15 +86,14 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
-        if (souls == 0) tutorial.ActivateTutorial(3);
         souls+=amount;
-
         // Again as above...
     }
 
     public int GetGnieciuchy() { return gnieciuchy; }
     public int GetMoney() { return money; }
     public int GetSouls() { return souls; }
+    public int GetBeers() { return sprzedanepiwa; }
 
     public void AddSoldBeer()
     {

@@ -6,6 +6,7 @@ using UnityEngine;
 public class beltManager : MonoBehaviour
 {
     public GameManager gm;
+    [SerializeField] private Tutorial tutorial;
     public GameObject[] belts;
     private Vector3 target;
     public GameObject belt;
@@ -14,7 +15,7 @@ public class beltManager : MonoBehaviour
     public int HP = 5;
     public bool deamonExist = false;
     public int killedDeamons = 0;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,8 @@ public class beltManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   amountOfPeople = (gm.sprzedanepiwa-8*(killedDeamons));
+    {   
+        amountOfPeople = (gm.sprzedanepiwa-8*(killedDeamons));
         if (belts.Length > 0)
         {
             deamonExist = true;
@@ -56,13 +58,14 @@ public class beltManager : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && belts.Length>0)
         {
             PIERDOLNIJDEMONAWCYMBAL();
         }
     }
     void CreateObject()
     {
+        if (killedDeamons==0) tutorial.ActivateTutorial(7);
         int indeks = Random.Range(0, places.Count);
         Instantiate(belt, places[indeks].transform.position, Quaternion.identity);
         HP = 5;
@@ -78,8 +81,6 @@ public class beltManager : MonoBehaviour
 
     void PIERDOLNIJDEMONAWCYMBAL()
     {
-        
-        
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         target.z = transform.position.z;
         
