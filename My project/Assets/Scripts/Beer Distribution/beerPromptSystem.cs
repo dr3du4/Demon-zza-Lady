@@ -25,7 +25,7 @@ public class beerPromptSystem : MonoBehaviour
 
     public soulTake sTake;
 
-    public List<beerDispenser> purchasable;
+    public List<beerSO> beers;
 
     [SerializeField] private FlipCoin EmptyBeer;
 
@@ -149,7 +149,12 @@ public class beerPromptSystem : MonoBehaviour
         if (currentClient && currentClient.beerCount < 4)
         {
             Debug.Log("Obs�ugujemy: " + currentClient._type.clientTypeName);
-            preferencePrompt.ShowPreference(timeWindow, currentClient._type.beerPreference);
+
+            // Random preference
+            int i = Random.Range(0, beers.Count - 1);
+            beerSO preference = beers[i];
+
+            preferencePrompt.ShowPreference(timeWindow, preference);
         }
         else if (currentClient)
         {
