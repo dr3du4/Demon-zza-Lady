@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
-    public Canvas mainMenu;
+    public GameObject mainMenu;
     public GameObject credits;
     public GameObject tuts;
 
@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         g = GetComponent<Gnieciuch>();
+        Debug.Log(mainMenu);
+        Debug.Log(credits);
+        Debug.Log(tuts);
     }
 
     public GameManager(int _money, int _souls, int _gnieciuchy, int _sprzedanepiwa) 
@@ -115,13 +118,13 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0;
-        mainMenu.gameObject.SetActive(true);
+        mainMenu.SetActive(true);
     }
 
     public void Resume()
     {
         Time.timeScale = 1;
-        mainMenu.gameObject.SetActive(false);
+        mainMenu.SetActive(false);
     }
 
     public void ExitGame()

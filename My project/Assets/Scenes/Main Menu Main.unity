@@ -13055,6 +13055,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 7.099
       objectReference: {fileID: 0}
+    - target: {fileID: 3950349561079908934, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: tuts
+      value: 
+      objectReference: {fileID: 1729828342}
+    - target: {fileID: 3950349561079908934, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: credits
+      value: 
+      objectReference: {fileID: 1428014751}
+    - target: {fileID: 3950349561079908934, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: mainMenu
+      value: 
+      objectReference: {fileID: 954445820}
     - target: {fileID: 4075311591784594888, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_IsActive
       value: 0
