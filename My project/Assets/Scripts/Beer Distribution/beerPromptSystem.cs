@@ -23,6 +23,7 @@ public class beerPromptSystem : MonoBehaviour
     // Duration of the QTE prompt
     public float timeWindow = 5.0f;
 
+    [SerializeField] private FlipCoin EmptyBeer;
     // Dictionary of inputs and sprites
     /*[System.Serializable]
     public struct SpritePair
@@ -154,6 +155,7 @@ public class beerPromptSystem : MonoBehaviour
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
         Transform cObj = currentClient.transform.Find("Beer");
         cObj.gameObject.SetActive(true);
+        EmptyBeer.Throw();
         currentClient = null;
         nextServe = null;
         bar.SetClientServed(true);

@@ -10,7 +10,7 @@ public class MoveToClick : MonoBehaviour
     public float speed = 5f;
     private Vector3 target;
     public GameObject stol;
-    public float proximityDistance = 0.9f; // Minimalna odległość, by uznać, że target jest blisko stolu
+    public float proximityDistance = 1.25f; // Minimalna odległość, by uznać, że target jest blisko stolu
     public GameObject[] freePlace;
     private bool move=false;
     public float distanceToStol = 20f;
@@ -18,7 +18,9 @@ public class MoveToClick : MonoBehaviour
     public bool isDeamon = false;
     public bool reach = false;
     public float dynamicDistance = 20f;
+    // Bodzio fix
     private Vector3 sitPos;
+    bool movingToClick = false;
 
     private void Start()
     {
@@ -61,32 +63,47 @@ public class MoveToClick : MonoBehaviour
             }
             distanceToStol = helper;
             Debug.Log(distanceToStol);
-            if (!stol.GetComponent<TableClients>().active) {
+            TableClients t = stol.GetComponent<TableClients>();
+            if (!t.active) {
                 distanceToStol = 100f;
                 return;
             }
-            client.waiting = false;
-            sitPos = stol.GetComponent<TableClients>().AddClient(client);
+            else if (!t.IsClient(client))sitPos = t.AddClient(client);
             client.goingUp = false;
+            // Bodzio fix
+            movingToClick = true;
         }
 
+        // Bodzio fix 
         if (distanceToStol <= proximityDistance & !reach)
+        {
+        if (sitPos != Vector3.zero)
         {   
             client.waiting = false;
             //Debug.Log("mozesz podejsc");
+            Debug.Log(sitPos);
             transform.position = Vector3.MoveTowards(transform.position, sitPos, speed * Time.deltaTime);
             dynamicDistance = Vector3.Distance(transform.position, sitPos);
-            
-            if (dynamicDistance < 0.3f){
+
+            if (dynamicDistance < 0.3f)
+            {
                 reach = true;
-                if(client.sit > 0 && client.sit < 3) client.goingUp = true;
+                // Bodzio fix
+                if (client.sit > 0 && client.sit < 3) client.goingUp = true;
                 else client.goingUp = false;
             }
-            
-                       
+
+
         }
-        
-        
-        
+        else if (!client.waiting && movingToClick && !reach)
+        {
+            //StartCoroutine(client.Die());
+            client.waiting = true;
+            movingToClick = false;
+                sitPos = new Vector3(0,0,0);
+                if(client.sit > 0 && client.sit < 3) client.goingUp = true;
+                else client.goingUp = false;
+            }           
+        }
     }
 }
