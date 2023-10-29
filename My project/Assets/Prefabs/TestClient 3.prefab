@@ -196,7 +196,7 @@ MonoBehaviour:
   waiting: 0
   readyToDrink: 1
   goingUp: 0
-  mtc: {fileID: 0}
+  mtc: {fileID: 4810683773756509971}
   staryWstal: 0
   preferenceHelper: {fileID: 0}
 --- !u!114 &4810683773756509971

@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 6419075855942619974}
   - component: {fileID: -9143569220345929426}
   - component: {fileID: -5076722060981322560}
+  - component: {fileID: 5357681825926744137}
+  - component: {fileID: 614934246206383064}
   m_Layer: 0
   m_Name: TestClient 2
   m_TagString: Untagged
@@ -195,8 +197,9 @@ MonoBehaviour:
   waiting: 0
   readyToDrink: 1
   goingUp: 0
-  upSprite: {fileID: 21300000, guid: c8e398aeaaa0d9c468a7151c007435d7, type: 3}
-  downSprite: {fileID: 21300000, guid: 7136cfa58277e3b40910da566e982a58, type: 3}
+  mtc: {fileID: 6419075855942619974}
+  staryWstal: 0
+  preferenceHelper: {fileID: 0}
 --- !u!114 &6419075855942619974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +293,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!111 &5357681825926744137
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681301764678306157}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: d4a54921a9a5f204aaa882f25b265cf9, type: 2}
+  - {fileID: 7400000, guid: 96141cb185eda4740a0452f5f7f6a14a, type: 2}
+  - {fileID: 7400000, guid: 63131c23013273b408d844b27abc2c4d, type: 2}
+  - {fileID: 7400000, guid: ef8cebdd807b86c4c9b2f9d7d5a24dba, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &614934246206383064
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681301764678306157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 506b060bd6c3eba43ae440118c042815, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1768127728885910458
 PrefabInstance:
   m_ObjectHideFlags: 0
