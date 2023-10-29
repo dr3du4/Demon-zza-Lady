@@ -99,12 +99,14 @@ public class beerPromptSystem : MonoBehaviour
                 minigameActive = false; // Some fail condition
                 StartCoroutine(currentClient.Die());
                 bar.RemoveFirstClient();
+                if (sTake.active)
+                    sTake.DisableButton();
             }
 
             // Check if you pressed any of the keys assigned to any of the beer selections 
             foreach (KeyValuePair<beerDispenser, KeyCode> pair in randomKeys)
             {
-                if (Input.GetKey(pair.Value))
+                if (Input.GetKey(pair.Value) && currentClient.beerCount < 4)
                 {
                     // Assign the next beer to serve
                     nextServe = pair.Key.beer;

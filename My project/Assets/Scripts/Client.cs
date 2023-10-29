@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class Client : MonoBehaviour
 {
@@ -20,10 +22,17 @@ public class Client : MonoBehaviour
     public bool readyToDrink = true;
     private SpriteRenderer _render;
     public bool goingUp = false;
+
+    private List<clientTypeSO.ClientType> companyPreferences;
+
+    public preferenceHelper preferenceHelper;
     private void Start(){
         _render = GetComponent<SpriteRenderer>();
         RandTimeToWait();
+        companyPreferences = _type.companyPreference;
     }
+
+    
 
     private void Update(){
         if (goingUp) _render.sprite = _type.upSprite;
@@ -153,15 +162,32 @@ public class Client : MonoBehaviour
     }
 
 
-    // FIX THIS TO ACTUALLY SHOW PREFERENCES
     public void ShowIndicatorSquare(bool show){
-        GameObject p = transform.Find("Preferences").gameObject;
-        p.SetActive(show);
+        //GameObject p = transform.Find("Preferences").gameObject;
+        if (show)
+        {
+            ShufflePreference();
+            preferenceHelper.ShowPreferences(companyPreferences);
+        }
+        else
+            preferenceHelper.HidePreferences();
+        //p.SetActive(show);
     }
 
     public void Soulless()
     {
         _render.color = new Color(0.2f, 0.2f, 0.2f);
+    }
+
+    private void ShufflePreference()
+    {
+        List<clientTypeSO.ClientType> types = new List<clientTypeSO.ClientType> { clientTypeSO.ClientType.FARMER, clientTypeSO.ClientType.RYCERZ, clientTypeSO.ClientType.SZLACHCIC };
+        int i = Random.Range(0, 3);
+        for (int j = 0; j < i; j++)
+        {
+            types.RemoveAt(Random.Range(0, types.Count));
+        }
+        companyPreferences = types;
     }
 
 }

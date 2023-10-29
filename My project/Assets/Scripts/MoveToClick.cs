@@ -82,7 +82,7 @@ public class MoveToClick : MonoBehaviour
             client.waiting = false;
             movingToClick = false;
             //Debug.Log("mozesz podejsc");
-            Debug.Log(sitPos);
+            //Debug.Log(sitPos);
             transform.position = Vector3.MoveTowards(transform.position, sitPos, speed * Time.deltaTime);
             dynamicDistance = Vector3.Distance(transform.position, sitPos);
 
