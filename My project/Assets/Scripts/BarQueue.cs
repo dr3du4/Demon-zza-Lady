@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class BarQueue : MonoBehaviour
 	private Client firstClient = null;
 	private float timerClient;
 	private Vector3 first;
+	
 
 	bool clientServed = false;
 	
@@ -26,7 +28,7 @@ public class BarQueue : MonoBehaviour
 	private float timer = 0f;
 	public AudioClip yourSoundClip; // Assign your sound clip in the Inspector
     private AudioSource audioSource;
-
+	public TMP_Text day;
 
 	public AudioSource[] backgroundAudioSources; // Reference to multiple background audio sources
     public float muteDuration = 2.0f; // Duration to mute the background sounds
@@ -43,7 +45,9 @@ public class BarQueue : MonoBehaviour
 	public void SetClientServed(bool b) { clientServed = b; }
 	public bool GetClientServed() { return clientServed; }
 
-	private void Start(){
+	private void Start()
+	{
+		day.text = "Dzien: "+ eventCounter.ToString();
 		first = transform.position += offSetFirst;
 		if(InLine > 0) {
 			firstClient = queue[0];
@@ -90,6 +94,8 @@ public class BarQueue : MonoBehaviour
 				eventCounter++;
 
 				// Output the event counter value to the console log
+				day.text = "Dzien: "+eventCounter.ToString();
+				
         		Debug.Log("Day " + eventCounter);
 
 				/* Display the event counter on the canvas
