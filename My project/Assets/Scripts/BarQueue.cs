@@ -81,7 +81,7 @@ public class BarQueue : MonoBehaviour
         if (InLine > 0)
         {
             timer += Time.deltaTime;
-            if (timer >= 180f) // 180 seconds = 3 minutes
+            if (timer >= 20f) // 180 seconds = 3 minutes
             {
 				//soundPlayed = true;
 				// Play the assigned sound clip
@@ -97,12 +97,6 @@ public class BarQueue : MonoBehaviour
 				day.text = "Dzien: "+eventCounter.ToString();
 				
         		Debug.Log("Day " + eventCounter);
-
-				/* Display the event counter on the canvas
-				if (eventCounterText != null)
-				{
-					eventCounterText.text = "3-Minute Event Occurrences: " + eventCounter.ToString();
-				}*/
 				
 				            // Mute the background audio sources
 				if (!isMuting && backgroundAudioSources != null)
@@ -150,7 +144,7 @@ public class BarQueue : MonoBehaviour
 					StartCoroutine(client.Die());
 				}
 				// Reset the timer after the event
-        		timer = timer - 180f;
+        		timer = timer - 20f;
 			}
 		
         }
