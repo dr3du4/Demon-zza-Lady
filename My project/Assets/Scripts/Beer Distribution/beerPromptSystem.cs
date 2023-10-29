@@ -112,7 +112,7 @@ public class beerPromptSystem : MonoBehaviour
             // Check if you pressed any of the keys assigned to any of the beer selections 
             foreach (KeyValuePair<beerDispenser, KeyCode> pair in randomKeys)
             {
-                if (Input.GetKey(pair.Value) && currentClient.beerCount < 4)
+                if (Input.GetKey(pair.Value) && currentClient.beerCount < 2)
                 {
                     // Assign the next beer to serve
                     nextServe = pair.Key.beer;
