@@ -16,4 +16,6 @@ public class clientTypeSO : ScriptableObject
     public string clientTypeName = "Seba";
     public beerSO beerPreference;
     public List<ClientType> companyPreference;
+    public Sprite upSprite;
+    public Sprite downSprite;
 }

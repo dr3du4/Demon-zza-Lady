@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0673e8fafb72b4bb1de7ce36676f22, type: 3}
   m_Name: Seba
   m_EditorClassIdentifier: 
+  clientType: 0
   clientTypeName: Seba
   beerPreference: {fileID: 11400000, guid: 6e97b637654ed404eb61e69670830194, type: 2}
+  companyPreference: 
+  upSprite: {fileID: 21300000, guid: 510db57df014f96478e98846a967465c, type: 3}
+  downSprite: {fileID: 21300000, guid: 7136cfa58277e3b40910da566e982a58, type: 3}

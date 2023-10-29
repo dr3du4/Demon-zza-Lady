@@ -1279,6 +1279,7 @@ MonoBehaviour:
   table2: {fileID: 0}
   beer1: {fileID: 0}
   beer2: {fileID: 0}
+  buttonClickSound: {fileID: 0}
 --- !u!1 &390799570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,6 +1734,10 @@ MonoBehaviour:
   offSetFirst: {x: 0, y: -0.25, z: 0}
   offSet: {x: 0, y: -0.75, z: 0}
   maxInLine: 5
+  allTables: []
+  yourSoundClip: {fileID: 0}
+  backgroundAudioSources: []
+  muteDuration: 2
 --- !u!212 &664811807
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2002,7 +2007,7 @@ GameObject:
   - component: {fileID: 920775839}
   - component: {fileID: 920775838}
   m_Layer: 0
-  m_Name: Square
+  m_Name: animacja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
