@@ -30,7 +30,6 @@ public class beltManager : MonoBehaviour
         amountOfPeople = (gm.sprzedanepiwa-8*(killedDeamons));
         if (belts.Length > 0)
         {
-            //if (killedDeamons==0) tutorial.ActivateTutorial(7);
             deamonExist = true;
         }
         else
@@ -66,6 +65,7 @@ public class beltManager : MonoBehaviour
     }
     void CreateObject()
     {
+        if (killedDeamons==0) tutorial.ActivateTutorial(7);
         int indeks = Random.Range(0, places.Count);
         Instantiate(belt, places[indeks].transform.position, Quaternion.identity);
         HP = 5;
