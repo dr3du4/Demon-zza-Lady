@@ -22,9 +22,9 @@ public class Client : MonoBehaviour
     public bool readyToDrink = true;
     private SpriteRenderer _render;
     public bool goingUp = false;
-
+    public MoveToClick mtc;
     private List<clientTypeSO.ClientType> companyPreferences;
-
+    public bool staryWstal = false;
     public preferenceHelper preferenceHelper;
     private void Start(){
         _render = GetComponent<SpriteRenderer>();
@@ -76,6 +76,8 @@ public class Client : MonoBehaviour
         readyToDrink = wantMore();
         
         //Iść i zdecydować co dalej
+        mtc.reach = false;
+        staryWstal = true;
         if (readyToDrink) {
             GameObject barGameObject = GameObject.FindWithTag("Bar");
             BarQueue bar = barGameObject.GetComponent<BarQueue>();
@@ -153,6 +155,7 @@ public class Client : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
         ShowIndicatorSquare(false);
+        
         // Jeśli wybierzesz stół daj waiting FALSE
         bar.RemoveFirstClient();
         if (waiting) {
