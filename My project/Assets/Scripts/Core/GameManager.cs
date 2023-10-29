@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
+        if (souls == 0) tutorial.ActivateTutorial(3);
         souls+=amount;
 
         // Again as above...
@@ -79,10 +80,10 @@ public class GameManager : MonoBehaviour
 
     public void AddSoldBeer()
     {
-        sprzedanepiwa++;
-        if (sprzedanepiwa == 1){    
-            tutorial.ActivateTutorial(1);
+        if (sprzedanepiwa == 0){    
+            tutorial.ActivateTutorial(0);
         }
+        sprzedanepiwa++;
     }
     void UpdateUI()
     {
