@@ -86,7 +86,7 @@ public class Gnieciuch : MonoBehaviour
 
         for (int i = 0; i < number; i++)
         {
-            int help = Random.Range(0, listOfGnieciuch.Count);
+            int help = Random.Range(0, listOfGnieciuch.Count-1);
             while (listOfGnieciuch[help].activeSelf == true)
             {
                 help=Random.Range(0, listOfGnieciuch.Count);

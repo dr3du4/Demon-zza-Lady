@@ -38,11 +38,18 @@ public class GameManager : MonoBehaviour
         AddMoney(100);
     }
 
+    void SoulCheat()
+    {
+        AddSoul(5);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
             MoneyCheat();
 
+        if (Input.GetKeyDown(KeyCode.K))
+            SoulCheat();
 
         if (souls >= gnieciuchTresholds[Mathf.Clamp(gnieciuchy, 0, gnieciuchTresholds.Count - 1)] && souls <= gnieciuchTresholds[gnieciuchTresholds.Count-1])
         {
