@@ -20,16 +20,14 @@ public class Client : MonoBehaviour
     public bool readyToDrink = true;
     private SpriteRenderer _render;
     public bool goingUp = false;
-    [SerializeField]private Sprite upSprite;
-    [SerializeField]private Sprite downSprite;
     private void Start(){
         _render = GetComponent<SpriteRenderer>();
         RandTimeToWait();
     }
 
     private void Update(){
-        if (goingUp) _render.sprite = upSprite;
-        else _render.sprite = downSprite;
+        if (goingUp) _render.sprite = _type.upSprite;
+        else _render.sprite = _type.downSprite;
     }
 
     public void RandTimeToWait(){
