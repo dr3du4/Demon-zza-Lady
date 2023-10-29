@@ -47,7 +47,7 @@ public class BarQueue : MonoBehaviour
 
 	private void Start()
 	{
-		day.text = eventCounter.ToString();
+		day.text = "Dzien: "+ eventCounter.ToString();
 		first = transform.position += offSetFirst;
 		if(InLine > 0) {
 			firstClient = queue[0];
@@ -94,7 +94,7 @@ public class BarQueue : MonoBehaviour
 				eventCounter++;
 
 				// Output the event counter value to the console log
-				day.text = eventCounter.ToString();
+				day.text = "Dzien: "+eventCounter.ToString();
 				
         		Debug.Log("Day " + eventCounter);
 
