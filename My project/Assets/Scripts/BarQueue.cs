@@ -141,6 +141,8 @@ public class BarQueue : MonoBehaviour
 				// Perform actions on allClients list
 				foreach (Client client in allClients)
 				{
+					StopCoroutine(client.MoveTo(Vector3.zero));
+					StopCoroutine(client.Drink());
 					StartCoroutine(client.Die());
 				}
 				// Reset the timer after the event
