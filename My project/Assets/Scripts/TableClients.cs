@@ -52,4 +52,8 @@ public class TableClients : MonoBehaviour
             active = true;
         }
     }
+
+    public bool IsClient(Client c) {
+        return clients.Contains(c);
+    }
 }

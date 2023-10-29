@@ -5,8 +5,12 @@ using UnityEngine;
 public class FlipCoin : MonoBehaviour
 {
     private Transform _coin;
+    public AudioClip yourSoundClip; // Assign your sound clip in the Inspector
+    private AudioSource audioSource;
     private void Start() {
         _coin = transform.Find("Coin");
+        audioSource = GetComponent<AudioSource>();
+        //audioSource.PlayOneShot(yourSoundClip, 1.0f);
         Debug.Log(_coin.name);
     }
 
@@ -15,6 +19,7 @@ public class FlipCoin : MonoBehaviour
     }
 
     private IEnumerator fly(){
+        audioSource.PlayOneShot(yourSoundClip, 1.0f);
         float progress = 0f;
         Vector3 start = _coin.position;
         Vector3 target = start + new Vector3(0,0.3f,0);
