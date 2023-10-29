@@ -9,7 +9,7 @@ public class TipController : MonoBehaviour
     Dictionary<GameObject, int> currentTips = new Dictionary<GameObject, int>();
     GameManager manager;
     FlipCoin tipAnim;
-
+    [SerializeField] private Tutorial tutorial;
     private void Start()
     {
         foreach(GameObject tip in tips)
@@ -20,6 +20,7 @@ public class TipController : MonoBehaviour
 
     public void spawnTip(int tipAmount)
     {
+        tutorial.CheckTipTutorial();
         Debug.Log("Spawn tip called");
         int i = Random.Range(0, tips.Count);
         if(!tips[i].activeInHierarchy)
