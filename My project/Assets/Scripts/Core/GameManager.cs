@@ -33,8 +33,17 @@ public class GameManager : MonoBehaviour
         sprzedanepiwa = _sprzedanepiwa;
     }
 
+    void MoneyCheat()
+    {
+        AddMoney(100);
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+            MoneyCheat();
+
+
         if (souls >= gnieciuchTresholds[Mathf.Clamp(gnieciuchy, 0, gnieciuchTresholds.Count - 1)] && souls <= gnieciuchTresholds[gnieciuchTresholds.Count-1])
         {
             gnieciuchy++;
@@ -59,7 +68,7 @@ public class GameManager : MonoBehaviour
         return true;
         // Some form of visual/sound effect there?
     }
-    public void AddMoney(int amount, int tip)
+    public void AddMoney(int amount, int tip = 0)
     {
         money += amount + tip;
 
