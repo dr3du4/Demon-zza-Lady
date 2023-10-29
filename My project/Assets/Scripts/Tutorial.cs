@@ -12,6 +12,8 @@ public class Tutorial : MonoBehaviour
     private int lastInt = -1;
     [SerializeField] private TextMeshProUGUI tutorialText;
 
+    private int countTip = 0;
+
     private void Start() {
         _image = GetComponent<Image>();
         gameObject.SetActive(false);
@@ -23,6 +25,17 @@ public class Tutorial : MonoBehaviour
         tutorialText.text = tutorialTexts[i];
         Time.timeScale = 0f;
         lastInt = i;
+        gameObject.SetActive(true);
+    }
+
+    public void CheckTipTutorial() {
+        countTip++;
+        if (countTip > 1) return;
+        _image.sprite = tutorialSprites[10];
+        _image.color = new Color32(255,255,255,255);
+        tutorialText.text = tutorialTexts[10];
+        Time.timeScale = 0f;
+        lastInt = 10;
         gameObject.SetActive(true);
     }
 

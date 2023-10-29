@@ -102,6 +102,10 @@ public class beerPromptSystem : MonoBehaviour
             // Check if the time is up for the prompt
             if (Time.time > minigameTimer)
             {
+                GameObject mg = GameObject.FindWithTag("GameController");
+                GameManager managerG  = mg.GetComponent<GameManager>();
+                if (managerG.klienciCoS == 0) managerG.tutorial.ActivateTutorial(5);
+                managerG.klienciCoS++;
                 minigameActive = false; // Some fail condition
                 StartCoroutine(currentClient.Die());
                 bar.RemoveFirstClient();
