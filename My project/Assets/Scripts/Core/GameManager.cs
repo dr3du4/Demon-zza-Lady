@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
+    public Canvas mainMenu;
+    public GameObject credits;
+    public GameObject tuts;
+
     int money = 0;
     int souls = 0;
     int gnieciuchy = 0;
@@ -106,5 +110,47 @@ public class GameManager : MonoBehaviour
     {
         moneyText.SetText(money.ToString());
         soulsText.SetText(souls.ToString());
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        mainMenu.gameObject.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        mainMenu.gameObject.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void CreditsOpen()
+    {
+        credits.SetActive(true);
+    }
+
+    public void CreditsClose()
+    {
+        credits.SetActive(false);
+    }
+
+    public void Tut(int i)
+    {
+        tutorial.ActivateTutorial(i);
+    }
+
+    public void TutsOpen()
+    {
+        tuts.SetActive(true);
+    }
+
+    public void TutsClose()
+    {
+        tuts.SetActive(false);
     }
 }
