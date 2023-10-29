@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024864641627096276, guid: fc06377e728af44418db315ab627341d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.781
+      value: 4.883
       objectReference: {fileID: 0}
     - target: {fileID: 2024864641627096276, guid: fc06377e728af44418db315ab627341d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1114,7 +1114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024864641627096276, guid: fc06377e728af44418db315ab627341d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.531
+      value: 5.744
       objectReference: {fileID: 0}
     - target: {fileID: 2024864641627096276, guid: fc06377e728af44418db315ab627341d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5474,6 +5474,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.62
       objectReference: {fileID: 0}
+    - target: {fileID: 635075792159634871, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 918654467768902692, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
@@ -5546,9 +5550,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodzio_GameAssembly
       objectReference: {fileID: 0}
+    - target: {fileID: 5503895214659085484, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: listOfGnieciuch.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503895214659085484, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: listOfGnieciuch.Array.data[0]
+      value: 
+      objectReference: {fileID: 935556751}
+    - target: {fileID: 5503895214659085484, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: listOfGnieciuch.Array.data[1]
+      value: 
+      objectReference: {fileID: 1775003788}
+    - target: {fileID: 5503895214659085484, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: listOfGnieciuch.Array.data[2]
+      value: 
+      objectReference: {fileID: 613816209}
+    - target: {fileID: 5503895214659085484, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: listOfGnieciuch.Array.data[3]
+      value: 
+      objectReference: {fileID: 65163507}
+    - target: {fileID: 5503895214659085484, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: listOfGnieciuch.Array.data[4]
+      value: 
+      objectReference: {fileID: 1858470648}
+    - target: {fileID: 5812917304346894679, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.297
+      objectReference: {fileID: 0}
     - target: {fileID: 6257625221350075753, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021469244346559611, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.162
       objectReference: {fileID: 0}
     - target: {fileID: 7874177416884874861, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
       propertyPath: m_LocalPosition.z
