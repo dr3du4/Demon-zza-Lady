@@ -14,19 +14,22 @@ public class GameManager : MonoBehaviour
     int money;
     int souls;
     int gnieciuchy;
+    public int sprzedanepiwa;
 
     gnieciuch g;
+    
 
     private void Start()
     {
         g = GetComponent<gnieciuch>();
     }
 
-    public GameManager(int _money, int _souls, int _gnieciuchy) 
+    public GameManager(int _money, int _souls, int _gnieciuchy, int _sprzedanepiwa) 
     {
         money = _money;
         souls = _souls;
         gnieciuchy = _gnieciuchy;
+        sprzedanepiwa = _sprzedanepiwa;
     }
 
     private void Update()
@@ -70,7 +73,10 @@ public class GameManager : MonoBehaviour
     public int GetMoney() { return money; }
     public int GetSouls() { return souls; }
 
-
+    public void AddSoldBeer()
+    {
+        sprzedanepiwa++;
+    }
     void UpdateUI()
     {
         moneyText.SetText(money.ToString());
