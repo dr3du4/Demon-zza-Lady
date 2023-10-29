@@ -11,9 +11,9 @@ public class buttonShop : MonoBehaviour
     public TextMeshProUGUI text3; // Przypisz obiekt TMP Text w inspektorze Unity
     public Image icon;
     public string name;
-    public string soul;
+    public int soul;
     public Sprite newSprite; 
-    public string price;
+    public int price;
 
     // Start is called before the first frame update
     void Start()

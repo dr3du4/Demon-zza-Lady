@@ -594,6 +594,10 @@ MonoBehaviour:
   enablePosY: 0
   speed: 1
   active: 0
+  soulAnim: {fileID: 0}
+  soulAnimNames:
+  - soul1
+  - soul2
 --- !u!1 &3419358299734143929
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,8 @@ public class Client : MonoBehaviour
         
         
         if (_type.companyPreference.Contains(new_client.clientType)) {
+            if (table)
+                table.gameObject.GetComponent<TipController>().spawnTip(Random.Range(5, 10));
             chanceToDrinkMore += 0.2f / (beerCount + 1);
         }
         else {
