@@ -10,7 +10,8 @@ public class BarQueue : MonoBehaviour
     [SerializeField]private List<Client> queue = new List<Client>();
 	[SerializeField]private Vector3 offSetFirst = new Vector3(0f,-0.25f,0f);
 	[SerializeField]private Vector3 offSet = new Vector3(0f,-0.75f,0f);
-    public int maxInLine = 5;
+	public float dayTime = 180f;
+    public int maxInLine = 15;
     private int InLine = 0;
 	private Client firstClient = null;
 	private float timerClient;
@@ -38,7 +39,7 @@ public class BarQueue : MonoBehaviour
 	private int eventCounter = 1; // Counter to track the 3-minute event occurrences
     //public Text eventCounterText; // Reference to the Text UI element
 
-	
+	[SerializeField]private Tutorial tutorial;
 	//
 
 
@@ -49,11 +50,6 @@ public class BarQueue : MonoBehaviour
 	{
 		day.text = "Dzien: "+ eventCounter.ToString();
 		first = transform.position += offSetFirst;
-		if(InLine > 0) {
-			firstClient = queue[0];
-			
-			SetClientsOnPos();
-		}
 		//added KASIA 3rano
 		audioSource = GetComponent<AudioSource>();
 		 if (allTables.Length > 0)
@@ -64,27 +60,30 @@ public class BarQueue : MonoBehaviour
                 allClients.AddRange(table.clients);
             }
         }
+		timer = 0f;
 	}
 
 	private void Update() {
-		if(firstClient != null && clientServed) {
-			if (Vector3.Distance(firstClient.transform.position,first) < 0.1f) {
-				firstClient.StartTimer(this);
-				//cool
-				firstClient.ShowIndicatorSquare(true); // Show indicator square for the first client
-				firstClient = null;
-				SetClientServed(false);
+			if(firstClient != null && clientServed) {
+				if (Vector3.Distance(firstClient.transform.position,first) < 0.1f) {
+					firstClient.StartTimer(this);
+					//cool
+					firstClient.ShowIndicatorSquare(true); // Show indicator square for the first client
+					firstClient = null;
+					SetClientServed(false);
+				}
 			}
-		}
 
 		// Timer logic  added KASIA o 3:32 niedziela
-        if (InLine > 0)
-        {
+
             timer += Time.deltaTime;
-            if (timer >= 180f) // 180 seconds = 3 minutes
+            if (timer >= dayTime) // 180 seconds = 3 minutes
             {
-				//soundPlayed = true;
+				if (!soundPlayed) tutorial.ActivateTutorial(6);
+
+				soundPlayed = true;
 				// Play the assigned sound clip
+
 				
                 if (yourSoundClip != null && audioSource != null)
                 {
@@ -111,45 +110,33 @@ public class BarQueue : MonoBehaviour
 					StartCoroutine(UnmuteBackgroundSounds());
 				}
 
-				// Access all clients from the queue and tables
-				List<Client> queueClients = new List<Client>();
-
-				// Get clients from the queue
-				if (queue != null)
-				{
-					queueClients.AddRange(queue);
+				List<Client> allClients = new List<Client>();
+				GameObject[] allGc;
+				allGc = GameObject.FindGameObjectsWithTag("klient");
+				int i = 0;
+				foreach(GameObject g in allGc) {
+					Client c = g.GetComponent<Client>();
+					allClients.Add(c);
+					c.readyToDrink = false;
 				}
-
-				foreach (Client client in queueClients)
-				{
-					client.waiting = false;
-				}
-
-				// Clear the queue after the 3-minute event
 				queue.Clear();
 				InLine = 0;
 
-				// Add clients from all table clients to the allClients list
-				foreach (TableClients table in allTables)
+				while(allClients.Count > 0)
 				{
-					allClients.AddRange(table.clients);
+					Client c = allClients[0];
+					StopCoroutine(c.MoveTo(Vector3.zero));
+					StopCoroutine(c.Drink());
+					allClients.RemoveAt(0);
+					StartCoroutine(c.Die());
 				}
-
-				// Combine clients from the queue and tables
-				allClients.AddRange(queueClients);
-
-				// Perform actions on allClients list
-				foreach (Client client in allClients)
-				{
-					StopCoroutine(client.MoveTo(Vector3.zero));
-					StopCoroutine(client.Drink());
-					StartCoroutine(client.Die());
-				}
+				GameObject mg = GameObject.FindWithTag("GameController");
+            	GameManager managerG  = mg.GetComponent<GameManager>();
+            	managerG.klienciCoS = 0;
 				// Reset the timer after the event
-        		timer = timer - 180f;
+        		timer = timer - dayTime;
 			}
 		
-        }
 	}
 
     private void SetClientsOnPos(){

@@ -19,7 +19,7 @@ public class Client : MonoBehaviour
 
     public bool waiting = false;
 
-    public bool readyToDrink = true;
+    public bool readyToDrink = false;
     private SpriteRenderer _render;
     public bool goingUp = false;
 
@@ -100,9 +100,16 @@ public class Client : MonoBehaviour
 	}
 
     public IEnumerator Die() {
+        if (readyToDrink) {
+            GameObject mg = GameObject.FindWithTag("GameController");
+            GameManager managerG  = mg.GetComponent<GameManager>();
+            if (managerG.klienciCoS == 0) managerG.tutorial.ActivateTutorial(5);
+            managerG.klienciCoS++;
+        }
         float progress = 0f;
 		Vector3 start = transform.position;
-        Vector3 target = transform.position + new Vector3(1,0,0);
+        Vector3 target = transform.position;
+        target.x = -1;
         goingUp = false;
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
@@ -148,6 +155,7 @@ public class Client : MonoBehaviour
     }
 
     private IEnumerator WaitInQueue(BarQueue bar){
+        readyToDrink = true;
         while(timeToWait > 0f && waiting){
             timeToWait -= Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);

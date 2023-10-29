@@ -251,6 +251,7 @@ public class beerPromptSystem : MonoBehaviour
         Debug.Log("Entered a trigger");
         if (collision.gameObject.GetComponent<Client>())
         {
+            if (manager.GetBeers() == 0) tutorial.ActivateTutorial(9);
             if (collision.gameObject.GetComponent<Client>().readyToDrink)
             {
                 collision.gameObject.GetComponent<Client>().readyToDrink = false;
