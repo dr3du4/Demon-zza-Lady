@@ -12,7 +12,7 @@ public class beltAlert : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        alert = GetComponent<Image>();
         isDeamon = bm.deamonExist;
     }
 

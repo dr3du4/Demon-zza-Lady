@@ -28,6 +28,8 @@ public class beerPromptSystem : MonoBehaviour
     public List<beerDispenser> purchasable;
 
     [SerializeField] private FlipCoin EmptyBeer;
+
+    [SerializeField] private Tutorial tutorial;
     // Dictionary of inputs and sprites
     /*[System.Serializable]
     public struct SpritePair
@@ -89,10 +91,13 @@ public class beerPromptSystem : MonoBehaviour
         // Minigame logic
         if (minigameActive)
         {
-            if (sTake.active && Input.GetKeyDown(KeyCode.Q))
-            {
-                SuckSoul();
-                return;
+            if (sTake.active) {
+                if (manager.GetSouls() == 0)tutorial.ActivateTutorial(3);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    SuckSoul();
+                    return;
+                }
             }
             // Check if the time is up for the prompt
             if (Time.time > minigameTimer)
