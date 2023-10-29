@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class gnieciuch : MonoBehaviour
+public class Gnieciuch : MonoBehaviour
 {
 
     GameManager gameManager;

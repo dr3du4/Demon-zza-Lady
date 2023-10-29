@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1139113404713530987}
   - component: {fileID: 7220963561491614513}
-  - component: {fileID: 3027891009703573329}
+  - component: {fileID: 2199360179811427803}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -221,7 +221,7 @@ MonoBehaviour:
   gnieciuchTresholds: 0a000000140000001e000000280000003c000000
   moneyText: {fileID: 0}
   soulsText: {fileID: 0}
---- !u!114 &3027891009703573329
+--- !u!114 &2199360179811427803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,13 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee651e94c267c954a8f6441b69ceb11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfGnieciuch:
-  - {fileID: 7437760735166730990}
-  - {fileID: 1087460358438358973}
-  - {fileID: 5840743393595061629}
-  - {fileID: 1789592723165963483}
-  - {fileID: 5223422623283304216}
-  finishScreen: {fileID: 0}
+  listOfGnieciuch: []
+  finishScreen: {fileID: 7437760735166730990}
 --- !u!1 &5223422623283304216
 GameObject:
   m_ObjectHideFlags: 0

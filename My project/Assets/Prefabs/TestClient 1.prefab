@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: {fileID: 0}
-  beerCount: 0
+  beerCount: 4
   table: {fileID: 0}
   sit: -1
   moveSpeed: 5
@@ -195,8 +195,6 @@ MonoBehaviour:
   waiting: 0
   readyToDrink: 1
   goingUp: 0
-  upSprite: {fileID: 21300000, guid: 510db57df014f96478e98846a967465c, type: 3}
-  downSprite: {fileID: 21300000, guid: 7136cfa58277e3b40910da566e982a58, type: 3}
 --- !u!114 &1015920554517606561
 MonoBehaviour:
   m_ObjectHideFlags: 0
