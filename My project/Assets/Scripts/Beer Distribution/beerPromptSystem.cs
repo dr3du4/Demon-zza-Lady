@@ -150,6 +150,7 @@ public class beerPromptSystem : MonoBehaviour
     {
         Debug.Log("Now serving: " + toServe.beerName + " Got tip: " + tip);
         manager.AddMoney(toServe.beerPrice, tip);
+        manager.AddSoldBeer();
         // Increase client's beer count (with limit of 4)
         currentClient.beerCount = Mathf.Clamp(currentClient.beerCount + 1, 0, 4);
         Transform cObj = currentClient.transform.Find("Beer");
