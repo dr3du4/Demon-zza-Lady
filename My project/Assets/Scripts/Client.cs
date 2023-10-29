@@ -55,6 +55,7 @@ public class Client : MonoBehaviour
     }
 
     public IEnumerator Drink() {
+        if (gameObject == null) yield break;
         float time = Random.Range(20f, 40f);
         while (time > 0f){
 			time -= Time.deltaTime;
@@ -80,12 +81,14 @@ public class Client : MonoBehaviour
     }
 
 	public IEnumerator MoveTo(Vector3 target){
+        if (gameObject == null) yield break; // Check if the object is destroyed
 		float progress = 0f;
 		Vector3 start = transform.position;
 		float dis = Vector3.Distance(start,target);	
         if (target.y > start.y) goingUp = true;
         else goingUp = false;	
 		while (progress < 1f) {
+            if (gameObject == null) yield break; // Check if the object is destroyed
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += moveSpeed * Time.deltaTime / dis;
 			yield return new WaitForSeconds(Time.deltaTime);
@@ -93,11 +96,13 @@ public class Client : MonoBehaviour
 	}
 
     public IEnumerator Die() {
+        if (gameObject == null) yield break; // Check if the object is destroyed
         float progress = 0f;
 		Vector3 start = transform.position;
         Vector3 target = transform.position + new Vector3(1,0,0);
         goingUp = false;
 		while (progress < 1f) {
+            if (gameObject == null) yield break; // Check if the object is destroyed
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += (float)(moveSpeed * Time.deltaTime / 0.5);
 			yield return new WaitForSeconds(Time.deltaTime);
