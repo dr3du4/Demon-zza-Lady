@@ -72,7 +72,8 @@ public class MoveToClick : MonoBehaviour
             }
             else if (!t.IsClient(client))sitPos = t.AddClient(client);
             client.goingUp = false;
-            movingToClick = true;
+            // Bodzio fix
+            //movingToClick = true;
         }
 
         // Bodzio fix 
