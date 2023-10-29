@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BarQueue : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class BarQueue : MonoBehaviour
     public float muteDuration = 2.0f; // Duration to mute the background sounds
 
     private bool isMuting = false;
+
+	private int eventCounter = 1; // Counter to track the 3-minute event occurrences
+    //public Text eventCounterText; // Reference to the Text UI element
 
 	
 	//
@@ -73,15 +77,26 @@ public class BarQueue : MonoBehaviour
         if (InLine > 0)
         {
             timer += Time.deltaTime;
-            if (timer >= 10f && !soundPlayed) // 180 seconds = 3 minutes
+            if (timer >= 180f) // 180 seconds = 3 minutes
             {
-                soundPlayed = true;
+				//soundPlayed = true;
 				// Play the assigned sound clip
 				
                 if (yourSoundClip != null && audioSource != null)
                 {
                     audioSource.PlayOneShot(yourSoundClip, 1.0f);
                 }
+				// Increment the event counter
+				eventCounter++;
+
+				// Output the event counter value to the console log
+        		Debug.Log("Day " + eventCounter);
+
+				/* Display the event counter on the canvas
+				if (eventCounterText != null)
+				{
+					eventCounterText.text = "3-Minute Event Occurrences: " + eventCounter.ToString();
+				}*/
 				
 				            // Mute the background audio sources
 				if (!isMuting && backgroundAudioSources != null)
@@ -105,6 +120,15 @@ public class BarQueue : MonoBehaviour
 					queueClients.AddRange(queue);
 				}
 
+				foreach (Client client in queueClients)
+				{
+					client.waiting = false;
+				}
+
+				// Clear the queue after the 3-minute event
+				queue.Clear();
+				InLine = 0;
+
 				// Add clients from all table clients to the allClients list
 				foreach (TableClients table in allTables)
 				{
@@ -119,6 +143,8 @@ public class BarQueue : MonoBehaviour
 				{
 					StartCoroutine(client.Die());
 				}
+				// Reset the timer after the event
+        		timer = timer - 180f;
 			}
 		
         }
