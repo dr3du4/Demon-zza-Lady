@@ -68,9 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
-        if (souls == 0) tutorial.ActivateTutorial(3);
         souls+=amount;
-
         // Again as above...
     }
 

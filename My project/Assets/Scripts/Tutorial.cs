@@ -14,6 +14,7 @@ public class Tutorial : MonoBehaviour
 
     private void Start() {
         _image = GetComponent<Image>();
+        gameObject.SetActive(false);
     }
 
     public void ActivateTutorial(int i) {
@@ -22,19 +23,25 @@ public class Tutorial : MonoBehaviour
         tutorialText.text = tutorialTexts[i];
         Time.timeScale = 0f;
         lastInt = i;
+        gameObject.SetActive(true);
     }
 
     public void DeactivateTutorial() {
+        gameObject.SetActive(false);
         _image.sprite = null;
         tutorialText.text = "";
         _image.color = new Color32(255,255,255,0);
         Time.timeScale = 1f;
+        Debug.Log("AAAA" + lastInt.ToString());
         switch(lastInt){
             case 0:
                 ActivateTutorial(1);
                 break;
             case 3:
                 ActivateTutorial(4);
+                break;
+            case 7:
+                ActivateTutorial(8);
                 break;
             default:
                 break;

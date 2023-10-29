@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &635075792159634871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7133757886603973681}
+  - component: {fileID: 7499218988222440458}
+  - component: {fileID: 595277951246835962}
+  - component: {fileID: 3396844527691499964}
+  m_Layer: 5
+  m_Name: beltAlert
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7133757886603973681
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635075792159634871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3308439824589904973}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -503, y: -63}
+  m_SizeDelta: {x: 90, y: 138}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7499218988222440458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635075792159634871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6e31b45d2b414594caf779cf85fb3563, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &595277951246835962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635075792159634871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156c9f70411eabe4480122b64738981f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bm: {fileID: 0}
+  alert: {fileID: 7499218988222440458}
+  isDeamon: 0
+--- !u!222 &3396844527691499964
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635075792159634871}
+  m_CullTransparentMesh: 1
 --- !u!1 &2546060417165886390
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,140 +368,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &4547855059608984700
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 852045182895393676}
-  - component: {fileID: 975969815946558865}
-  - component: {fileID: 9019449361112546602}
-  m_Layer: 5
-  m_Name: Text (TMP) (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &852045182895393676
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4547855059608984700}
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3308439824589904973}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.8, y: 523}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &975969815946558865
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4547855059608984700}
-  m_CullTransparentMesh: 1
---- !u!114 &9019449361112546602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4547855059608984700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: ''''
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfaa2d96f1369b144b699a3d46b08f34, type: 2}
-  m_sharedMaterial: {fileID: 8983583216775964030, guid: cfaa2d96f1369b144b699a3d46b08f34, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4636029198755879349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,42 +1272,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.size
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.size
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[0]
       value: " O, widzisz, czytaj\u0105c w ludzkich my\u015Blach, wiem, z kim chc\u0105
-        siedzie\u0107. "
+        siedzie\u0107. Korona oznacza kr\xF3la, he\u0142m ryzerzy, a k\u0142os farmera "
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[1]
-      value: "Wybierz stolik z pasuj\u0105cymi lud\u017Ami - to zawsze gwarantuje
-        wi\u0119cej wypitych trunk\xF3w albo hojniejszy napiwek."
+      value: "Wybierz myszk\u0105 stolik z pasuj\u0105cymi lud\u017Ami - to zawsze
+        gwarantuje wi\u0119cej wypitych trunk\xF3w albo hojniejszy napiwek."
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[2]
       value: "Och to on! Gnieciuch w ko\u0144cu si\u0119 pojawi\u0142. Pojawiaj\u0105
         si\u0119 tylko je\u015Bli poziom pija\u0144stwa w okolicy jest wystarczaj\u0105co
-        wysoki! "
+        wysoki! Odblokowuj\u0105 ulepszenia karczmy"
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[3]
       value: "Ocho, ten ju\u017C powoli wpada w na\u0142\xF3g, nale\u017Cy mi si\u0119
-        cz\u0119\u015B\u0107 jego duszy"
+        cz\u0119\u015B\u0107 jego duszy. Kliknij Q aby pobra\u0107 t\u0105 zap\u0142at\u0119. "
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[4]
       value: "im wi\u0119cej ludzi jest w na\u0142ogu tym wi\u0119ksza szansa, \u017Ce
         b\u0119d\u0119 w stanie sprowadzi\u0107 tu gnieciuchy, najwspanialsze stworzenia
-        kt\xF3re niezb\u0119dne s\u0105 do dalszego funkcjonowania karczmy"
+        kt\xF3re niezb\u0119dne s\u0105 do dalszego funkcjonowania karczmy. Kiedy
+        przycisniesz zbiornik dusz, mo\u017Cesz sprawi\u0107 ile brakuje do odwiedzin.  "
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialTexts.Array.data[5]
-      value: 
+      value: "Je\u015Bli nie obs\u0142u\u017C\u0119 klient\xF3w wystarczaj\u0105co
+        szybko, to wyjd\u0105 z karczmy, je\u015Bli wyjdzie ich wi\u0119cej ni\u017C
+        50 w ci\u0105gu jednej nocy pracy, to znak, \u017Ce nie ma tu nic po mnie
+        i trzeba b\u0119dzie zamkn\u0105\u0107 karczm\u0119. To by\u0142by koniec."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialTexts.Array.data[6]
+      value: "Kiedy s\u0142ysz\u0119 pianie kury to wiem, \u017Ce ludzie musz\u0105
+        wraca\u0107 do pracy i opuszczaj\u0105 karczm\u0119. Ja mam wtedy chwil\u0119
+        dla siebie, ale Ty, kiedy tylko b\u0119dziesz gotowy wci\u015Bnij S i zaczniemy
+        kolejn\u0105 rund\u0119 "
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialTexts.Array.data[7]
+      value: "Be\u0142t pojawia si\u0119 kiedy du\u017Co ludzi na raz w karczmie
+        pije piwo i sprawia, \u017Ce nie trafiaj\u0105 do stolik\xF3w kt\xF3re im
+        przypisujemy, lubi si\u0119 chowa\u0107 mi\u0119dzy sto\u0142ami, wi\u0119c
+        system ochrony karczmy powiadamia nas, \u017Ce wykry\u0142 gdzie\u015B be\u0142ta,
+        \u017Ceby\u015B m\xF3g\u0142 jak najszbciej go przegoni\u0107"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialTexts.Array.data[8]
+      value: "BE\u0141T! Przesta\u0144 psu\u0107 mi interes, nie widzisz, \u017Ce
+        przez ciebie tylko gorzej mi idzie? Id\u017A sobie znale\u017A\u0107 swoje
+        ofiary! Klikaj\u0105c 5 razy myszk\u0105 przegnoisz go"
       objectReference: {fileID: 0}
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.data[0]
@@ -1375,7 +1357,19 @@ PrefabInstance:
     - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: tutorialSprites.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: e5c6b36bb90564f469b87823c4e64ac9, type: 3}
+      objectReference: {fileID: 21300000, guid: 1358286e42570d44da372d46386fd64f, type: 3}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b5186c18ebbd264583ed6b3ad94c43b, type: 3}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 552364ce1ed1b524d9c1a6fc1efb7515, type: 3}
+    - target: {fileID: 8069504772758719553, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
+      propertyPath: tutorialSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c3210c8aeb3a9540a7f7579b07fb836, type: 3}
     - target: {fileID: 8406647241426170692, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.8
@@ -1404,11 +1398,11 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1325135736880833234, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1090212225989478944}
+      insertIndex: 3
+      addedObject: {fileID: 7133757886603973681}
     - targetCorrespondingSourceObject: {fileID: 1325135736880833234, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 852045182895393676}
+      insertIndex: 4
+      addedObject: {fileID: 1090212225989478944}
     - targetCorrespondingSourceObject: {fileID: 3690019075006274235, guid: c0e928af4ce57ab449c886934ef7bb78, type: 3}
       insertIndex: -1
       addedObject: {fileID: 219264122407730575}
