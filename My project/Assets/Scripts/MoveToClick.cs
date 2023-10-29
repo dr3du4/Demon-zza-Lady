@@ -18,9 +18,11 @@ public class MoveToClick : MonoBehaviour
     public bool isDeamon = false;
     public bool reach = false;
     public float dynamicDistance = 20f;
-    private Vector3 sitPos;
-    bool movingToClick = false;
+    // Bodzio fix
+    /*private Vector3 sitPos;
+    bool movingToClick = false;*/
 
+    private Vector3 sitPos = new Vector3(0,0,0);
 
     private void Start()
     {
@@ -63,18 +65,21 @@ public class MoveToClick : MonoBehaviour
             }
             distanceToStol = helper;
             Debug.Log(distanceToStol);
-            if (!stol.GetComponent<TableClients>().active) {
+            TableClients t = stol.GetComponent<TableClients>();
+            if (!t.active) {
                 distanceToStol = 100f;
                 return;
             }
-            client.waiting = false;
-            sitPos = stol.GetComponent<TableClients>().AddClient(client);
+            else if (!t.IsClient(client))sitPos = t.AddClient(client);
             client.goingUp = false;
             movingToClick = true;
         }
 
-        if (distanceToStol <= proximityDistance & !reach)
-        {
+        // Bodzio fix 
+        /*if (distanceToStol <= proximityDistance & !reach)
+        {*/
+        if (sitPos != Vector3.zero)
+        {   
             client.waiting = false;
             //Debug.Log("mozesz podejsc");
             Debug.Log(sitPos);
@@ -84,7 +89,8 @@ public class MoveToClick : MonoBehaviour
             if (dynamicDistance < 0.3f)
             {
                 reach = true;
-                if (client.sit > 0 && client.sit < 3) client.goingUp = true;
+                // Bodzio fix
+                /*if (client.sit > 0 && client.sit < 3) client.goingUp = true;
                 else client.goingUp = false;
             }
 
@@ -94,7 +100,11 @@ public class MoveToClick : MonoBehaviour
         {
             //StartCoroutine(client.Die());
             client.waiting = true;
-            movingToClick = false;
+            movingToClick = false;*/
+                sitPos = new Vector3(0,0,0);
+                if(client.sit > 0 && client.sit < 3) client.goingUp = true;
+                else client.goingUp = false;
+            }           
         }
     }
 }

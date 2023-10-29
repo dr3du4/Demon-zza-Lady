@@ -16,3 +16,5 @@ MonoBehaviour:
   clientTypeName: Adrian
   beerPreference: {fileID: 11400000, guid: 7ad46ad351c2f11499684c4a442ddaa8, type: 2}
   companyPreference: 0200000001000000
+  upSprite: {fileID: 21300000, guid: 2ebfcfcba6dc3c24f9981480d51272c7, type: 3}
+  downSprite: {fileID: 21300000, guid: 7136cfa58277e3b40910da566e982a58, type: 3}
