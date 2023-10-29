@@ -6,6 +6,7 @@ TagManager:
   tags:
   - chair
   - Bar
+  - belt
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - piwosz
   - 
   - 
   - 
