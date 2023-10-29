@@ -11,22 +11,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
-    int money;
-    int souls;
-    int gnieciuchy;
+    int money = 0;
+    int souls = 0;
+    int gnieciuchy = 0;
 
-    gnieciuch g;
+    public int sprzedanepiwa;
+
+    Gnieciuch g;
+    
 
     private void Start()
     {
-        g = GetComponent<gnieciuch>();
+        g = GetComponent<Gnieciuch>();
     }
 
-    public GameManager(int _money, int _souls, int _gnieciuchy) 
+    public GameManager(int _money, int _souls, int _gnieciuchy, int _sprzedanepiwa) 
     {
         money = _money;
         souls = _souls;
         gnieciuchy = _gnieciuchy;
+        sprzedanepiwa = _sprzedanepiwa;
     }
 
     private void Update()
@@ -73,7 +77,10 @@ public class GameManager : MonoBehaviour
     public int GetMoney() { return money; }
     public int GetSouls() { return souls; }
 
-
+    public void AddSoldBeer()
+    {
+        sprzedanepiwa++;
+    }
     void UpdateUI()
     {
         moneyText.SetText(money.ToString());
