@@ -9,9 +9,9 @@ public class ClientsSpawn : MonoBehaviour
     [SerializeField] GameObject clientPrefab;
 
     float timer = 5.0f;
-    float delayMax = 15f;
+    float delayMax = 10f;
     private void Update() {
-        //if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientTypes.Count));
+        // if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientTypes.Count));
         if (Time.time > timer)
         {
             SpawnClient(Random.Range(0, clientTypes.Count));

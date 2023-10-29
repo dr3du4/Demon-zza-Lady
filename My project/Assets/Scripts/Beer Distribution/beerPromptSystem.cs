@@ -92,7 +92,6 @@ public class beerPromptSystem : MonoBehaviour
         if (minigameActive)
         {
             if (sTake.active) {
-                if (manager.GetSouls() == 0)tutorial.ActivateTutorial(3);
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     SuckSoul();

@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
+        Debug.Log("SOUL");
         if(souls == 0)
             tutorial.ActivateTutorial(3);
 
