@@ -78,7 +78,8 @@ public class Client : MonoBehaviour
         readyToDrink = wantMore();
         
         //Iść i zdecydować co dalej
-        mtc.reach = false;
+        if(mtc)
+            mtc.reach = false;
         staryWstal = true;
         if (readyToDrink) {
             GameObject barGameObject = GameObject.FindWithTag("Bar");

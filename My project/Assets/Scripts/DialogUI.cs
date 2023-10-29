@@ -48,7 +48,7 @@ public class DialogUI : MonoBehaviour
 
         }
         CloseDialogueBox();
-        SceneManager.LoadScene("Scenes/TheGame");
+        SceneManager.LoadScene("Scenes/Main");
     }
 
     public void ShowDialogue(DialogObject dialogueObject)
