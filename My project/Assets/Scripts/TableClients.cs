@@ -55,9 +55,7 @@ public class TableClients : MonoBehaviour
         clients.Remove(c);
         clientsCount--;
         sits.Add(c.sit);
-        if (clientsCount < 4) {
-            active = true;
-        }
+        active = true;
     }
 
     public bool IsClient(Client c) {
