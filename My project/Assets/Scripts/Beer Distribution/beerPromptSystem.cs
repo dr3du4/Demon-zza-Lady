@@ -151,7 +151,7 @@ public class beerPromptSystem : MonoBehaviour
         currentClient = client;
         if (currentClient && currentClient.beerCount < 1)
         {
-            Debug.Log("Obs�ugujemy: " + currentClient._type.clientTypeName);
+            // Debug.Log("Obs�ugujemy: " + currentClient._type.clientTypeName);
 
             // Random preference
             int i = Random.Range(0, beers.Count - 1);
@@ -162,6 +162,8 @@ public class beerPromptSystem : MonoBehaviour
         else if (currentClient)
         {
             sTake.EnableButton();
+            if(manager.GetSouls() == 0)
+                tutorial.ActivateTutorial(3);
         }
 
 
@@ -198,7 +200,7 @@ public class beerPromptSystem : MonoBehaviour
             StartCoroutine(currentClient.Die()); // That can be replaced if we get a cool anim
         currentClient = null;
         nextServe = null;
-        bar.SetClientServed(true);
+        // bar.SetClientServed(true);
         bar.RemoveFirstClient();
         sTake.DisableButton();
         minigameActive = false;

@@ -115,8 +115,7 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
-        if(souls == 0)
-            tutorial.ActivateTutorial(3);
+        
 
 
         if(souls < gnieciuchTresholds[gnieciuchTresholds.Count-1])
