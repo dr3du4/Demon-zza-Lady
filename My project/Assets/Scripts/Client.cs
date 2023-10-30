@@ -72,7 +72,7 @@ public class Client : MonoBehaviour
         float time = Random.Range(20f, 40f);
         while (time > 0f){
 			time -= Time.deltaTime;
-			yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
 			//Dodać animacje pasek
 		}
         if (dayOver) // SPRAWDZIĆ KTO DO CHUJA ODPALA TĄ KURUTYNĘ
@@ -108,7 +108,7 @@ public class Client : MonoBehaviour
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += moveSpeed * Time.deltaTime / dis;
-			yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
 		}
 	}
 
@@ -116,7 +116,7 @@ public class Client : MonoBehaviour
         if (preferenceHelper.PreferencesActive())
             preferenceHelper.HidePreferences();
 
-        if (beerCount <= 1) {
+        if (beerCount == 0) {
         GameObject mg = GameObject.FindWithTag("GameController");
         GameManager managerG  = mg.GetComponent<GameManager>();
         if (managerG.klienciCoS == 0) managerG.GetTutorial().ActivateTutorial(5);
@@ -130,7 +130,7 @@ public class Client : MonoBehaviour
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += (float)(moveSpeed * Time.deltaTime / 0.5);
-			yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
 		}
         progress = 0f;
 		start = target;
@@ -138,7 +138,7 @@ public class Client : MonoBehaviour
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += (float)(moveSpeed * Time.deltaTime / 5.5);
-			yield return new WaitForSeconds(Time.deltaTime);
+			yield return null;
 		}
         Destroy(this.gameObject);
     }
@@ -152,7 +152,7 @@ public class Client : MonoBehaviour
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
 			progress += (float)(moveSpeed * Time.deltaTime / 1.5);
-			yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
 		}
         progress = 0f;
 		start = target;
@@ -175,7 +175,7 @@ public class Client : MonoBehaviour
         readyToDrink = true;
         while(timeToWait > 0f && waiting){
             timeToWait -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
         }
         ShowIndicatorSquare(false);
         

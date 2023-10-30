@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900b095dfbd3fe4d9d74fe4c8ec6aa5, type: 3}
+  m_Name: SadzanieKlient
+  m_EditorClassIdentifier: 
+  id: 0
+  tutorialSprite: {fileID: 21300000, guid: fe96c0a649db0d548ad7c58d9b011f68, type: 3}
+  tutorialText: " O, widzisz, czytaj\u0105c w ludzkich my\u015Blach, wiem, z kim
+    chc\u0105 siedzie\u0107. Korona oznacza kr\xF3la, he\u0142m ryzerzy, a k\u0142os
+    farmera."
+  nextTutorial: 1

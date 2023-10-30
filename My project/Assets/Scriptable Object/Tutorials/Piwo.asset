@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900b095dfbd3fe4d9d74fe4c8ec6aa5, type: 3}
+  m_Name: Piwo
+  m_EditorClassIdentifier: 
+  id: 9
+  tutorialSprite: {fileID: 21300000, guid: 05a4f5f0cf0b44e48ae53da33c285712, type: 3}
+  tutorialText: "Klienci m\xF3wi\u0105 jakie piwo preferuj\u0105, musisz wybra\u0107
+    odpowiedni\u0105 cyfr\u0119 na klawiaturz\u0119 1/2/3. Je\u015Bli zrobisz to
+    szybko, dadz\u0105 napiwek, a pieni\u0105dze zawsze si\u0119 do czego\u015B przydadz\u0105"
+  nextTutorial: -1

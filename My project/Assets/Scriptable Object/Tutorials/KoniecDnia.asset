@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900b095dfbd3fe4d9d74fe4c8ec6aa5, type: 3}
+  m_Name: KoniecDnia
+  m_EditorClassIdentifier: 
+  id: 6
+  tutorialSprite: {fileID: 21300000, guid: 8b5186c18ebbd264583ed6b3ad94c43b, type: 3}
+  tutorialText: "Kiedy s\u0142ysz\u0119 pianie kury to wiem, \u017Ce ludzie musz\u0105
+    wraca\u0107 do pracy i opuszczaj\u0105 karczm\u0119. Ja mam wtedy chwil\u0119
+    dla siebie, ale Ty, kiedy tylko b\u0119dziesz gotowy wci\u015Bnij S i zaczniemy
+    kolejn\u0105 rund\u0119 "
+  nextTutorial: -1
