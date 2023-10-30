@@ -92,7 +92,6 @@ public class beerPromptSystem : MonoBehaviour
         if (minigameActive)
         {
             if (sTake.active) {
-                if (manager.GetSouls() == 0)tutorial.ActivateTutorial(3);
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     SuckSoul();
@@ -116,7 +115,7 @@ public class beerPromptSystem : MonoBehaviour
             // Check if you pressed any of the keys assigned to any of the beer selections 
             foreach (KeyValuePair<beerDispenser, KeyCode> pair in randomKeys)
             {
-                if (Input.GetKey(pair.Value) && currentClient.beerCount < 2)
+                if (Input.GetKey(pair.Value) && currentClient.beerCount < 1)
                 {
                     // Assign the next beer to serve
                     nextServe = pair.Key.beer;
@@ -150,7 +149,7 @@ public class beerPromptSystem : MonoBehaviour
     {
         // Assign the client currently being served
         currentClient = client;
-        if (currentClient && currentClient.beerCount < 2)
+        if (currentClient && currentClient.beerCount < 1)
         {
             Debug.Log("Obs�ugujemy: " + currentClient._type.clientTypeName);
 

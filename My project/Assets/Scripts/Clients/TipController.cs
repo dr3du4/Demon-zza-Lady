@@ -20,7 +20,7 @@ public class TipController : MonoBehaviour
 
     public void spawnTip(int tipAmount)
     {
-        tutorial.CheckTipTutorial();
+        // tutorial.CheckTipTutorial();
         Debug.Log("Spawn tip called");
         int i = Random.Range(0, tips.Count);
         if(!tips[i].activeInHierarchy)

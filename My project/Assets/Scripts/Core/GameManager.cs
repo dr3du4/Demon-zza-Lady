@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
+    public GameObject mainMenu;
+    public GameObject credits;
+    public GameObject tuts;
+
     int money = 0;
     int souls = 0;
     int gnieciuchy = 0;
@@ -24,6 +28,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         g = GetComponent<Gnieciuch>();
+        Debug.Log(mainMenu);
+        Debug.Log(credits);
+        Debug.Log(tuts);
     }
 
     public GameManager(int _money, int _souls, int _gnieciuchy, int _sprzedanepiwa) 
@@ -86,7 +93,11 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
-        souls+=amount;
+        Debug.Log("SOUL");
+        if(souls == 0)
+            tutorial.ActivateTutorial(3);
+
+        souls += amount;
         // Again as above...
     }
 
@@ -106,5 +117,47 @@ public class GameManager : MonoBehaviour
     {
         moneyText.SetText(money.ToString());
         soulsText.SetText(souls.ToString());
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        mainMenu.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        mainMenu.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void CreditsOpen()
+    {
+        credits.SetActive(true);
+    }
+
+    public void CreditsClose()
+    {
+        credits.SetActive(false);
+    }
+
+    public void Tut(int i)
+    {
+        tutorial.ActivateTutorial(i);
+    }
+
+    public void TutsOpen()
+    {
+        tuts.SetActive(true);
+    }
+
+    public void TutsClose()
+    {
+        tuts.SetActive(false);
     }
 }

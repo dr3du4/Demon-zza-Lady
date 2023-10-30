@@ -8,7 +8,7 @@ public class SceneChan : MonoBehaviour
     public bool firstTime = true;
 
     private void Awake() {
-        firstTime = intToBool(PlayerPrefs.GetInt("First"));
+        //firstTime = intToBool(PlayerPrefs.GetInt("First"));
     }
 
     public void StartGame()
@@ -24,10 +24,11 @@ public class SceneChan : MonoBehaviour
     private void LoadGameScene()
     {
         if (firstTime){
+            Debug.Log(":O");
             PlayerPrefs.SetInt("First", 0); 
             SceneManager.LoadScene("Scenes/poczatek");
         }
-        else SceneManager.LoadScene("Scenes/TheGame");
+        else SceneManager.LoadScene("Scenes/Main");
     }
 
     private void QuitApplication()

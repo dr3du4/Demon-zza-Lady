@@ -8,6 +8,7 @@ TagManager:
   - Bar
   - belt
   - klient
+  - FlipCoin
   layers:
   - Default
   - TransparentFX

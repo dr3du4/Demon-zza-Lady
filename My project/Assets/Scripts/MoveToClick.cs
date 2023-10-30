@@ -35,7 +35,7 @@ public class MoveToClick : MonoBehaviour
 
         if (client.waiting && Input.GetMouseButtonDown(1))
         {
-
+            freePlace = GameObject.FindGameObjectsWithTag("chair");
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
             // Sprawdzenie odległości między target a stol
