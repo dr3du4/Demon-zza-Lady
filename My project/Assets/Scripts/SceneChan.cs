@@ -26,9 +26,9 @@ public class SceneChan : MonoBehaviour
         if (firstTime){
             Debug.Log(":O");
             PlayerPrefs.SetInt("First", 0); 
-            SceneManager.LoadScene("Scenes/poczatek");
+            SceneManager.LoadScene("Scenes/Ship/poczatek");
         }
-        else SceneManager.LoadScene("Scenes/Main");
+        else SceneManager.LoadScene("Scenes/Ship/Main");
     }
 
     private void QuitApplication()

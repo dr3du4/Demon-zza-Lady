@@ -26,6 +26,11 @@ public class Client : MonoBehaviour
     private List<clientTypeSO.ClientType> companyPreferences;
     public bool staryWstal = false;
     public preferenceHelper preferenceHelper;
+
+    // Bool that is set right before we kill everyone when the day is over (so that no other object tries to do a coroutine on our guys)
+    public bool dayOver = false;
+
+
     private void Start(){
         _render = GetComponent<SpriteRenderer>();
         RandTimeToWait();
@@ -70,6 +75,8 @@ public class Client : MonoBehaviour
 			yield return new WaitForSeconds(Time.deltaTime);
 			//Dodać animacje pasek
 		}
+        if (dayOver) // SPRAWDZIĆ KTO DO CHUJA ODPALA TĄ KURUTYNĘ
+            yield break;
         Transform cObj = transform.Find("Beer");
         cObj.gameObject.SetActive(false);
         table.TakeClient(this.gameObject.GetComponent<Client>());
@@ -86,7 +93,8 @@ public class Client : MonoBehaviour
             BarQueue bar = barGameObject.GetComponent<BarQueue>();
             bar.ForceClient(this);
         } else {
-            StartCoroutine(GoOut());
+            if(!dayOver)
+                StartCoroutine(GoOut());
         }
 
     }
@@ -105,10 +113,13 @@ public class Client : MonoBehaviour
 	}
 
     public IEnumerator Die() {
+        if (preferenceHelper.PreferencesActive())
+            preferenceHelper.HidePreferences();
+
         if (beerCount <= 1) {
         GameObject mg = GameObject.FindWithTag("GameController");
         GameManager managerG  = mg.GetComponent<GameManager>();
-        if (managerG.klienciCoS == 0) managerG.tutorial.ActivateTutorial(5);
+        if (managerG.klienciCoS == 0) managerG.GetTutorial().ActivateTutorial(5);
         managerG.klienciCoS++;
         }
         float progress = 0f;
@@ -156,7 +167,8 @@ public class Client : MonoBehaviour
 
     public void StartTimer(BarQueue bar) {
         waiting = true;
-        StartCoroutine(WaitInQueue(bar));
+        if(!dayOver)
+            StartCoroutine(WaitInQueue(bar));
     }
 
     private IEnumerator WaitInQueue(BarQueue bar){
@@ -170,7 +182,8 @@ public class Client : MonoBehaviour
         // Jeśli wybierzesz stół daj waiting FALSE
         bar.RemoveFirstClient();
         if (waiting) {
-            StartCoroutine(Die());
+            if(!dayOver)
+                StartCoroutine(Die());
             waiting = false;
         }
     }

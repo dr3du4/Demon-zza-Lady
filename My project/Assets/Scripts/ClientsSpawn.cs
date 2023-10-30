@@ -10,6 +10,7 @@ public class ClientsSpawn : MonoBehaviour
 
     float timer = 5.0f;
     float delayMax = 10f;
+
     private void Update() {
         // if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientTypes.Count));
         if (Time.time > timer)
@@ -18,9 +19,14 @@ public class ClientsSpawn : MonoBehaviour
             timer += Random.Range(3f, delayMax);
         }
         }
-        private void SpawnClient(int i){
+    private void SpawnClient(int i){
         Client c = Instantiate(clientPrefab,transform.position, transform.rotation).GetComponent<Client>();
         c.setType(clientTypes[i]);
         bar.AddClient(c);
+    }
+
+    public void NextDay()
+    {
+        timer = Time.time + delayMax;
     }
 }

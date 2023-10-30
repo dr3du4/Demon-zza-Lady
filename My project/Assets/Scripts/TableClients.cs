@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class TableClients : MonoBehaviour
 {
-    private int clientsCount = 0;
+    [SerializeField]private int clientsCount = 0;
     public bool active = true;
     public List<Client> clients = new List<Client>();
-    private List<int> sits = new List<int>();
+    [SerializeField]private List<int> sits = new List<int>();
     private List<Vector3> positionSits = new List<Vector3>();
     // (1,1) (1,-1) (-1,-1) (-1,1)
     private Vector3 pos;
 
     private void Start(){
-        pos = transform.position;
-        for (int i = 0; i < 4; i++) {
-            sits.Add(i);
-        }
-        positionSits.Add(pos + new Vector3(1, 1, 0));
-        positionSits.Add(pos + new Vector3(1, -1, 0));
-        positionSits.Add(pos + new Vector3(-1, -1, 0));
-        positionSits.Add(pos + new Vector3(-1, 1, 0));
+        RestartTable();
     }
+
+
+    // Fix, because the table was inactive after the day is over, later on probably create a function "DayOver" or smth to setup the table again
+    private void Update()
+    {
+        if (clientsCount < 4 && !active)
+            active = true;
+    }
+
 
     public Vector3 AddClient(Client new_c) {
         Debug.Log("PUT IN");
@@ -35,7 +37,12 @@ public class TableClients : MonoBehaviour
         new_c.sit = sits[0];
         //Daj pozycje dla klienta  positionSits[sits[0]]
         sits.RemoveAt(0);
-        StartCoroutine(new_c.Drink());
+        if (!new_c.dayOver)
+        {
+            Debug.Log("i'm in table clients!");
+            Debug.Log(new_c);
+            StartCoroutine(new_c.Drink());
+        }
         if (clientsCount > 3) {
             active = false;
         }
@@ -55,5 +62,18 @@ public class TableClients : MonoBehaviour
 
     public bool IsClient(Client c) {
         return clients.Contains(c);
+    }
+
+    public void RestartTable()
+    {
+        sits = new List<int>() {0, 1, 2, 3};
+        pos = transform.position;
+        positionSits.Add(pos + new Vector3(1, 1, 0));
+        positionSits.Add(pos + new Vector3(1, -1, 0));
+        positionSits.Add(pos + new Vector3(-1, -1, 0));
+        positionSits.Add(pos + new Vector3(-1, 1, 0));
+        clients = new List<Client>();
+        clientsCount = 0;
+        active = true;
     }
 }

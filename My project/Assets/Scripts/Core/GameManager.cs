@@ -6,8 +6,13 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public BarQueue bar;
+    public ClientsSpawn spawner;
+    public float dayLength = 180f;
+    float dayTimer = 0.0f;
+
     public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 50 };
-    public Tutorial tutorial;
+    private Tutorial tutorial;
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
@@ -28,9 +33,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         g = GetComponent<Gnieciuch>();
-        Debug.Log(mainMenu);
-        Debug.Log(credits);
-        Debug.Log(tuts);
+        // Debug.Log(mainMenu);
+        // Debug.Log(credits);
+        // Debug.Log(tuts);
+        dayTimer = Time.time + dayLength;
+        tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
     }
 
     public GameManager(int _money, int _souls, int _gnieciuchy, int _sprzedanepiwa) 
@@ -54,11 +61,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // CHEATS
         if (Input.GetKeyDown(KeyCode.M))
             MoneyCheat();
 
         if (Input.GetKeyDown(KeyCode.K))
             SoulCheat();
+        // CHEATS
+
+        if (Time.time > dayTimer)
+        {
+            Debug.Log(Time.time);
+            Debug.Log(dayTimer);
+            // Restart day
+            Debug.Log("new day!");
+            dayTimer = Time.time + dayLength;
+            NextDay();
+        }
+        else if (Time.time + 4f >= dayTimer) // 4 seconds before the end of the day spawner should stop spawning (so we don't spawn a new Client when the end of the day happens)
+            spawner.NextDay();
+
 
         if (souls >= gnieciuchTresholds[Mathf.Clamp(gnieciuchy, 0, gnieciuchTresholds.Count - 1)] && souls <= gnieciuchTresholds[gnieciuchTresholds.Count-1])
         {
@@ -69,12 +91,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-            //souls += 5;
 
         UpdateUI();
     }
 
+    public Tutorial GetTutorial() { return tutorial;}
+    
     public bool Pay(int price)
     {
         if (money < price)
@@ -119,6 +141,23 @@ public class GameManager : MonoBehaviour
         moneyText.SetText(money.ToString());
         soulsText.SetText(souls.ToString());
     }
+
+    void NextDay()
+    {
+        Debug.Log("Next day!");
+        // spawner.NextDay();
+        bar.NextDay();
+        //TEMP-> MOVE THAT TO GAME MANAGER ~Bodzio
+        GameObject.FindGameObjectWithTag("beerPromptSystem").GetComponent<beerPromptSystem>().NewDay();
+
+        foreach(GameObject table in GameObject.FindGameObjectsWithTag("chair"))
+        {
+            // Debug.Log(table.name);
+            if(table.activeInHierarchy && table.TryGetComponent<TableClients>(out TableClients tb))
+                tb.RestartTable();
+        }
+    }
+
 
     public void Pause()
     {

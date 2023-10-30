@@ -29,7 +29,7 @@ public class beerPromptSystem : MonoBehaviour
 
     [SerializeField] private FlipCoin EmptyBeer;
 
-    [SerializeField] private Tutorial tutorial;
+    private Tutorial tutorial;
     // Dictionary of inputs and sprites
     /*[System.Serializable]
     public struct SpritePair
@@ -63,8 +63,7 @@ public class beerPromptSystem : MonoBehaviour
         {
             keySprites.Add(pair.key, pair.image);
         }*/
-
-        
+        tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
         UpdateBinds();
     }
 
@@ -103,10 +102,11 @@ public class beerPromptSystem : MonoBehaviour
             {
                 GameObject mg = GameObject.FindWithTag("GameController");
                 GameManager managerG  = mg.GetComponent<GameManager>();
-                if (managerG.klienciCoS == 0) managerG.tutorial.ActivateTutorial(5);
+                if (managerG.klienciCoS == 0) managerG.GetTutorial().ActivateTutorial(5);
                 managerG.klienciCoS++;
                 minigameActive = false; // Some fail condition
-                StartCoroutine(currentClient.Die());
+                if(!currentClient.dayOver)
+                    StartCoroutine(currentClient.Die());
                 bar.RemoveFirstClient();
                 if (sTake.active)
                     sTake.DisableButton();
@@ -194,7 +194,8 @@ public class beerPromptSystem : MonoBehaviour
         sTake.PlaySoulTakingAnim();
         manager.AddSoul(1);
         currentClient.Soulless();
-        StartCoroutine(currentClient.Die()); // That can be replaced if we get a cool anim
+        if(!currentClient.dayOver)
+            StartCoroutine(currentClient.Die()); // That can be replaced if we get a cool anim
         currentClient = null;
         nextServe = null;
         bar.SetClientServed(true);
@@ -268,5 +269,16 @@ public class beerPromptSystem : MonoBehaviour
                 InitPrompt(collision.gameObject.GetComponent<Client>());
             }
         }
+    }
+
+    public void NewDay()
+    {
+        UpdateBinds();
+        currentClient = null;
+        minigameActive = false;
+        nextServe = null;
+        if(sTake.active)
+            sTake.DisableButton();
+        preferencePrompt.HidePreference();
     }
 }
