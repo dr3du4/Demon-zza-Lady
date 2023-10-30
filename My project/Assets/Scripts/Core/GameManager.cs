@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 60 };
+    public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 50 };
     public Tutorial tutorial;
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
@@ -93,11 +93,12 @@ public class GameManager : MonoBehaviour
 
     public void AddSoul(int amount = 1)
     {
-        Debug.Log("SOUL");
         if(souls == 0)
             tutorial.ActivateTutorial(3);
 
-        souls += amount;
+
+        if(souls < gnieciuchTresholds[gnieciuchTresholds.Count-1])
+            souls += amount;
         // Again as above...
     }
 
