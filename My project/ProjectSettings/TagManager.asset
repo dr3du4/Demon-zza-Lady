@@ -10,6 +10,7 @@ TagManager:
   - klient
   - FlipCoin
   - beerPromptSystem
+  - Tutorial
   layers:
   - Default
   - TransparentFX
