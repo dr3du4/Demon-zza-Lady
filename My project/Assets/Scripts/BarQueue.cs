@@ -39,7 +39,7 @@ public class BarQueue : MonoBehaviour
 	private int eventCounter = 1; // Counter to track the 3-minute event occurrences
     //public Text eventCounterText; // Reference to the Text UI element
 
-	[SerializeField]private Tutorial tutorial;
+	private Tutorial tutorial;
 	//
 
 
@@ -48,6 +48,7 @@ public class BarQueue : MonoBehaviour
 
 	private void Start()
 	{
+		tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
 		day.text = "Dzien: "+ eventCounter.ToString();
 		first = transform.position += offSetFirst;
 		//added KASIA 3rano

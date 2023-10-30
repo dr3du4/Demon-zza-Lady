@@ -19,7 +19,7 @@ public class TipController : MonoBehaviour
 
     public void spawnTip(int tipAmount)
     {
-        manager.tutorial.CheckTipTutorial();
+        manager.GetTutorial().CheckTipTutorial();
         int i = Random.Range(0, tips.Count);
         if(!tips[i].activeInHierarchy)
             tips[i].SetActive(true);

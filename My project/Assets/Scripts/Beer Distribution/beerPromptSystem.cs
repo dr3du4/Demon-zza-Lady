@@ -29,7 +29,7 @@ public class beerPromptSystem : MonoBehaviour
 
     [SerializeField] private FlipCoin EmptyBeer;
 
-    [SerializeField] private Tutorial tutorial;
+    private Tutorial tutorial;
     // Dictionary of inputs and sprites
     /*[System.Serializable]
     public struct SpritePair
@@ -63,8 +63,7 @@ public class beerPromptSystem : MonoBehaviour
         {
             keySprites.Add(pair.key, pair.image);
         }*/
-
-        
+        tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
         UpdateBinds();
     }
 
@@ -103,7 +102,7 @@ public class beerPromptSystem : MonoBehaviour
             {
                 GameObject mg = GameObject.FindWithTag("GameController");
                 GameManager managerG  = mg.GetComponent<GameManager>();
-                if (managerG.klienciCoS == 0) managerG.tutorial.ActivateTutorial(5);
+                if (managerG.klienciCoS == 0) managerG.GetTutorial().ActivateTutorial(5);
                 managerG.klienciCoS++;
                 minigameActive = false; // Some fail condition
                 if(!currentClient.dayOver)

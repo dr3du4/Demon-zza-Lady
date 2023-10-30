@@ -6,7 +6,7 @@ using UnityEngine;
 public class beltManager : MonoBehaviour
 {
     public GameManager gm;
-    [SerializeField] private Tutorial tutorial;
+    private Tutorial tutorial;
     public GameObject[] belts;
     private Vector3 target;
     public GameObject belt;
@@ -22,6 +22,7 @@ public class beltManager : MonoBehaviour
         amountOfPeople = gm.sprzedanepiwa;
         target = transform.position;
         belts=GameObject.FindGameObjectsWithTag("belt");    
+        tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
     }
 
     // Update is called once per frame
