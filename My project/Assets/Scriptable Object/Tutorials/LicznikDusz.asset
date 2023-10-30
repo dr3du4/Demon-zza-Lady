@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c900b095dfbd3fe4d9d74fe4c8ec6aa5, type: 3}
+  m_Name: LicznikDusz
+  m_EditorClassIdentifier: 
+  id: 4
+  tutorialSprite: {fileID: 21300000, guid: 8de767045aecc7342a467070bfaef22e, type: 3}
+  tutorialText: "im wi\u0119cej ludzi jest w na\u0142ogu tym wi\u0119ksza szansa,
+    \u017Ce b\u0119d\u0119 w stanie sprowadzi\u0107 tu gnieciuchy, najwspanialsze
+    stworzenia kt\xF3re niezb\u0119dne s\u0105 do dalszego funkcjonowania karczmy.
+    Kiedy przycisniesz zbiornik dusz, mo\u017Cesz sprawi\u0107 ile brakuje do odwiedzin.  "
+  nextTutorial: -1
