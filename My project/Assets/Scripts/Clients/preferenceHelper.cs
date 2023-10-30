@@ -11,7 +11,7 @@ public class preferenceHelper : MonoBehaviour
         public Sprite sprite;
     }
 
-
+    bool isActive = false;
     public List<typeSprite> typeSprites;
     Dictionary<clientTypeSO.ClientType, Sprite> _typeSprites = new Dictionary<clientTypeSO.ClientType, Sprite>();
 
@@ -35,12 +35,19 @@ public class preferenceHelper : MonoBehaviour
             icons[i].sprite = _typeSprites[types[i]];
             i++;
         }
+        isActive = true;
     }
 
     public void HidePreferences()
     {
         foreach (SpriteRenderer sprite in icons)
             sprite.gameObject.SetActive(false);
+        isActive = false;
+    }
+
+    public bool PreferencesActive()
+    {
+        return isActive;
     }
 
 }

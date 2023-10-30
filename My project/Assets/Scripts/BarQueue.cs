@@ -16,7 +16,7 @@ public class BarQueue : MonoBehaviour
 	private Client firstClient = null;
 	private float timerClient;
 	private Vector3 first;
-	
+
 
 	bool clientServed = false;
 	
@@ -76,73 +76,19 @@ public class BarQueue : MonoBehaviour
 
 		// Timer logic  added KASIA o 3:32 niedziela
 
-            timer += Time.deltaTime;
+        /*    timer += Time.deltaTime;
             if (timer >= dayTime) // 180 seconds = 3 minutes
             {
-				if (!soundPlayed) tutorial.ActivateTutorial(6);
-
-				soundPlayed = true;
-				// Play the assigned sound clip
-
-				
-                if (yourSoundClip != null && audioSource != null)
-                {
-                    audioSource.PlayOneShot(yourSoundClip, 1.0f);
-                }
-				// Increment the event counter
-				eventCounter++;
-
-				// Output the event counter value to the console log
-				day.text = "Dzien: "+eventCounter.ToString();
-				
-        		Debug.Log("Day " + eventCounter);
-				
-				            // Mute the background audio sources
-				if (!isMuting && backgroundAudioSources != null)
-				{
-					isMuting = true;
-
-					foreach (AudioSource audioSource in backgroundAudioSources)
-					{
-						audioSource.volume = 0.2f; // Adjust the volume to a lower level or set to 0 for muting
-					}
-
-					StartCoroutine(UnmuteBackgroundSounds());
-				}
-
-				List<Client> allClients = new List<Client>();
-				GameObject[] allGc;
-				allGc = GameObject.FindGameObjectsWithTag("klient");
-				int i = 0;
-				foreach(GameObject g in allGc) {
-					Client c = g.GetComponent<Client>();
-					allClients.Add(c);
-					c.readyToDrink = false;
-				}
-				queue.Clear();
-				InLine = 0;
-
-				while(allClients.Count > 0)
-				{
-					Client c = allClients[0];
-					StopCoroutine(c.MoveTo(Vector3.zero));
-					StopCoroutine(c.Drink());
-					allClients.RemoveAt(0);
-					StartCoroutine(c.Die());
-				}
-				GameObject mg = GameObject.FindWithTag("GameController");
-            	GameManager managerG  = mg.GetComponent<GameManager>();
-            	managerG.klienciCoS = 0;
-				// Reset the timer after the event
-        		timer = timer - dayTime;
-			}
+				NextDay();
+			}*/
 		
 	}
 
     private void SetClientsOnPos(){
 		if (InLine == 0) return;
 		for (int i=0; i<InLine; i++) {
-			StartCoroutine(queue[i].MoveTo(first + (i * offSet)));
+			if(!queue[i].dayOver)
+				StartCoroutine(queue[i].MoveTo(first + (i * offSet)));
 		}
 	}
 
@@ -159,10 +105,12 @@ public class BarQueue : MonoBehaviour
 
 	public void AddClient(Client c) {
 		if (InLine >= maxInLine) {
-			StartCoroutine(c.Die());
+			if(!c.dayOver)
+				StartCoroutine(c.Die());
 		}
 		else{
-			StartCoroutine(c.MoveTo(first + (InLine * offSet)));
+			if(!c.dayOver)
+				StartCoroutine(c.MoveTo(first + (InLine * offSet)));
 			queue.Add(c);
 			InLine++;
 		}
@@ -175,7 +123,8 @@ public class BarQueue : MonoBehaviour
 			Client outC = queue[i];
 			queue.RemoveAt(i);
 			queue.Insert(i,c);
-			StartCoroutine(outC.Die());
+			if(!c.dayOver)
+				StartCoroutine(outC.Die());
 			SetClientsOnPos();
 
 		}
@@ -198,4 +147,68 @@ public class BarQueue : MonoBehaviour
 
         isMuting = false; // Reset the flag
     }
+
+
+	public void NextDay()
+    {
+		if (!soundPlayed) tutorial.ActivateTutorial(6);
+
+		soundPlayed = true;
+		// Play the assigned sound clip
+
+
+		if (yourSoundClip != null && audioSource != null)
+		{
+			audioSource.PlayOneShot(yourSoundClip, 1.0f);
+		}
+		// Increment the event counter
+		eventCounter++;
+
+		// Output the event counter value to the console log
+		day.text = "Dzien: " + eventCounter.ToString();
+
+		Debug.Log("Day " + eventCounter);
+
+
+		// Mute the background audio sources
+		if (!isMuting && backgroundAudioSources != null)
+		{
+			isMuting = true;
+
+			foreach (AudioSource audioSource in backgroundAudioSources)
+			{
+				audioSource.volume = 0.2f; // Adjust the volume to a lower level or set to 0 for muting
+			}
+
+			StartCoroutine(UnmuteBackgroundSounds());
+		}
+
+		List<Client> allClients = new List<Client>();
+		GameObject[] allGc;
+		allGc = GameObject.FindGameObjectsWithTag("klient");
+		foreach (GameObject g in allGc)
+		{
+			Client c = g.GetComponent<Client>();
+			allClients.Add(c);
+			c.readyToDrink = false;
+		}
+		queue.Clear();
+		InLine = 0;
+
+		while (allClients.Count > 0)
+		{
+			Client c = allClients[0];
+			c.StopAllCoroutines();
+			// StopCoroutine(c.MoveTo(Vector3.zero));
+			// StopCoroutine(c.Drink());
+			allClients.RemoveAt(0);
+			Debug.Log(c.gameObject.name);
+			c.dayOver = true;
+			StartCoroutine(c.Die());
+		}
+		GameManager managerG = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+		managerG.klienciCoS = 0;
+		// Reset the timer after the event
+		timer = timer - dayTime;
+	}
 }
