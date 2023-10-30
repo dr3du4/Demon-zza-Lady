@@ -80,7 +80,6 @@ public class Client : MonoBehaviour
         Transform cObj = transform.Find("Beer");
         cObj.gameObject.SetActive(false);
         table.TakeClient(this.gameObject.GetComponent<Client>());
-        sit = -1;
         table = null;
         readyToDrink = wantMore();
         
@@ -116,11 +115,11 @@ public class Client : MonoBehaviour
         if (preferenceHelper.PreferencesActive())
             preferenceHelper.HidePreferences();
 
-        if (beerCount == 0) {
-        GameObject mg = GameObject.FindWithTag("GameController");
-        GameManager managerG  = mg.GetComponent<GameManager>();
-        if (managerG.klienciCoS == 0) managerG.GetTutorial().ActivateTutorial(5);
-        managerG.klienciCoS++;
+        if (!dayOver && beerCount <= 1 && sit == -1) {
+            GameObject mg = GameObject.FindWithTag("GameController");
+            GameManager managerG  = mg.GetComponent<GameManager>();
+            if (managerG.klienciCoS == 0) managerG.GetTutorial().ActivateTutorial(5);
+            managerG.klienciCoS++;
         }
         float progress = 0f;
 		Vector3 start = transform.position;
