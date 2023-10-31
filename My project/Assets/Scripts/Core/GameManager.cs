@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log(tuts);
         dayTimer = Time.time + dayLength;
         //tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
+        SetVolumeInit();
     }
 
     public GameManager(int _money, int _souls, int _gnieciuchy, int _sprzedanepiwa) 
@@ -155,6 +156,15 @@ public class GameManager : MonoBehaviour
             // Debug.Log(table.name);
             if(table.activeInHierarchy && table.TryGetComponent<TableClients>(out TableClients tb))
                 tb.RestartTable();
+        }
+    }
+
+    void SetVolumeInit()
+    {
+        float _volume = PlayerPrefs.GetFloat("Volume", 0.5f);
+        foreach(AudioSource s in FindObjectsOfType(typeof(AudioSource)))
+        {
+            s.volume = _volume;
         }
     }
 
