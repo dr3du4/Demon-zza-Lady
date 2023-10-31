@@ -99,7 +99,6 @@ public class MoveToClick : MonoBehaviour
         {
             if(client.table != null) {
                 client.table.TakeClient(client);
-                client.sit = -1;
                 client.table = null;
             }
             //StartCoroutine(client.Die());
