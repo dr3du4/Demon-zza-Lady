@@ -365,7 +365,10 @@ MonoBehaviour:
   waiting: 0
   readyToDrink: 1
   goingUp: 0
+  mtc: {fileID: 0}
+  staryWstal: 0
   preferenceHelper: {fileID: 7530039669872519810}
+  dayOver: 0
 --- !u!114 &1015920554517606561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +828,10 @@ PrefabInstance:
     - target: {fileID: 4534640565294223758, guid: cc68c3a922dcec2478e66b2ef687d0b7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836788872975868210, guid: cc68c3a922dcec2478e66b2ef687d0b7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -48,7 +48,7 @@ public class BarQueue : MonoBehaviour
 
 	private void Start()
 	{
-		tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
+		tutorial = GameObject.FindWithTag("GameController").GetComponent<GameManager>().GetTutorial();
 		day.text = "Dzien: "+ eventCounter.ToString();
 		first = transform.position += offSetFirst;
 		//added KASIA 3rano
@@ -74,6 +74,13 @@ public class BarQueue : MonoBehaviour
 					SetClientServed(false);
 				}
 			}
+		int i = 0;
+		foreach(Client c in queue)
+        {
+			if(c.TryGetComponent(out SpriteRenderer renderer))
+				renderer.sortingOrder = i;
+			i++;
+        }
 
 		// Timer logic  added KASIA o 3:32 niedziela
 

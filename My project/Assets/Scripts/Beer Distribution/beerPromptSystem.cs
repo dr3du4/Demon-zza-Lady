@@ -63,7 +63,7 @@ public class beerPromptSystem : MonoBehaviour
         {
             keySprites.Add(pair.key, pair.image);
         }*/
-        tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
+        tutorial = manager.GetTutorial();
         UpdateBinds();
     }
 
