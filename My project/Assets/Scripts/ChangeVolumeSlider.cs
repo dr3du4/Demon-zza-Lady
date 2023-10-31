@@ -10,7 +10,7 @@ public class ChangeVolumeSlider : MonoBehaviour
     private AudioListener _audio;
     
     private void Awake() {
-        _volume = PlayerPrefs.GetFloat("Volume");
+        _volume = PlayerPrefs.GetFloat("Volume", 0.5f);
         Slider slide = GetComponent<Slider>();
         slide.value = _volume;
         foreach(AudioSource s in audioSources){

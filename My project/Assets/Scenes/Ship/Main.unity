@@ -9738,7 +9738,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353b2383bb471a545a3a08209bd08180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSources: []
+  audioSources:
+  - {fileID: 1927828872}
+  - {fileID: 1514430220}
+  - {fileID: 1733739282}
+  - {fileID: 617446026}
+  - {fileID: 1251272656}
+  - {fileID: 664811809}
 --- !u!114 &1361144113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9786,14 +9792,14 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1361144112}
         m_TargetAssemblyTypeName: ChangeVolumeSlider, Assembly-CSharp
         m_MethodName: SetVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14189,6 +14195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0df355d6fcf95349b0c71f46a4b0d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1927828872 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8888902448295885431, guid: 66a34f14c22fc334a80b810cee5930d3, type: 3}
+  m_PrefabInstance: {fileID: 1927828870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1969424367
 GameObject:
   m_ObjectHideFlags: 0
