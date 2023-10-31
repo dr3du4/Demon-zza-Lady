@@ -21,6 +21,7 @@ public class Tutorial : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
     private TutorialSO GetTutorial(int i) {
         foreach (TutorialSO t in tutorials) {
             if (t.id == i) return t;

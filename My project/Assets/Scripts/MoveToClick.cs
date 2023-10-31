@@ -21,6 +21,7 @@ public class MoveToClick : MonoBehaviour
     // Bodzio fix
     private Vector3 sitPos;
     bool movingToClick = false;
+    int layer;
 
     private void Start()
     {
@@ -64,11 +65,19 @@ public class MoveToClick : MonoBehaviour
             distanceToStol = helper;
             Debug.Log(distanceToStol);
             TableClients t = stol.GetComponent<TableClients>();
-            if (!t.active) {
+            if (!t.active)
+            {
                 distanceToStol = 100f;
                 return;
             }
-            else if (!t.IsClient(client) || client.sit == -1)sitPos = t.AddClient(client);
+            else if (!t.IsClient(client) || client.sit == -1)
+            {
+                KeyValuePair<Vector3, int> posAndLayer = t.AddClient(client);
+                sitPos = posAndLayer.Key;
+                // Change client's sorting layer to properly overlap chair and table
+                layer = posAndLayer.Value;
+                client.GetComponent<SpriteRenderer>().sortingOrder = layer;
+            }
             client.waiting = false;
             client.goingUp = false;
             // Bodzio fix

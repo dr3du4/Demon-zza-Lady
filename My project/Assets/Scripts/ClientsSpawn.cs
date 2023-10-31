@@ -12,7 +12,7 @@ public class ClientsSpawn : MonoBehaviour
     float delayMax = 10f;
 
     private void Update() {
-        // if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientTypes.Count));
+         if (Input.GetKeyDown("space")) SpawnClient(Random.Range(0,clientTypes.Count));
         if (Time.time > timer)
         {
             SpawnClient(Random.Range(0, clientTypes.Count));

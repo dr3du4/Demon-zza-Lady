@@ -10,6 +10,7 @@ public class TableClients : MonoBehaviour
     [SerializeField]private List<int> sits = new List<int>();
     private List<Vector3> positionSits = new List<Vector3>();
     // (1,1) (1,-1) (-1,-1) (-1,1)
+    private Dictionary<Vector3, int> sitPosOrderInLayer = new Dictionary<Vector3, int>();
     private Vector3 pos;
 
     private void Start(){
@@ -25,7 +26,7 @@ public class TableClients : MonoBehaviour
     }
 
 
-    public Vector3 AddClient(Client new_c) {
+    public KeyValuePair<Vector3, int> AddClient(Client new_c) {
         Debug.Log("PUT IN");
         foreach (Client c in clients){
             new_c.ReviewNewClient(c.getType());
@@ -47,7 +48,7 @@ public class TableClients : MonoBehaviour
             active = false;
         }
         //Daj pozycje dla klienta  positionSits[sits[0]]
-        return positionSits[new_c.sit];
+        return new KeyValuePair<Vector3, int>(positionSits[new_c.sit], sitPosOrderInLayer[positionSits[new_c.sit]]);
     }
 
     public void TakeClient(Client c) {
@@ -65,11 +66,18 @@ public class TableClients : MonoBehaviour
     public void RestartTable()
     {
         sits = new List<int>() {0, 1, 2, 3};
+        sitPosOrderInLayer = new Dictionary<Vector3, int>();
         pos = transform.position;
         positionSits.Add(pos + new Vector3(1, 1, 0));
         positionSits.Add(pos + new Vector3(1, -1, 0));
         positionSits.Add(pos + new Vector3(-1, -1, 0));
         positionSits.Add(pos + new Vector3(-1, 1, 0));
+
+        sitPosOrderInLayer.Add(pos + new Vector3(1, 1, 0), 1);
+        sitPosOrderInLayer.Add(pos + new Vector3(-1, 1, 0), 1);
+        sitPosOrderInLayer.Add(pos + new Vector3(-1, -1, 0), 4);
+        sitPosOrderInLayer.Add(pos + new Vector3(1, -1, 0), 4);
+        
         clients = new List<Client>();
         clientsCount = 0;
         active = true;
