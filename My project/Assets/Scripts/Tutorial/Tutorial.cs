@@ -18,7 +18,7 @@ public class Tutorial : MonoBehaviour
 
     private void Start() {
         _image = GetComponent<Image>();
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
 
 

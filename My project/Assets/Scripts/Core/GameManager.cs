@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     float dayTimer = 0.0f;
 
     public List<int> gnieciuchTresholds = new List<int>() { 10, 20, 30, 40, 50 };
-    [SerializeField]private Tutorial tutorial;
+    private Tutorial tutorial;
     [SerializeField] public TextMeshProUGUI moneyText;
     [SerializeField] public TextMeshProUGUI soulsText;
 
@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
         // Debug.Log(credits);
         // Debug.Log(tuts);
         dayTimer = Time.time + dayLength;
-        //tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
+        tutorial = GameObject.FindWithTag("Tutorial").GetComponent<Tutorial>();
+        tutorial.gameObject.SetActive(false);
         SetVolumeInit();
     }
 
