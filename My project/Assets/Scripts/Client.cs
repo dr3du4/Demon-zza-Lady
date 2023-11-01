@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Pipes;
 
 
 public class Client : MonoBehaviour
@@ -26,6 +27,7 @@ public class Client : MonoBehaviour
     private List<clientTypeSO.ClientType> companyPreferences;
     public bool staryWstal = false;
     public preferenceHelper preferenceHelper;
+    public GameObject pintOfBeer;
 
     // Bool that is set right before we kill everyone when the day is over (so that no other object tries to do a coroutine on our guys)
     public bool dayOver = false;
@@ -155,6 +157,7 @@ public class Client : MonoBehaviour
 		}
         progress = 0f;
 		start = target;
+        pintOfBeer.SetActive(false);
         target += transform.position - new Vector3(0.5f,15,0);	
 		while (progress < 1f) {
 			transform.position = Vector3.Lerp(start,target,progress);
