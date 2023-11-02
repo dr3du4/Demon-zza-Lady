@@ -18,8 +18,9 @@ public class Tutorial : MonoBehaviour
 
     private void Start() {
         _image = GetComponent<Image>();
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
+
 
     private TutorialSO GetTutorial(int i) {
         foreach (TutorialSO t in tutorials) {
