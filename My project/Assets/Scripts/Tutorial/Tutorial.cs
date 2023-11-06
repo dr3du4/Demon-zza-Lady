@@ -7,9 +7,10 @@ using TMPro;
 public class Tutorial : MonoBehaviour
 {
     [SerializeField] private List<TutorialSO> tutorials  = new List<TutorialSO>();
-    private Image _image;
+    [SerializeField]private Image _image;
     [SerializeField] private TextMeshProUGUI tutorialText;
-    [SerializeField] private Image button;
+    [SerializeField] private Image buttonImage;
+    [SerializeField] private Button button;
     [SerializeField] private Sprite nextB;
     [SerializeField] private Sprite closeB;
     private int nextTut = -1;
@@ -17,12 +18,12 @@ public class Tutorial : MonoBehaviour
     private int countTip = 0;
 
     private void Start() {
-        _image = GetComponent<Image>();
+        //_image = GetComponent<Image>();
         // gameObject.SetActive(false);
     }
 
 
-    private TutorialSO GetTutorial(int i) {
+    private TutorialSO GetTutorialSO(int i) {
         foreach (TutorialSO t in tutorials) {
             if (t.id == i) return t;
         }
@@ -30,15 +31,16 @@ public class Tutorial : MonoBehaviour
     }
     
     public void ActivateTutorial(int i) {
-        TutorialSO x = GetTutorial(i);
+        TutorialSO x = GetTutorialSO(i);
         if (x == null) return;
         _image.sprite = x.tutorialSprite;
         _image.color = new Color32(255,255,255,255);
         tutorialText.text = x.tutorialText;
-        Time.timeScale = 0f;
         nextTut = x.nextTutorial;
-        if (nextTut == -1) button.sprite = closeB;
-        else button.sprite = nextB;
+        if (nextTut == -1) buttonImage.sprite = closeB;
+        else buttonImage.sprite = nextB;
+        Time.timeScale = 0f;
+        button.onClick.AddListener(DeactivateTutorial);
         gameObject.SetActive(true);
     }
 
@@ -49,11 +51,31 @@ public class Tutorial : MonoBehaviour
     }
 
     public void DeactivateTutorial() {
-        gameObject.SetActive(false);
+        button.onClick.RemoveListener(DeactivateTutorial);
         _image.sprite = null;
         tutorialText.text = "";
         _image.color = new Color32(255,255,255,0);
         Time.timeScale = 1f;
+        gameObject.SetActive(false);
         if (nextTut != -1) ActivateTutorial(nextTut);
+    }
+
+    public void ShowTutorial(int i) {
+        TutorialSO x = GetTutorialSO(i);
+        if (x == null) return;
+        _image.sprite = x.tutorialSprite;
+        _image.color = new Color32(255,255,255,255);
+        tutorialText.text = x.tutorialText;
+        buttonImage.sprite = closeB;
+        button.onClick.AddListener(HideTutorial);
+        gameObject.SetActive(true);
+    }
+
+    public void HideTutorial() {
+        button.onClick.RemoveListener(HideTutorial);
+        _image.sprite = null;
+        tutorialText.text = "";
+        _image.color = new Color32(255,255,255,0);
+        gameObject.SetActive(false);
     }
 }

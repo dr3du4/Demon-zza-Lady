@@ -1196,7 +1196,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3141,7 +3141,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5825,7 +5825,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6468,7 +6468,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6636,7 +6636,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7339,7 +7339,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7630,7 +7630,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10407,7 +10407,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11206,7 +11206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11905,7 +11905,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12207,7 +12207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1927828871}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Tut
+        m_MethodName: TutShow
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

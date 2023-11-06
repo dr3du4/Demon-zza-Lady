@@ -368,6 +368,7 @@ MonoBehaviour:
   mtc: {fileID: 0}
   staryWstal: 0
   preferenceHelper: {fileID: 7530039669872519810}
+  pintOfBeer: {fileID: 3934773282706996330}
   dayOver: 0
 --- !u!114 &1015920554517606561
 MonoBehaviour:
@@ -841,5 +842,10 @@ PrefabInstance:
 --- !u!4 &3915936312263034292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4480355614714701904, guid: cc68c3a922dcec2478e66b2ef687d0b7, type: 3}
+  m_PrefabInstance: {fileID: 609491067380887012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3934773282706996330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4534640565294223758, guid: cc68c3a922dcec2478e66b2ef687d0b7, type: 3}
   m_PrefabInstance: {fileID: 609491067380887012}
   m_PrefabAsset: {fileID: 0}

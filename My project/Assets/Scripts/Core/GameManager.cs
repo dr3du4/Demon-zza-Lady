@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     Gnieciuch g;
     
 
-    private void Start()
+    private void Awake()
     {
         g = GetComponent<Gnieciuch>();
         // Debug.Log(mainMenu);
@@ -197,9 +197,14 @@ public class GameManager : MonoBehaviour
         credits.SetActive(false);
     }
 
-    public void Tut(int i)
+    public void TutShow(int i)
     {
-        tutorial.ActivateTutorial(i);
+        tutorial.ShowTutorial(i);
+    }
+    
+    public void TutHide()
+    {
+        tutorial.HideTutorial();
     }
 
     public void TutsOpen()
